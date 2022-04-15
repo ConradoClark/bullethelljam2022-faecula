@@ -1,0 +1,38 @@
+Bullet Hell Jam 2022
+
+Idea:
+- Mix adventure game w/ bullethell
+- Castlevania-like feeling (get powerups, maybe level up, etc)
+- Fight monsters in rooms and beat puzzles, all in bullet hell style
+- Draw sigils to cast spells
+	- Maybe some spells could create barriers
+	- Others could slow time or make you disappear temporarily, etc
+- HP/MP, maybe graze to trigger MP recovery?
+- The main character is a flying fairy
+- Controls: Mouse/Keyboard or Analog Stick (see if mouse w/ limited speed feels good)
+- Maybe random encounters in rooms?
+
+THEME: Confined
+
+- A captured fairy which is trying to escape from a castle
+- Start inside a chest, fight your way out?
+- Get rid of your shackles, maybe each powerup makes you free from one.
+- Unlock different parts of the castle until you get out
+
+
+- As an adventure game, how are you supposed to do things?
+- Possible Actions:
+  - Look
+  - Interact
+  - Pick Up
+- You can't do any actions if there is hostility (enemies, traps, anything happening that forces you to defend yourself
+- Inspecting things may lead to enemy encounters
+
+- How to defeat enemies? Should you be able to attack or just evade?
+  - Just Evade: slow
+  - You can fight back: better, but more difficult to balance.
+
+- Systems in place to develop:
+   - Text system (portraits? etc)
+   - Controls (mouse/keyboard/gamepad)
+   - Allow interaction with objects
