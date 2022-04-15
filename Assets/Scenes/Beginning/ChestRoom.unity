@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9788384}
   - component: {fileID: 9788385}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,7 +215,7 @@ GameObject:
   m_Component:
   - component: {fileID: 41691620}
   - component: {fileID: 41691621}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: AdventureUI_InventoryCursor (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,7 +297,7 @@ GameObject:
   m_Component:
   - component: {fileID: 71595314}
   - component: {fileID: 71595315}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -380,7 +380,7 @@ GameObject:
   - component: {fileID: 151501921}
   - component: {fileID: 151501923}
   - component: {fileID: 151501922}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Caption
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -549,7 +549,7 @@ GameObject:
   m_Component:
   - component: {fileID: 188481847}
   - component: {fileID: 188481848}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: AdventureUI_InventoryCursor (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -630,7 +630,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 216349024}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: InventoryGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -664,7 +664,7 @@ GameObject:
   m_Component:
   - component: {fileID: 351991707}
   - component: {fileID: 351991708}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: AdventureUI_InventoryCursor (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -745,7 +745,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 398701026}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: AdventureUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -769,7 +769,7 @@ Transform:
   - {fileID: 1556452168}
   - {fileID: 1676213303}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -849,7 +849,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 23
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -885,7 +885,7 @@ GameObject:
   m_Component:
   - component: {fileID: 563220781}
   - component: {fileID: 563220782}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: AdventureUI_InventoryCursor (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -967,7 +967,7 @@ GameObject:
   m_Component:
   - component: {fileID: 620823416}
   - component: {fileID: 620823417}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: AdventureUI_InventoryCursor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1049,7 +1049,7 @@ GameObject:
   m_Component:
   - component: {fileID: 756160536}
   - component: {fileID: 756160537}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Action_Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1131,7 +1131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 876684610}
   - component: {fileID: 876684609}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Action_Look
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1248,7 +1248,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &935155136
 GameObject:
@@ -1260,7 +1260,7 @@ GameObject:
   m_Component:
   - component: {fileID: 935155137}
   - component: {fileID: 935155138}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: AdventureUI_InventoryCursor (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1423,7 +1423,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 993500939}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LogGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1456,7 +1456,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1035327773}
   - component: {fileID: 1035327774}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: AdventureUI_InventoryCursor (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1609,7 +1609,7 @@ Transform:
   m_Children:
   - {fileID: 956428518}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1131897191
 GameObject:
@@ -1622,7 +1622,7 @@ GameObject:
   - component: {fileID: 1131897192}
   - component: {fileID: 1131897194}
   - component: {fileID: 1131897193}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Caption
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1791,7 +1791,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1134142414}
   - component: {fileID: 1134142415}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: AdventureUI_InventoryCursor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1873,7 +1873,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1359603684}
   - component: {fileID: 1359603685}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: AdventureUI_InventoryCursor (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1955,7 +1955,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1425018363}
   - component: {fileID: 1425018364}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: AdventureUI_InventoryCursor (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2038,7 +2038,7 @@ GameObject:
   - component: {fileID: 1465909699}
   - component: {fileID: 1465909701}
   - component: {fileID: 1465909700}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Caption
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2208,7 +2208,7 @@ GameObject:
   - component: {fileID: 1551417239}
   - component: {fileID: 1551417241}
   - component: {fileID: 1551417240}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: HelpText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2377,7 +2377,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1552621874}
   - component: {fileID: 1552621875}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: AdventureUI_InventoryCursor (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2458,7 +2458,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1556452168}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MapGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2490,7 +2490,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1601808048}
   - component: {fileID: 1601808049}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: AdventureUI_InventoryCursor (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2573,7 +2573,7 @@ GameObject:
   - component: {fileID: 1636205620}
   - component: {fileID: 1636205622}
   - component: {fileID: 1636205621}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TextLog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2753,7 +2753,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1671241780}
   - component: {fileID: 1671241781}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: AdventureUI_InventoryCursor (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2834,7 +2834,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1676213303}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ActionsGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2861,6 +2861,101 @@ Transform:
   m_Father: {fileID: 398701026}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1742463111
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1742463115}
+  - component: {fileID: 1742463114}
+  - component: {fileID: 1742463112}
+  m_Layer: 0
+  m_Name: UI Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1742463112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742463111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AssetsPPU: 32
+  m_RefResolutionX: 960
+  m_RefResolutionY: 540
+  m_UpscaleRT: 0
+  m_PixelSnapping: 0
+  m_CropFrameX: 0
+  m_CropFrameY: 0
+  m_StretchFill: 0
+--- !u!20 &1742463114
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742463111}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 3
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 1
+  orthographic size: 8.4375
+  m_Depth: 1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 32
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 0
+  m_HDR: 1
+  m_AllowMSAA: 0
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 0
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &1742463115
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742463111}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1744325705
 GameObject:
   m_ObjectHideFlags: 0
@@ -2871,7 +2966,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1744325706}
   - component: {fileID: 1744325707}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Action_Interact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2953,7 +3048,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1826511826}
   - component: {fileID: 1826511827}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3036,7 +3131,7 @@ GameObject:
   - component: {fileID: 1873899489}
   - component: {fileID: 1873899491}
   - component: {fileID: 1873899490}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Caption
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3205,7 +3300,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1875172697}
   - component: {fileID: 1875172698}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: AdventureUI_InventoryCursor (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3287,7 +3382,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1889403484}
   - component: {fileID: 1889403485}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: AdventureUI_InventoryCursor (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3439,7 +3534,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2103752322
 GameObject:
@@ -3450,7 +3545,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2103752323}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
