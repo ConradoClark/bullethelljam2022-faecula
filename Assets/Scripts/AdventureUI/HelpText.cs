@@ -16,7 +16,9 @@ public class HelpText : MonoBehaviour
     public enum HelpTextEvents
     {
         TextChanged,
-        TextClear
+        TextClear,
+        TextLock,
+        TextUnlock
     }
 
     public class TextChangedEvent : TextEvent
@@ -34,10 +36,14 @@ public class HelpText : MonoBehaviour
     private bool _breakAnimation;
     private string _currentText;
 
+    private bool _lockedText;
+
     void OnEnable()
     {
         this.ObserveEvent<HelpTextEvents, TextChangedEvent>(HelpTextEvents.TextChanged, OnTextChanged);
         this.ObserveEvent<HelpTextEvents, TextEvent>(HelpTextEvents.TextClear, OnTextClear);
+        this.ObserveEvent<HelpTextEvents, TextChangedEvent>(HelpTextEvents.TextLock, OnTextLock);
+        this.ObserveEvent<HelpTextEvents, TextEvent>(HelpTextEvents.TextUnlock, OnTextUnlock);
         _currentText = TextComponent.text;
 
         MachineryRef.Machinery.AddBasicMachine(Fade());
@@ -45,6 +51,7 @@ public class HelpText : MonoBehaviour
 
     private void OnTextChanged(TextChangedEvent @event)
     {
+        if (_lockedText) return;
         if (_currentSource != null && _currentSource != @event.Source) return;
         if (_currentText == @event.Text) return;
 
@@ -55,9 +62,27 @@ public class HelpText : MonoBehaviour
 
     private void OnTextClear(TextEvent @event)
     {
+        if (_lockedText) return;
         if (_currentSource != null && _currentSource != @event.Source) return;
         if (_currentText == string.Empty) return;
 
+        _currentText = string.Empty;
+        _currentSource = null;
+    }
+
+    private void OnTextLock(TextChangedEvent @event)
+    {
+        if (_lockedText) return;
+        _lockedText = true;
+        _currentText = @event.Text;
+        _currentSource = @event.Source;
+        if (_animating) _breakAnimation = true;
+    }
+
+    private void OnTextUnlock(TextEvent @event)
+    {
+        if (_currentSource != null && _currentSource != @event.Source) return;
+        _lockedText = false;
         _currentText = string.Empty;
         _currentSource = null;
     }

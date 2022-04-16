@@ -1177,6 +1177,7 @@ GameObject:
   - component: {fileID: 876684609}
   - component: {fileID: 876684611}
   - component: {fileID: 876684612}
+  - component: {fileID: 876684613}
   m_Layer: 5
   m_Name: Action_Look
   m_TagString: Untagged
@@ -1291,6 +1292,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8052044, y: 1.090931}
   m_EdgeRadius: 0
+--- !u!114 &876684613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876684608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a345c257da27a35439c86fa3ed34ab6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefaultSprite: {fileID: 21300000, guid: ed6756a70e90e444c924ee5f55c0c6bb, type: 3}
+  PressedSprite: {fileID: 21300000, guid: 70367446d7314bf499c99dc93eadf134, type: 3}
+  SpriteRenderer: {fileID: 876684609}
+  Collider: {fileID: 876684612}
+  Group: {fileID: 1676213304}
+  MachineryRef: {fileID: 11400000, guid: 1d09dcc676332c04187f55e300b55a13, type: 2}
+  Description: click on someting to examine
 --- !u!1 &901765243
 GameObject:
   m_ObjectHideFlags: 0
@@ -1302,6 +1322,7 @@ GameObject:
   - component: {fileID: 901765245}
   - component: {fileID: 901765244}
   - component: {fileID: 901765246}
+  - component: {fileID: 901765247}
   m_Layer: 0
   m_Name: Toolbox
   m_TagString: Untagged
@@ -1369,6 +1390,18 @@ MonoBehaviour:
   m_DefaultActionMap: Default
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 1742463114}
+--- !u!114 &901765247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901765243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2a2da96288e73742bc549362fdcb2fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &935155136
 GameObject:
   m_ObjectHideFlags: 0
@@ -2969,6 +3002,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1676213303}
+  - component: {fileID: 1676213304}
   m_Layer: 5
   m_Name: ActionsGroup
   m_TagString: Untagged
@@ -2996,6 +3030,18 @@ Transform:
   m_Father: {fileID: 398701026}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1676213304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676213302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dbf85feab18a19418bc730422337eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1742463111
 GameObject:
   m_ObjectHideFlags: 0
