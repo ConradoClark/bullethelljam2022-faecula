@@ -1049,6 +1049,8 @@ GameObject:
   m_Component:
   - component: {fileID: 756160536}
   - component: {fileID: 756160537}
+  - component: {fileID: 756160539}
+  - component: {fileID: 756160538}
   m_Layer: 5
   m_Name: Action_Pickup
   m_TagString: Untagged
@@ -1121,6 +1123,48 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &756160538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756160535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9141f16c56ef5594bbbbbe4564366fa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CameraType: 1
+  Collider: {fileID: 756160539}
+  MachineryRef: {fileID: 11400000, guid: 1d09dcc676332c04187f55e300b55a13, type: 2}
+  Text: pick up (d) - click to pick up something
+--- !u!61 &756160539
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756160535}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.003264904, y: -0.0065292716}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 1.5}
+    newSize: {x: 2, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.9020605, y: 1.1865932}
+  m_EdgeRadius: 0
 --- !u!1 &876684608
 GameObject:
   m_ObjectHideFlags: 0
@@ -1131,6 +1175,8 @@ GameObject:
   m_Component:
   - component: {fileID: 876684610}
   - component: {fileID: 876684609}
+  - component: {fileID: 876684611}
+  - component: {fileID: 876684612}
   m_Layer: 5
   m_Name: Action_Look
   m_TagString: Untagged
@@ -1203,6 +1249,48 @@ Transform:
   m_Father: {fileID: 1676213303}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &876684611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876684608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9141f16c56ef5594bbbbbe4564366fa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CameraType: 1
+  Collider: {fileID: 876684612}
+  MachineryRef: {fileID: 11400000, guid: 1d09dcc676332c04187f55e300b55a13, type: 2}
+  Text: look (A) - click to examine something in the scene
+--- !u!61 &876684612
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876684608}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.02921933}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 1.5}
+    newSize: {x: 2, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.8052044, y: 1.090931}
+  m_EdgeRadius: 0
 --- !u!1 &901765243
 GameObject:
   m_ObjectHideFlags: 0
@@ -1213,6 +1301,7 @@ GameObject:
   m_Component:
   - component: {fileID: 901765245}
   - component: {fileID: 901765244}
+  - component: {fileID: 901765246}
   m_Layer: 0
   m_Name: Toolbox
   m_TagString: Untagged
@@ -1250,6 +1339,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &901765246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901765243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 01fc8d51031dc614fb7232add589caef, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Default
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 1742463114}
 --- !u!1 &935155136
 GameObject:
   m_ObjectHideFlags: 0
@@ -2208,6 +2327,7 @@ GameObject:
   - component: {fileID: 1551417239}
   - component: {fileID: 1551417241}
   - component: {fileID: 1551417240}
+  - component: {fileID: 1551417242}
   m_Layer: 5
   m_Name: HelpText
   m_TagString: Untagged
@@ -2367,6 +2487,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1551417242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551417238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3114f2f9a819864a9350646c4e710bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MachineryRef: {fileID: 11400000, guid: 1d09dcc676332c04187f55e300b55a13, type: 2}
+  TimerRef: {fileID: 11400000, guid: 6a052f4e332ec2043885bf3f98efe50d, type: 2}
+  TextComponent: {fileID: 1551417240}
 --- !u!1 &1552621873
 GameObject:
   m_ObjectHideFlags: 0
@@ -2872,7 +3007,7 @@ GameObject:
   - component: {fileID: 1742463115}
   - component: {fileID: 1742463114}
   - component: {fileID: 1742463112}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UI Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -2966,6 +3101,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1744325706}
   - component: {fileID: 1744325707}
+  - component: {fileID: 1744325709}
+  - component: {fileID: 1744325708}
   m_Layer: 5
   m_Name: Action_Interact
   m_TagString: Untagged
@@ -3038,6 +3175,48 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1744325708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744325705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9141f16c56ef5594bbbbbe4564366fa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CameraType: 1
+  Collider: {fileID: 1744325709}
+  MachineryRef: {fileID: 11400000, guid: 1d09dcc676332c04187f55e300b55a13, type: 2}
+  Text: interact (S) - click to interact with something in the scene
+--- !u!61 &1744325709
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744325705}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0036625862, y: -0.021974444}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 1.5}
+    newSize: {x: 2, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.9194269, y: 1.1923587}
+  m_EdgeRadius: 0
 --- !u!1 &1826511825
 GameObject:
   m_ObjectHideFlags: 0
