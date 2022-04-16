@@ -21,14 +21,13 @@ public class PressableButton : MonoBehaviour, IActivable, IDeactivable
     public TimerScriptable TimerRef;
 
     public BasicMachineryScriptable MachineryRef;
-    private PlayerInput _input;
-    private Camera _camera;
-    
+    protected PlayerInput Input;
+    protected Camera Camera;
 
     protected virtual void OnEnable()
     {
-        _input = _input != null ? _input : PlayerInput.GetPlayerByIndex(0);
-        _camera = Camera.allCameras.FirstOrDefault(
+        Input = Input != null ? Input : PlayerInput.GetPlayerByIndex(0);
+        Camera = Camera.allCameras.FirstOrDefault(
             cam => cam.gameObject.layer == LayerMask.NameToLayer("UI"));
 
         IsActive = false;
@@ -46,7 +45,7 @@ public class PressableButton : MonoBehaviour, IActivable, IDeactivable
     {
         while (isActiveAndEnabled)
         {
-            var triggered = _input.actions[Constants.Actions.Click].triggered;
+            var triggered = Input.actions[Constants.Actions.Click].triggered;
             if (triggered && Collider.OverlapPoint(GetMousePosInWorld()))
             {
                 if (IsActive)
@@ -99,8 +98,8 @@ public class PressableButton : MonoBehaviour, IActivable, IDeactivable
 
     private Vector3 GetMousePosInWorld()
     {
-        var mousePosition = _input.actions[Constants.Actions.MousePosition].ReadValue<Vector2>();
-        var contactPosition = _camera.ScreenToWorldPoint(mousePosition);
+        var mousePosition = Input.actions[Constants.Actions.MousePosition].ReadValue<Vector2>();
+        var contactPosition = Camera.ScreenToWorldPoint(mousePosition);
         return contactPosition;
     }
 
