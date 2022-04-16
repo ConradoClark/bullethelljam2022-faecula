@@ -17,6 +17,9 @@ public class ChestRoomSpotlight : MonoBehaviour
     public KnockAction KnockAction;
 
     private IEventPublisher<TextLog.TextLogEvents, string> _textLogPublisher;
+
+    public ColorDefaults ColorDefaults;
+
     void OnEnable()
     {
         MachineryRef.Machinery.AddBasicMachine(Storyboard());
@@ -28,63 +31,42 @@ public class ChestRoomSpotlight : MonoBehaviour
         this.UnregisterAsEventPublisher<TextLog.TextLogEvents, string>();
     }
 
+    IEnumerable<IEnumerable<Action>> Flicker()
+    {
+        yield return SpriteRenderer.GetAccessor()
+            .Color.A
+            .SetTarget(0)
+            .Over(0.2f)
+            .UsingTimer(TimerRef.Timer)
+            .Easing(EasingYields.EasingFunction.QuadraticEaseOut)
+            .Build();
+
+        yield return SpriteRenderer.GetAccessor()
+            .Color.A
+            .SetTarget(1)
+            .Over(0.1f)
+            .UsingTimer(TimerRef.Timer)
+            .Easing(EasingYields.EasingFunction.QuadraticEaseOut)
+            .Build();
+    }
+
     IEnumerable<IEnumerable<Action>> Storyboard()
     {
+        Debug.Log("Current Multiplier: " + TimerRef.Timer.Multiplier);
         yield return TimeYields.WaitSeconds(TimerRef.Timer, 2);
+
+        yield return Flicker().AsCoroutine();
+
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 2);
+
+        yield return Flicker().AsCoroutine();
+        yield return Flicker().AsCoroutine();
 
         _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, "It is dark. You can barely see your surroundings.");
 
-        yield return SpriteRenderer.GetAccessor()
-            .Color.A
-            .SetTarget(0)
-            .Over(0.2f)
-            .UsingTimer(TimerRef.Timer)
-            .Easing(EasingYields.EasingFunction.QuadraticEaseOut)
-            .Build();
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 4);
 
-        yield return SpriteRenderer.GetAccessor()
-            .Color.A
-            .SetTarget(1)
-            .Over(0.1f)
-            .UsingTimer(TimerRef.Timer)
-            .Easing(EasingYields.EasingFunction.QuadraticEaseOut)
-            .Build();
-
-        yield return TimeYields.WaitSeconds(TimerRef.Timer, 2);
-
-        yield return SpriteRenderer.GetAccessor()
-            .Color.A
-            .SetTarget(0)
-            .Over(0.2f)
-            .UsingTimer(TimerRef.Timer)
-            .Easing(EasingYields.EasingFunction.QuadraticEaseOut)
-            .Build();
-
-        yield return SpriteRenderer.GetAccessor()
-            .Color.A
-            .SetTarget(1)
-            .Over(0.1f)
-            .UsingTimer(TimerRef.Timer)
-            .Easing(EasingYields.EasingFunction.QuadraticEaseOut)
-            .Build();
-
-        yield return SpriteRenderer.GetAccessor()
-            .Color.A
-            .SetTarget(0)
-            .Over(0.1f)
-            .UsingTimer(TimerRef.Timer)
-            .Easing(EasingYields.EasingFunction.QuadraticEaseOut)
-            .Build();
-
-        yield return SpriteRenderer.GetAccessor()
-            .Color.A
-            .SetTarget(1)
-            .Over(0.1f)
-            .UsingTimer(TimerRef.Timer)
-            .Easing(EasingYields.EasingFunction.QuadraticEaseOut)
-            .Build();
-
-        yield return TimeYields.WaitSeconds(TimerRef.Timer, 3);
+        yield return Flicker().AsCoroutine();
 
         yield return SpriteRenderer.GetAccessor()
             .Color.A
@@ -98,80 +80,32 @@ public class ChestRoomSpotlight : MonoBehaviour
 
         yield return TimeYields.WaitSeconds(TimerRef.Timer, 4);
 
-        yield return SpriteRenderer.GetAccessor()
-            .Color.A
-            .SetTarget(1)
-            .Over(0.1f)
-            .UsingTimer(TimerRef.Timer)
-            .Easing(EasingYields.EasingFunction.QuadraticEaseOut)
-            .Build();
-
-        yield return SpriteRenderer.GetAccessor()
-            .Color.A
-            .SetTarget(0)
-            .Over(0.1f)
-            .UsingTimer(TimerRef.Timer)
-            .Easing(EasingYields.EasingFunction.QuadraticEaseOut)
-            .Build();
-
-        _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, "Is there anyway out? - You think to yourself, thinking about your next step.");
+        yield return Flicker().AsCoroutine();
 
         yield return TimeYields.WaitSeconds(TimerRef.Timer, 4);
 
-        yield return SpriteRenderer.GetAccessor()
-            .Color.A
-            .SetTarget(0)
-            .Over(0.2f)
-            .UsingTimer(TimerRef.Timer)
-            .Easing(EasingYields.EasingFunction.QuadraticEaseOut)
-            .Build();
-
-        yield return SpriteRenderer.GetAccessor()
-            .Color.A
-            .SetTarget(1)
-            .Over(0.4f)
-            .UsingTimer(TimerRef.Timer)
-            .Easing(EasingYields.EasingFunction.QuadraticEaseOut)
-            .Build();
+        _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, $"<color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.FaeculaSpeechColor.Value)}>Is there anyway out?</color> - You think to yourself, pondering about your next step.");
+        yield return Flicker().AsCoroutine();
 
         yield return TimeYields.WaitSeconds(TimerRef.Timer, 2);
 
-        yield return SpriteRenderer.GetAccessor()
-            .Color.A
-            .SetTarget(0)
-            .Over(0.4f)
-            .UsingTimer(TimerRef.Timer)
-            .Easing(EasingYields.EasingFunction.QuadraticEaseOut)
-            .Build();
+        yield return Flicker().AsCoroutine();
+        yield return Flicker().AsCoroutine();
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 1);
+        yield return Flicker().AsCoroutine();
 
-        yield return SpriteRenderer.GetAccessor()
-            .Color.A
-            .SetTarget(1)
-            .Over(0.4f)
-            .UsingTimer(TimerRef.Timer)
-            .Easing(EasingYields.EasingFunction.QuadraticEaseOut)
-            .Build();
-
-
-        yield return SpriteRenderer.GetAccessor()
-            .Color.A
-            .SetTarget(1)
-            .Over(0.1f)
-            .UsingTimer(TimerRef.Timer)
-            .Easing(EasingYields.EasingFunction.QuadraticEaseOut)
-            .Build();
-
-        yield return SpriteRenderer.GetAccessor()
-            .Color.A
-            .SetTarget(0)
-            .Over(0.1f)
-            .UsingTimer(TimerRef.Timer)
-            .Easing(EasingYields.EasingFunction.QuadraticEaseOut)
-            .Build();
-
-        _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, "Hello? Is anybody there? Maybe I should try knocking.");
 
         yield return TimeYields.WaitSeconds(TimerRef.Timer, 2);
+
+        _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, $"<color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.FaeculaSpeechColor.Value)}>Hello? Is anybody there? Maybe I should try knocking.</color>");
+
+        yield return SpriteRenderer.GetAccessor()
+            .Color.A
+            .SetTarget(0)
+            .Over(1f)
+            .UsingTimer(TimerRef.Timer)
+            .Easing(EasingYields.EasingFunction.QuadraticEaseIn)
+            .Build();
 
         KnockAction.gameObject.SetActive(true);
     }

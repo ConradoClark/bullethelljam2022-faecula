@@ -103,6 +103,7 @@ public class PressableButton : MonoBehaviour, IActivable, IDeactivable
         return contactPosition;
     }
 
+
     public bool IsActive { get; private set; }
     public bool Activate()
     {

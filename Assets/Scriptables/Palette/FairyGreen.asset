@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 293091256, guid: 36e88bdca46822f40b7ebfb2199ae1ee, type: 3}
-  m_Name: GameTimer
+  m_Script: {fileID: 11500000, guid: 1ea06f2c7456cf04f9d399ae9ef4bae3, type: 3}
+  m_Name: FairyGreen
   m_EditorClassIdentifier: 
-  Multiplier: 1
+  Value: {r: 0.61960787, g: 0.9882353, b: 0.7764706, a: 1}
