@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Licht.Impl.Orchestration;
 using Licht.Interfaces.Update;
+using Licht.Unity.Extensions;
 using Licht.Unity.Objects;
+using Licht.Unity.Pooling;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,10 +16,14 @@ public class PressableButton : MonoBehaviour, IActivable, IDeactivable
     public SpriteRenderer SpriteRenderer;
     public Collider2D Collider;
     public PressableButtonGroup Group;
+    public PrefabPool EffectPool;
+    public Color EffectColor;
+    public TimerScriptable TimerRef;
 
     public BasicMachineryScriptable MachineryRef;
     private PlayerInput _input;
     private Camera _camera;
+    
 
     protected virtual void OnEnable()
     {
@@ -29,7 +35,6 @@ public class PressableButton : MonoBehaviour, IActivable, IDeactivable
         Group?.AddToGroup(this);
         SpriteRenderer.sprite = DefaultSprite;
         MachineryRef.Machinery.AddBasicMachine(HandleButtonPress());
-        
     }
 
     protected virtual void OnDisable()
@@ -37,7 +42,7 @@ public class PressableButton : MonoBehaviour, IActivable, IDeactivable
         Group?.RemoveFromGroup(this);
     }
 
-    IEnumerable<IEnumerable<Action>> HandleButtonPress()
+    private IEnumerable<IEnumerable<Action>> HandleButtonPress()
     {
         while (isActiveAndEnabled)
         {
@@ -52,6 +57,12 @@ public class PressableButton : MonoBehaviour, IActivable, IDeactivable
                 {
                     Group?.DeactivateAllExcept(this);
                     Activate();
+                    MachineryRef.Machinery.AddBasicMachine(Blink());
+                    if (EffectPool.TryGetFromPool(out var obj) && obj is PressedEffectPoolable effect)
+                    {
+                        effect.Button = this;
+                        effect.transform.position = transform.position;
+                    }
                 }
                 
             }
@@ -59,7 +70,34 @@ public class PressableButton : MonoBehaviour, IActivable, IDeactivable
             yield return TimeYields.WaitOneFrameX;
         }
     }
-    Vector3 GetMousePosInWorld()
+
+    private IEnumerable<IEnumerable<Action>> Blink()
+    {
+        while (IsActive)
+        {
+            yield return SpriteRenderer.GetAccessor()
+                .Color.ToColor(EffectColor)
+                .SetTarget(1f)
+                .Over(0.35f)
+                .Easing(EasingYields.EasingFunction.CubicEaseIn)
+                .UsingTimer(TimerRef.Timer)
+                .BreakIf(() => !IsActive)
+                .Build();
+
+            yield return SpriteRenderer.GetAccessor()
+                .Color.ToColor(Color.white)
+                .SetTarget(1f)
+                .Over(0.35f)
+                .Easing(EasingYields.EasingFunction.CubicEaseIn)
+                .BreakIf(() => !IsActive)
+                .UsingTimer(TimerRef.Timer)
+                .Build();
+        }
+
+        SpriteRenderer.color = Color.white;
+    }
+
+    private Vector3 GetMousePosInWorld()
     {
         var mousePosition = _input.actions[Constants.Actions.MousePosition].ReadValue<Vector2>();
         var contactPosition = _camera.ScreenToWorldPoint(mousePosition);
