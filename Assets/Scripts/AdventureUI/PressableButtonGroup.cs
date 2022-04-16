@@ -14,6 +14,15 @@ public class PressableButtonGroup : MonoBehaviour
         }
     }
 
+    public void DisableAll()
+    {
+        foreach (var btn in _pressableButtons.ToArray())
+        {
+            btn.Deactivate();
+            btn.gameObject.SetActive(false);
+        }
+    }
+
     public void AddToGroup(PressableButton button)
     {
         if (!_pressableButtons.Contains(button)) _pressableButtons.Add(button);

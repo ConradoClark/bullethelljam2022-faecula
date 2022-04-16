@@ -6,23 +6,23 @@ using UnityEngine;
 
 public class EnableInteractByLookingKeyhole : MonoBehaviour
 {
-    public Lookable KeyHole;
-    public InteractAction InteractAction;
+    public Interactive KeyHole;
+    public InteractiveAction InteractAction;
 
     void OnEnable()
     {
-        this.ObserveEvent<Lookable.LookableEvents, Lookable>(Lookable.LookableEvents.OnLookableClicked, OnEvent);
+        this.ObserveEvent<Interactive.InteractiveEvents, Interactive>(Interactive.InteractiveEvents.OnInteractiveClicked, OnEvent);
     }
 
-    private void OnEvent(Lookable obj)
+    private void OnEvent(Interactive obj)
     {
         if (obj != KeyHole) return;
         InteractAction.gameObject.SetActive(true);
-        this.StopObservingEvent(Lookable.LookableEvents.OnLookableClicked, (Action<Lookable>)OnEvent);
+        this.StopObservingEvent(Interactive.InteractiveEvents.OnInteractiveClicked, (Action<Interactive>)OnEvent);
     }
 
     void OnDisable()
     {
-        this.StopObservingEvent(Lookable.LookableEvents.OnLookableClicked, (Action<Lookable>) OnEvent);
+        this.StopObservingEvent(Interactive.InteractiveEvents.OnInteractiveClicked, (Action<Interactive>) OnEvent);
     }
 }

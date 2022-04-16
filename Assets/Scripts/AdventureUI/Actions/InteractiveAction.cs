@@ -6,13 +6,14 @@ using Licht.Impl.Orchestration;
 using Licht.Interfaces.Events;
 using UnityEngine;
 
-public class LookAction : ActionBase
+public class InteractiveAction : ActionBase
 {
     public string Description;
-    public LookableGroup LookableGroup;
+    public InteractiveGroup InteractiveGroup;
     public float ClickVerticalLimit;
 
     public string DefaultMessage;
+    public bool PublishMessage;
 
     private IEventPublisher<HelpText.HelpTextEvents, HelpText.TextChangedEvent> _textLockPublisher;
     private IEventPublisher<HelpText.HelpTextEvents, HelpText.TextEvent> _textUnlockPublisher;
@@ -50,7 +51,7 @@ public class LookAction : ActionBase
 
                 var mousePos = GetMousePosInWorld();
                 if (mousePos.y < ClickVerticalLimit) continue;
-                var result = LookableGroup.GetClickedLookable(mousePos);
+                var result = InteractiveGroup.GetClickedInteractive(mousePos);
                 _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry,
                     result == null ? DefaultMessage : result.Text);
             }

@@ -20,7 +20,7 @@ public class KnockAction : ActionBase
     public Collider2D ChestCollider;
     public LockedChest LockedChest;
     public ColorDefaults ColorDefaults;
-    public LookAction LookAction;
+    public InteractiveAction LookAction;
 
     protected override void OnEnable()
     {

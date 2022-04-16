@@ -85,7 +85,7 @@ public class LockedChest : MonoBehaviour
             .Build();
 
         yield return ShadowSprite.transform.GetAccessor().LocalScale.X
-            .Decrease(0.15f)
+            .Decrease(0.25f)
             .Over(0.2f)
             .Easing(EasingYields.EasingFunction.QuadraticEaseIn)
             .UsingTimer(TimerRef.Timer)

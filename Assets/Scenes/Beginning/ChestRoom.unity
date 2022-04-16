@@ -539,6 +539,49 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &153406520
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 153406522}
+  - component: {fileID: 153406521}
+  m_Layer: 5
+  m_Name: Lookable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &153406521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153406520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eec410c7b18bbe94aa1b068977c6dbab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &153406522
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153406520}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1385567188}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &188481846
 GameObject:
   m_ObjectHideFlags: 0
@@ -745,7 +788,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 398701026}
-  - component: {fileID: 398701027}
   - component: {fileID: 398701028}
   m_Layer: 5
   m_Name: AdventureUI
@@ -770,21 +812,10 @@ Transform:
   - {fileID: 216349024}
   - {fileID: 1556452168}
   - {fileID: 1676213303}
+  - {fileID: 1385567188}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &398701027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 398701025}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1ea58be32ccbae45a481f0f1fd3c895, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &398701028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1183,7 +1214,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: f90ce884842f75f42bf7185abb62cb0a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1237,6 +1268,73 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.9020605, y: 1.1865932}
   m_EdgeRadius: 0
+--- !u!1 &842919312
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 842919313}
+  - component: {fileID: 842919314}
+  - component: {fileID: 842919315}
+  m_Layer: 0
+  m_Name: ActionInteractive
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &842919313
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842919312}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1858151542}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &842919314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842919312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa3ed6d181d5f843bb921e02300db02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Group: {fileID: 1271826500}
+  Colliders:
+  - {fileID: 1858151544}
+  Text: You focus on the magic sigil. It speaks a curse in <color=#01fdf6>fae</color>
+    language. You feel you can break the spell. You close your eyes and concentrate.
+  Key: 
+--- !u!114 &842919315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842919312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a270df68b533754588bc13de0a39ba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KeyHole: {fileID: 842919314}
+  Buttons: {fileID: 1676213304}
+  MachineryRef: {fileID: 11400000, guid: 1d09dcc676332c04187f55e300b55a13, type: 2}
+  TimerRef: {fileID: 11400000, guid: ff895efbce15331489e1f502258d8ffb, type: 2}
+  ChestDarkLight: {fileID: 1549751766}
 --- !u!1 &876684608
 GameObject:
   m_ObjectHideFlags: 0
@@ -1296,7 +1394,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: ed6756a70e90e444c924ee5f55c0c6bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1386,10 +1484,11 @@ MonoBehaviour:
   TimerRef: {fileID: 11400000, guid: 6a052f4e332ec2043885bf3f98efe50d, type: 2}
   MachineryRef: {fileID: 11400000, guid: 1d09dcc676332c04187f55e300b55a13, type: 2}
   Description: click on someting to examine
-  LookableGroup: {fileID: 398701027}
+  InteractiveGroup: {fileID: 153406521}
   ClickVerticalLimit: -1.1
   DefaultMessage: You can't see anything from outside. Maybe there's a spot you can
     still peek while inside the chest?
+  PublishMessage: 0
 --- !u!1 &901765243
 GameObject:
   m_ObjectHideFlags: 0
@@ -2265,6 +2364,49 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1271826499
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1271826501}
+  - component: {fileID: 1271826500}
+  m_Layer: 5
+  m_Name: Actionable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1271826500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271826499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eec410c7b18bbe94aa1b068977c6dbab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1271826501
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271826499}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1385567188}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1359603683
 GameObject:
   m_ObjectHideFlags: 0
@@ -2347,6 +2489,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1385567187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1385567188}
+  m_Layer: 5
+  m_Name: InteractionGroups
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1385567188
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385567187}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 153406522}
+  - {fileID: 1271826501}
+  m_Father: {fileID: 398701026}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1425018362
 GameObject:
   m_ObjectHideFlags: 0
@@ -3260,7 +3434,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &1636205623
 MonoBehaviour:
@@ -3579,7 +3753,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 5c5151010eedd5e48932d275eb228d84, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3642,9 +3816,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1744325705}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc2034fcc36bca941b78e3feac73d343, type: 3}
+  m_Script: {fileID: 11500000, guid: a345c257da27a35439c86fa3ed34ab6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DefaultSprite: {fileID: 21300000, guid: 5c5151010eedd5e48932d275eb228d84, type: 3}
+  PressedSprite: {fileID: 21300000, guid: 438c35788290cc144878ac9a49851e09, type: 3}
+  SpriteRenderer: {fileID: 1744325707}
+  Collider: {fileID: 1744325709}
+  Group: {fileID: 1676213304}
+  EffectPool: {fileID: 544088106}
+  EffectColor: {r: 0.59607846, g: 1, b: 0.56078434, a: 1}
+  TimerRef: {fileID: 11400000, guid: 6a052f4e332ec2043885bf3f98efe50d, type: 2}
+  MachineryRef: {fileID: 11400000, guid: 1d09dcc676332c04187f55e300b55a13, type: 2}
+  Description: click on someting to interact with
+  InteractiveGroup: {fileID: 1271826500}
+  ClickVerticalLimit: -1.1
+  DefaultMessage: Nothing to interact with or no action can be done.
+  PublishMessage: 0
 --- !u!1 &1826511825
 GameObject:
   m_ObjectHideFlags: 0
@@ -3715,7 +3903,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 7d0380090a590ee45accac5d813253c1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3737,8 +3925,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1858151542}
   - component: {fileID: 1858151544}
-  - component: {fileID: 1858151543}
   - component: {fileID: 1858151545}
+  - component: {fileID: 1858151543}
   m_Layer: 0
   m_Name: KeyHole
   m_TagString: Untagged
@@ -3756,7 +3944,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 842919313}
   m_Father: {fileID: 1122957819}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3769,14 +3958,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1858151541}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc2caefdf4628f348a86aada20773248, type: 3}
+  m_Script: {fileID: 11500000, guid: 1aa3ed6d181d5f843bb921e02300db02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Group: {fileID: 398701027}
+  Group: {fileID: 153406521}
   Colliders:
   - {fileID: 1858151544}
-  Text: You peek through the <color=#f4b860>keyhole</color>. It is possessed by a
-    magic sigil.
+  Text: you peek through the <color=#f4b860>keyhole</color>. you notice the chest
+    is possessed by a magic sigil.  perhaps you can do something about it?
   Key: 
 --- !u!61 &1858151544
 BoxCollider2D:
@@ -3986,7 +4175,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 5
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1875172696
 GameObject:
@@ -4439,7 +4628,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 5c653148caa8e404e9f9d5def4ae9b37, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4460,7 +4649,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2126496916}
-  - component: {fileID: 2126496920}
   - component: {fileID: 2126496919}
   - component: {fileID: 2126496918}
   - component: {fileID: 2126496917}
@@ -4533,22 +4721,3 @@ CircleCollider2D:
   m_Offset: {x: 0.20933768, y: -0.14470333}
   serializedVersion: 2
   m_Radius: 0.14630958
---- !u!114 &2126496920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2126496915}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc2caefdf4628f348a86aada20773248, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Group: {fileID: 398701027}
-  Colliders:
-  - {fileID: 2126496919}
-  - {fileID: 2126496918}
-  - {fileID: 2126496917}
-  Text: You can't see
-  Key: 

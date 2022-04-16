@@ -72,7 +72,6 @@ public class HelpText : MonoBehaviour
 
     private void OnTextLock(TextChangedEvent @event)
     {
-        if (_lockedText) return;
         _lockedText = true;
         _currentText = @event.Text;
         _currentSource = @event.Source;
