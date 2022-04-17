@@ -5,6 +5,7 @@ using Licht.Impl.Events;
 using Licht.Impl.Orchestration;
 using Licht.Interfaces.Events;
 using Licht.Unity.Objects;
+using Licht.Unity.Pooling;
 using UnityEngine;
 
 public class TutorialBattle : MonoBehaviour
@@ -20,6 +21,8 @@ public class TutorialBattle : MonoBehaviour
     public ColorDefaults ColorDefaults;
 
     public TimerScriptable TimerRef;
+    public PrefabPool HorizontalBulletsPool;
+    public PrefabPool SlowHorizontalBulletsPool;
 
     void OnEnable()
     {
@@ -57,6 +60,77 @@ public class TutorialBattle : MonoBehaviour
             Text = "Evade all attacks from the magic sigil"
         });
 
-        yield break;
+        yield return HorizontalBullets1.SimultaneousLineFromLeft(HorizontalBulletsPool).AsCoroutine();
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 4);
+        yield return HorizontalBullets1.SimultaneousLineFromRight(HorizontalBulletsPool).AsCoroutine();
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 4);
+
+
+        var offset = new Vector2(0, -0.5f);
+
+        yield return HorizontalBullets1.SimultaneousLineFromLeft(HorizontalBulletsPool, offset).AsCoroutine();
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 1);
+        yield return HorizontalBullets1.SimultaneousLineFromLeft(HorizontalBulletsPool, offset).AsCoroutine();
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 2);
+        yield return HorizontalBullets1.SimultaneousLineFromLeft(HorizontalBulletsPool).AsCoroutine();
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 1);
+        yield return HorizontalBullets1.SimultaneousLineFromLeft(HorizontalBulletsPool).AsCoroutine();
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 1);
+
+        offset = new Vector2(0, -.75f);
+        yield return HorizontalBullets1.SimultaneousLineFromRight(HorizontalBulletsPool, offset).AsCoroutine();
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 1);
+        yield return HorizontalBullets1.SimultaneousLineFromRight(HorizontalBulletsPool, offset).AsCoroutine();
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 2);
+        yield return HorizontalBullets1.SimultaneousLineFromRight(HorizontalBulletsPool).AsCoroutine();
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 1);
+        yield return HorizontalBullets1.SimultaneousLineFromRight(HorizontalBulletsPool).AsCoroutine();
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 5);
+
+        _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, "Not bad! Keep going!");
+
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 3);
+
+        yield return HorizontalBullets1.SimultaneousLineFromLeft(HorizontalBulletsPool, new Vector2(0, -0.4f)).AsCoroutine();
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 0.25f);
+        yield return HorizontalBullets1.SimultaneousLineFromLeft(HorizontalBulletsPool).AsCoroutine();
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 0.25f);
+        yield return HorizontalBullets1.SimultaneousLineFromLeft(HorizontalBulletsPool, new Vector2(0, 0.4f)).AsCoroutine();
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 0.25f);
+        yield return HorizontalBullets1.SimultaneousLineFromLeft(HorizontalBulletsPool, new Vector2(0, 0.8f)).AsCoroutine();
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 0.25f);
+        yield return HorizontalBullets1.SimultaneousLineFromLeft(HorizontalBulletsPool, new Vector2(0, 1.2f)).AsCoroutine();
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 0.25f);
+        yield return HorizontalBullets1.SimultaneousLineFromLeft(HorizontalBulletsPool, new Vector2(0, 1.6f)).AsCoroutine();
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 0.25f);
+        yield return HorizontalBullets1.SimultaneousLineFromLeft(HorizontalBulletsPool, new Vector2(0, 1.4f)).AsCoroutine();
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 0.5f);
+        yield return HorizontalBullets1.SimultaneousLineFromRight(HorizontalBulletsPool, new Vector2(0, 1.6f)).AsCoroutine();
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 0.25f);
+        yield return HorizontalBullets1.SimultaneousLineFromRight(HorizontalBulletsPool, new Vector2(0, 0.8f)).AsCoroutine();
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 0.25f);
+        yield return HorizontalBullets1.SimultaneousLineFromRight(HorizontalBulletsPool, new Vector2(0, 1.4f)).AsCoroutine();
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 0.25f);
+        yield return HorizontalBullets1.SimultaneousLineFromRight(HorizontalBulletsPool, new Vector2(0, 0.4f)).AsCoroutine();
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 0.25f);
+        yield return HorizontalBullets1.SimultaneousLineFromLeft(HorizontalBulletsPool).AsCoroutine();
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 0.25f);
+
+        _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, "Here comes!");
+
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 3);
+
+        yield return HereComes().AsCoroutine();
+    }
+
+
+    private IEnumerable<IEnumerable<Action>> HereComes()
+    {
+        for (var i = 0; i < 30; i++)
+        {
+            if (i % 5 == 0) yield return HorizontalBullets1.SimultaneousLineFromLeft(HorizontalBulletsPool, new Vector2(0,-0.8f)).AsCoroutine();
+            else yield return HorizontalBullets1.SimultaneousLineFromRight(SlowHorizontalBulletsPool, new Vector2(0, -0.8f + 0.4f * i % 0.8f)).AsCoroutine();
+            yield return TimeYields.WaitSeconds(TimerRef.Timer, 0.5f);
+        }
     }
 }

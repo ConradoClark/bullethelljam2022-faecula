@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1001085230, guid: 36e88bdca46822f40b7ebfb2199ae1ee, type: 3}
-  m_Name: MainMachinery
+  m_Name: MainMachinery 1
   m_EditorClassIdentifier: 

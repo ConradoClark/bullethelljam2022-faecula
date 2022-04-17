@@ -28,6 +28,11 @@ public class TextLog : MonoBehaviour
         this.ObserveEvent<TextLogEvents, string>(TextLogEvents.OnLogEntry, OnEvent);
     }
 
+    private void OnDisable()
+    {
+        this.StopObservingEvent<TextLogEvents, string>(TextLogEvents.OnLogEntry, OnEvent);
+    }
+
     private void OnEvent(string text)
     {
         var tail = TailSize;

@@ -29,6 +29,7 @@ public class FadeWave : MonoBehaviour
             .Over(Frequency * 2f)
             .Easing(EasingYields.EasingFunction.QuadraticEaseIn)
             .UsingTimer(TimerRef.Timer)
+            .BreakIf(() => !isActiveAndEnabled)
             .Build();
 
         while (isActiveAndEnabled)
@@ -39,6 +40,7 @@ public class FadeWave : MonoBehaviour
                 .Over(Frequency)
                 .Easing(EasingYields.EasingFunction.BounceEaseOut)
                 .UsingTimer(TimerRef.Timer)
+                .BreakIf(() => !isActiveAndEnabled)
                 .Build();
 
             yield return SpriteRenderer.GetAccessor()
@@ -47,6 +49,7 @@ public class FadeWave : MonoBehaviour
                 .Over(Frequency)
                 .Easing(EasingYields.EasingFunction.BounceEaseIn)
                 .UsingTimer(TimerRef.Timer)
+                .BreakIf(() => !isActiveAndEnabled)
                 .Build();
         }
 

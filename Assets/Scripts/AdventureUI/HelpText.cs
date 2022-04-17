@@ -49,6 +49,14 @@ public class HelpText : MonoBehaviour
         MachineryRef.Machinery.AddBasicMachine(Fade());
     }
 
+    void OnDisable()
+    {
+        this.StopObservingEvent<HelpTextEvents, TextChangedEvent>(HelpTextEvents.TextChanged, OnTextChanged);
+        this.StopObservingEvent<HelpTextEvents, TextEvent>(HelpTextEvents.TextClear, OnTextClear);
+        this.StopObservingEvent<HelpTextEvents, TextChangedEvent>(HelpTextEvents.TextLock, OnTextLock);
+        this.StopObservingEvent<HelpTextEvents, TextEvent>(HelpTextEvents.TextUnlock, OnTextUnlock);
+    }
+
     private void OnTextChanged(TextChangedEvent @event)
     {
         if (_lockedText) return;

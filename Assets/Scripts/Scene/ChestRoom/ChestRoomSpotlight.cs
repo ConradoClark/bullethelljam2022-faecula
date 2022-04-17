@@ -64,7 +64,7 @@ public class ChestRoomSpotlight : MonoBehaviour
 
         _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, "It is dark. You can barely see your surroundings.");
 
-        yield return TimeYields.WaitSeconds(TimerRef.Timer, 4);
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 2);
 
         yield return Flicker().AsCoroutine();
 
@@ -78,11 +78,11 @@ public class ChestRoomSpotlight : MonoBehaviour
 
         _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, "A faint, flickering light reaches your vision through the chest.");
 
-        yield return TimeYields.WaitSeconds(TimerRef.Timer, 4);
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 2);
 
         yield return Flicker().AsCoroutine();
 
-        yield return TimeYields.WaitSeconds(TimerRef.Timer, 4);
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 2);
 
         _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, $"<color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.FaeculaSpeechColor.Value)}>Is there anyway out?</color> - You think to yourself, pondering about your next step.");
         yield return Flicker().AsCoroutine();
@@ -91,9 +91,6 @@ public class ChestRoomSpotlight : MonoBehaviour
 
         yield return Flicker().AsCoroutine();
         yield return Flicker().AsCoroutine();
-        yield return TimeYields.WaitSeconds(TimerRef.Timer, 1);
-        yield return Flicker().AsCoroutine();
-
 
         yield return TimeYields.WaitSeconds(TimerRef.Timer, 2);
 

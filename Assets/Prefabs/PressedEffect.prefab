@@ -115,6 +115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2d9e46a62fee44abdb27a454bf5d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BasicMachineryObject: {fileID: 11400000, guid: 1d09dcc676332c04187f55e300b55a13, type: 2}
+  BasicMachineryObject: {fileID: 11400000, guid: b183650010cd9684db4dd01612534c04, type: 2}
   ActiveOnInitialization: 0
   Button: {fileID: 0}

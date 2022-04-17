@@ -36,8 +36,7 @@ public class DisableActionsAndGoToBulletHell1 : MonoBehaviour
         if (obj != KeyHole) return;
         Buttons.DisableAll();
 
-        MachineryRef.Machinery.AddBasicMachine(ZoomIn());
-        MachineryRef.Machinery.AddBasicMachine(Fade());
+        MachineryRef.Machinery.AddBasicMachine(LoadNextScene());
 
         this.StopObservingEvent(Interactive.InteractiveEvents.OnInteractiveClicked, (Action<Interactive>)OnEvent);
     }
@@ -51,7 +50,8 @@ public class DisableActionsAndGoToBulletHell1 : MonoBehaviour
     private IEnumerable<IEnumerable<Action>> LoadNextScene()
     {
         yield return ZoomIn().AsCoroutine().Combine(Fade().AsCoroutine());
-        SceneManager.LoadScene("ChestRoomBulletHell", LoadSceneMode.Single);
+
+        MachineryRef.Machinery.FinalizeWith(() => SceneManager.LoadScene("Scenes/Beginning/ChestRoomBulletHell", LoadSceneMode.Single));
     }
 
     private IEnumerable<IEnumerable<Action>> Fade()
@@ -59,7 +59,7 @@ public class DisableActionsAndGoToBulletHell1 : MonoBehaviour
         yield return ChestDarkLight.GetAccessor()
             .Color.A
             .SetTarget(1)
-            .Over(2f)
+            .Over(3f)
             .Easing(EasingYields.EasingFunction.CubicEaseIn)
             .UsingTimer(TimerRef.Timer)
             .Build();
@@ -70,7 +70,7 @@ public class DisableActionsAndGoToBulletHell1 : MonoBehaviour
         Ppc.enabled = false;
         yield return new LerpBuilder(val => DefaultCamera.orthographicSize = val, () => DefaultCamera.orthographicSize)
             .SetTarget(0)
-            .Over(2f)
+            .Over(4f)
             .Easing(EasingYields.EasingFunction.CubicEaseIn)
             .UsingTimer(TimerRef.Timer)
             .Build();
