@@ -8,7 +8,8 @@ public class FaeStats : MonoBehaviour
 {
     public enum FaeEvents
     {
-        OnTakeDamage
+        OnTakeDamage,
+        OnDeath
     }
 
     public class FaeHitPointsEventHandler

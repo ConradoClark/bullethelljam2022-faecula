@@ -27,11 +27,20 @@ public class TutorialBattle : MonoBehaviour
 
     void OnEnable()
     {
+        this.ObserveEvent(FaeStats.FaeEvents.OnDeath, OnEvent);
         _textLockPublisher = this.RegisterAsEventPublisher<HelpText.HelpTextEvents, HelpText.TextChangedEvent>();
         _textUnlockPublisher = this.RegisterAsEventPublisher<HelpText.HelpTextEvents, HelpText.TextEvent>();
         _textLogPublisher = this.RegisterAsEventPublisher<TextLog.TextLogEvents, string>();
 
         MachineryRef.Machinery.AddBasicMachine(HandleTutorial());
+    }
+
+    private void OnEvent()
+    {
+        _textUnlockPublisher.PublishEvent(HelpText.HelpTextEvents.TextUnlock, new HelpText.TextEvent
+        {
+            Source = this
+        });
     }
 
     IEnumerable<IEnumerable<Action>> HandleTutorial()
@@ -130,8 +139,8 @@ public class TutorialBattle : MonoBehaviour
     {
         for (var i = 0; i < 30; i++)
         {
-            if (i % 5 == 0) yield return HorizontalBullets1.SimultaneousLineFromLeft(HorizontalBulletsPool, new Vector2(0,-0.8f)).AsCoroutine();
-            else yield return HorizontalBullets1.SimultaneousLineFromRight(SlowHorizontalBulletsPool, new Vector2(0, -0.8f + 0.4f * i % 0.8f)).AsCoroutine();
+            if (i % 5 == 0) yield return HorizontalBullets1.SimultaneousLineFromLeft(HorizontalBulletsPool, new Vector2(0, -0.4f + 0.6f * i % 1.4f)).AsCoroutine();
+            else yield return HorizontalBullets1.SimultaneousLineFromRight(SlowHorizontalBulletsPool, new Vector2(0, -0.8f + 0.4f * i % 1.2f)).AsCoroutine();
             yield return TimeYields.WaitSeconds(TimerRef.Timer, 0.5f);
         }
     }

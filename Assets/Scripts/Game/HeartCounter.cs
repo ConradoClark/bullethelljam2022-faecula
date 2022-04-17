@@ -28,11 +28,6 @@ public class HeartCounter : MonoBehaviour
     {
         if (obj.CurrentHitPoints < 0) return; 
         _hearts[obj.CurrentHitPoints].SetEmpty();
-
-        if (obj.CurrentHitPoints == 0)
-        {
-            // death event here
-        }
     }
 
     private IEnumerable<IEnumerable<Action>> ShowHearts()

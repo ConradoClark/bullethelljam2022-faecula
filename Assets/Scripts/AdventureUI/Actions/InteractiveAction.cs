@@ -13,11 +13,24 @@ public class InteractiveAction : ActionBase
     public float ClickVerticalLimit;
 
     public string DefaultMessage;
-    public bool PublishMessage;
 
     private IEventPublisher<HelpText.HelpTextEvents, HelpText.TextChangedEvent> _textLockPublisher;
     private IEventPublisher<HelpText.HelpTextEvents, HelpText.TextEvent> _textUnlockPublisher;
     private IEventPublisher<TextLog.TextLogEvents, string> _textLogPublisher;
+
+    private IEventPublisher<InteractiveActionEvents, InteractiveActionEvent> _interactiveEventPublisher;
+
+    public bool BlockAction;
+
+    public enum InteractiveActionEvents
+    {
+        OnClick
+    }
+
+    public class InteractiveActionEvent
+    {
+        public ActionBase Source { get; set; }
+    }
 
     protected override void OnEnable()
     {
@@ -26,6 +39,7 @@ public class InteractiveAction : ActionBase
         _textUnlockPublisher = this.RegisterAsEventPublisher<HelpText.HelpTextEvents, HelpText.TextEvent>();
 
         _textLogPublisher = this.RegisterAsEventPublisher<TextLog.TextLogEvents, string>();
+        _interactiveEventPublisher = this.RegisterAsEventPublisher<InteractiveActionEvents, InteractiveActionEvent>();
 
         MachineryRef.Machinery.AddBasicMachine(HandleLook());
     }
@@ -46,14 +60,23 @@ public class InteractiveAction : ActionBase
             while (IsActive)
             {
                 yield return TimeYields.WaitOneFrameX;
+
+                if (BlockAction) continue;
+
                 var triggered = Input.actions[Constants.Actions.Click].WasPerformedThisFrame();
                 if (!triggered) continue;
 
                 var mousePos = GetMousePosInWorld();
                 if (mousePos.y < ClickVerticalLimit) continue;
-                var result = InteractiveGroup.GetClickedInteractive(mousePos);
+                var result = InteractiveGroup != null ? InteractiveGroup.GetClickedInteractive(mousePos) : null;
+
                 _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry,
                     result == null ? DefaultMessage : result.Text);
+
+                _interactiveEventPublisher.PublishEvent(InteractiveActionEvents.OnClick, new InteractiveActionEvent
+                {
+                    Source = this
+                });
             }
 
             _textUnlockPublisher.PublishEvent(HelpText.HelpTextEvents.TextUnlock, new HelpText.TextEvent

@@ -34,6 +34,9 @@ public class FaeHit : MonoBehaviour
     {
         FaeStats.TakeDamage();
         ChangeColorOnDamage();
+
+        if (FaeStats.HitPoints == 0) yield break;
+
         yield return Blink().AsCoroutine();
         CanBeHit = true;
     }
