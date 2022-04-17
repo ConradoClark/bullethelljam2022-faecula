@@ -8,8 +8,12 @@ using UnityEngine;
 
 public class ScreenBullet : EffectPoolable
 {
+    public Vector2 Direction;
+    public float Speed;
     public TimerScriptable TimerRef;
     public BoundsValue Bounds;
+    public Collider2D Collider;
+
     public override void OnActivation()
     {
         BasicMachineryObject.Machinery.AddBasicMachine(CheckOutOfBounds());

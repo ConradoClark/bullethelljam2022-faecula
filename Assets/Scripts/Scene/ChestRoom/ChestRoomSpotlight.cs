@@ -31,11 +31,11 @@ public class ChestRoomSpotlight : MonoBehaviour
         this.UnregisterAsEventPublisher<TextLog.TextLogEvents, string>();
     }
 
-    IEnumerable<IEnumerable<Action>> Flicker()
+    IEnumerable<IEnumerable<Action>> Flicker(bool reverse=false)
     {
         yield return SpriteRenderer.GetAccessor()
             .Color.A
-            .SetTarget(0)
+            .SetTarget(reverse ? 1 : 0)
             .Over(0.2f)
             .UsingTimer(TimerRef.Timer)
             .Easing(EasingYields.EasingFunction.QuadraticEaseOut)
@@ -43,7 +43,7 @@ public class ChestRoomSpotlight : MonoBehaviour
 
         yield return SpriteRenderer.GetAccessor()
             .Color.A
-            .SetTarget(1)
+            .SetTarget(reverse? 0 : 1)
             .Over(0.1f)
             .UsingTimer(TimerRef.Timer)
             .Easing(EasingYields.EasingFunction.QuadraticEaseOut)
@@ -80,29 +80,21 @@ public class ChestRoomSpotlight : MonoBehaviour
 
         yield return TimeYields.WaitSeconds(TimerRef.Timer, 2);
 
-        yield return Flicker().AsCoroutine();
+        yield return Flicker(true).AsCoroutine();
 
         yield return TimeYields.WaitSeconds(TimerRef.Timer, 2);
 
         _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, $"<color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.FaeculaSpeechColor.Value)}>Is there anyway out?</color> - You think to yourself, pondering about your next step.");
-        yield return Flicker().AsCoroutine();
+        yield return Flicker(true).AsCoroutine();
 
         yield return TimeYields.WaitSeconds(TimerRef.Timer, 2);
 
-        yield return Flicker().AsCoroutine();
-        yield return Flicker().AsCoroutine();
+        yield return Flicker(true).AsCoroutine();
+        yield return Flicker(true).AsCoroutine();
 
         yield return TimeYields.WaitSeconds(TimerRef.Timer, 2);
 
         _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, $"<color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.FaeculaSpeechColor.Value)}>Hello? Is anybody there? Maybe I should try knocking.</color>");
-
-        yield return SpriteRenderer.GetAccessor()
-            .Color.A
-            .SetTarget(0)
-            .Over(1f)
-            .UsingTimer(TimerRef.Timer)
-            .Easing(EasingYields.EasingFunction.QuadraticEaseIn)
-            .Build();
 
         KnockAction.gameObject.SetActive(true);
     }

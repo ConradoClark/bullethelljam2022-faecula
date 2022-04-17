@@ -125,10 +125,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BasicMachineryObject: {fileID: 11400000, guid: b183650010cd9684db4dd01612534c04, type: 2}
   ActiveOnInitialization: 0
-  TimerRef: {fileID: 11400000, guid: ff895efbce15331489e1f502258d8ffb, type: 2}
-  Bounds: {fileID: 11400000, guid: a5d8c5eb8ffeed648bc3c1121d1a428b, type: 2}
   Direction: {x: 1, y: 0}
   Speed: 0.075
+  TimerRef: {fileID: 11400000, guid: ff895efbce15331489e1f502258d8ffb, type: 2}
+  Bounds: {fileID: 11400000, guid: a5d8c5eb8ffeed648bc3c1121d1a428b, type: 2}
+  Collider: {fileID: 5329254429663197763}
 --- !u!95 &4066622787142779811
 Animator:
   serializedVersion: 3

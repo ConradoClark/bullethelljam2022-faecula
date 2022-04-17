@@ -11,7 +11,6 @@ public class FaeFollowMouse : MonoBehaviour
 {
     public BasicMachineryScriptable MachineryRef;
     public TimerScriptable TimerRef;
-    public SpriteRenderer MouseSprite;
 
     private PlayerInput _input;
     private Camera _camera;
@@ -22,7 +21,6 @@ public class FaeFollowMouse : MonoBehaviour
 
     private void OnEnable()
     {
-        Cursor.visible = false;
         _input = _input != null ? _input : PlayerInput.GetPlayerByIndex(0);
         _camera = Camera.allCameras.FirstOrDefault(
             cam => cam.gameObject.layer == LayerMask.NameToLayer("Default"));
@@ -30,18 +28,11 @@ public class FaeFollowMouse : MonoBehaviour
         MachineryRef.Machinery.AddBasicMachine(Follow());
     }
 
-    private void OnDisable()
-    {
-        Cursor.visible = true;
-    }
-
     private IEnumerable<IEnumerable<Action>> Follow()
     {
         while (isActiveAndEnabled)
         {
             var pos = GetMousePosInWorld();
-
-            MouseSprite.transform.position = new Vector3(pos.x, pos.y, 0);
 
             transform.position =
                 Vector2.SmoothDamp(transform.position, pos, ref _currentVelocity, (1f / (float)TimerRef.Timer.Multiplier) * SmoothTime,

@@ -18,6 +18,7 @@ public class DisableActionsAndGoToBulletHell1 : MonoBehaviour
     public BasicMachineryScriptable MachineryRef;
     public TimerScriptable TimerRef;
     public SpriteRenderer ChestDarkLight;
+    public Transform KeyHoleAnimation;
 
     protected Camera DefaultCamera;
     protected PixelPerfectCamera Ppc;
@@ -49,6 +50,7 @@ public class DisableActionsAndGoToBulletHell1 : MonoBehaviour
 
     private IEnumerable<IEnumerable<Action>> LoadNextScene()
     {
+        KeyHoleAnimation.gameObject.SetActive(true);
         yield return ZoomIn().AsCoroutine().Combine(Fade().AsCoroutine());
 
         MachineryRef.Machinery.FinalizeWith(() => SceneManager.LoadScene("Scenes/Beginning/ChestRoomBulletHell", LoadSceneMode.Single));

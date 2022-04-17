@@ -23,6 +23,7 @@ public class TutorialBattle : MonoBehaviour
     public TimerScriptable TimerRef;
     public PrefabPool HorizontalBulletsPool;
     public PrefabPool SlowHorizontalBulletsPool;
+    public HeartCounter HeartCounter;
 
     void OnEnable()
     {
@@ -41,9 +42,10 @@ public class TutorialBattle : MonoBehaviour
             Text = LockText1
         });
 
-        yield return TimeYields.WaitSeconds(TimerRef.Timer, 5);
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 3);
 
         _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, "Spirits of past fairies reach out to you...");
+        HeartCounter.gameObject.SetActive(true);
 
         yield return TimeYields.WaitSeconds(TimerRef.Timer, 5);
 

@@ -7,9 +7,6 @@ using UnityEngine;
 
 public class StraightMovingBullet : ScreenBullet
 {
-    public Vector2 Direction;
-    public float Speed;
-
     private void OnEnable()
     {
         BasicMachineryObject.Machinery.AddBasicMachine(Move());
