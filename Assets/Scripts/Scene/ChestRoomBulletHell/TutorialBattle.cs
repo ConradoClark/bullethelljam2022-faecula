@@ -155,6 +155,7 @@ public class TutorialBattle : MonoBehaviour
         _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, $"The sigil deactivates.");
         _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, $"<color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.FaeColor.Value)}>Fae</color> can finally get out of the chest!");
 
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 3);
         MachineryRef.Machinery.FinalizeWith(() =>
         {
             SceneManager.LoadScene(Constants.Scenes.ChestRoom, LoadSceneMode.Single);

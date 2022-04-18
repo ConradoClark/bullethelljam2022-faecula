@@ -58,11 +58,10 @@ public class KnockAction : ActionBase
                 if (IsClickingOn(ChestCollider))
                 {
                     knockCount++;
-                    yield return LockedChest.Knock().AsCoroutine();
 
                     if (!ClearedChest.Value) HandleKnockingBeforeClearingChest(knockCount);
                     else HandleKnockingAfterClearingChest(knockCount);
-
+                    yield return LockedChest.Knock().AsCoroutine();
                 }
                 yield return TimeYields.WaitOneFrameX;
             }

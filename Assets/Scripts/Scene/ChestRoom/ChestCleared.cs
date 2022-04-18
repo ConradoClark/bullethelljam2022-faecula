@@ -56,8 +56,11 @@ public class ChestCleared : MonoBehaviour
             .UsingTimer(TimerRef.Timer)
             .Build();
 
-        _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, $"The <color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.Sigils.Value)}>magic sigil</color> is broken." +
-             $"You wonder... is the <color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.Objects.Value)}>chest</color> is weak enough now?");
+        _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry,
+            $"The <color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.Sigils.Value)}>magic sigil</color> is broken."
+            );
+        _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry,
+            $"You wonder... is the <color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.Objects.Value)}>chest</color> is weak enough now?");
 
         Ppc.enabled = true;
     }
