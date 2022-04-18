@@ -6,4 +6,6 @@ public class ColorDefaults : MonoBehaviour
 {
     public ColorValue FaeculaSpeechColor;
     public ColorValue FaeColor;
+    public ColorValue Objects;
+    public ColorValue Sigils;
 }
