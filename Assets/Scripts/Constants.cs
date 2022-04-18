@@ -9,4 +9,10 @@ public class Constants
         public const string Click = "click";
         public const string MousePosition = "mousePosition";
     }
+
+    public class Scenes
+    {
+        public const string ChestRoom = "Scenes/Beginning/ChestRoom";
+        public const string ChestRoomBulletHell = "Scenes/Beginning/ChestRoomBulletHell";
+    }
 }

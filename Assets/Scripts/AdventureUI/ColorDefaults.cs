@@ -5,4 +5,5 @@ using UnityEngine;
 public class ColorDefaults : MonoBehaviour
 {
     public ColorValue FaeculaSpeechColor;
+    public ColorValue FaeColor;
 }

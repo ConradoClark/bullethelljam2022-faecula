@@ -829,6 +829,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FaeculaSpeechColor: {fileID: 11400000, guid: 866538a50ee50184f9ecab055b0cdfa9, type: 2}
+  FaeColor: {fileID: 11400000, guid: 755cfd5496b7a2b418d25c58d7c8eb3e, type: 2}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1426,6 +1427,7 @@ GameObject:
   - component: {fileID: 842919313}
   - component: {fileID: 842919314}
   - component: {fileID: 842919315}
+  - component: {fileID: 842919316}
   m_Layer: 0
   m_Name: ActionInteractive
   m_TagString: Untagged
@@ -1462,8 +1464,12 @@ MonoBehaviour:
   Group: {fileID: 1271826500}
   Colliders:
   - {fileID: 1858151544}
-  Text: You focus on the magic sigil. It speaks a curse in <color=#01fdf6>fae</color>
-    language. You feel you can break the spell. You close your eyes and concentrate.
+  Triggers:
+  - Trigger: {fileID: 11400000, guid: 31765a325482ee142a9e45e34fed5a80, type: 2}
+    Negate: 1
+  Text: You focus on the <color=#9dacff>magic sigil</color>. It speaks a curse in
+    <color=#01fdf6>fae</color> language. You feel you can break the spell. You close
+    your eyes and concentrate.
   Key: 
 --- !u!114 &842919315
 MonoBehaviour:
@@ -1483,6 +1489,27 @@ MonoBehaviour:
   TimerRef: {fileID: 11400000, guid: ff895efbce15331489e1f502258d8ffb, type: 2}
   ChestDarkLight: {fileID: 1549751766}
   KeyHoleAnimation: {fileID: 815050815}
+--- !u!114 &842919316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842919312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa3ed6d181d5f843bb921e02300db02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Group: {fileID: 1271826500}
+  Colliders:
+  - {fileID: 1858151544}
+  Triggers:
+  - Trigger: {fileID: 11400000, guid: 31765a325482ee142a9e45e34fed5a80, type: 2}
+    Negate: 0
+  Text: The <color=#f4b860>lock</color> seems fragile. Maybe you could break it if
+    you slammed your body against the chest.
+  Key: 
 --- !u!1 &876684608
 GameObject:
   m_ObjectHideFlags: 0
@@ -1636,7 +1663,7 @@ MonoBehaviour:
   ClickVerticalLimit: -1.1
   DefaultMessage: You can't see anything from outside. Maybe there's a spot you can
     still peek while inside the chest?
-  PublishMessage: 0
+  BlockAction: 0
 --- !u!1 &901765243
 GameObject:
   m_ObjectHideFlags: 0
@@ -2134,6 +2161,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1070291383}
+  - component: {fileID: 1070291384}
   m_Layer: 0
   m_Name: Scene
   m_TagString: Untagged
@@ -2160,6 +2188,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1070291384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070291382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb0b606210a72e040b0965497d4b92a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KnockAction: {fileID: 2115056123}
+  LookAction: {fileID: 876684613}
+  InteractAction: {fileID: 1744325710}
+  BulletHellInteraction: {fileID: 842919315}
+  ClearedChest: {fileID: 11400000, guid: 31765a325482ee142a9e45e34fed5a80, type: 2}
+  MachineryRef: {fileID: 11400000, guid: b183650010cd9684db4dd01612534c04, type: 2}
+  TimerRef: {fileID: 11400000, guid: 6a052f4e332ec2043885bf3f98efe50d, type: 2}
 --- !u!1 &1122957817
 GameObject:
   m_ObjectHideFlags: 0
@@ -3023,6 +3070,7 @@ MonoBehaviour:
   SpriteRenderer: {fileID: 1549751766}
   KnockAction: {fileID: 2115056123}
   ColorDefaults: {fileID: 398701028}
+  ClearedChest: {fileID: 11400000, guid: 31765a325482ee142a9e45e34fed5a80, type: 2}
 --- !u!1 &1551417238
 GameObject:
   m_ObjectHideFlags: 0
@@ -3982,7 +4030,7 @@ MonoBehaviour:
   InteractiveGroup: {fileID: 1271826500}
   ClickVerticalLimit: -1.1
   DefaultMessage: Nothing to interact with or no action can be done.
-  PublishMessage: 0
+  BlockAction: 0
 --- !u!1 &1826511825
 GameObject:
   m_ObjectHideFlags: 0
@@ -4077,6 +4125,7 @@ GameObject:
   - component: {fileID: 1858151544}
   - component: {fileID: 1858151545}
   - component: {fileID: 1858151543}
+  - component: {fileID: 1858151546}
   m_Layer: 0
   m_Name: KeyHole
   m_TagString: Untagged
@@ -4115,8 +4164,12 @@ MonoBehaviour:
   Group: {fileID: 153406521}
   Colliders:
   - {fileID: 1858151544}
+  Triggers:
+  - Trigger: {fileID: 11400000, guid: 31765a325482ee142a9e45e34fed5a80, type: 2}
+    Negate: 1
   Text: you peek through the <color=#f4b860>keyhole</color>. you notice the chest
-    is possessed by a magic sigil.  perhaps you can do something about it?
+    is possessed by a <color=#9dacff>magic sigil</color>.  perhaps you can do something
+    about it?
   Key: 
 --- !u!61 &1858151544
 BoxCollider2D:
@@ -4158,6 +4211,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   KeyHole: {fileID: 1858151543}
   InteractAction: {fileID: 1744325710}
+--- !u!114 &1858151546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858151541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa3ed6d181d5f843bb921e02300db02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Group: {fileID: 153406521}
+  Colliders:
+  - {fileID: 1858151544}
+  Triggers:
+  - Trigger: {fileID: 11400000, guid: 31765a325482ee142a9e45e34fed5a80, type: 2}
+    Negate: 0
+  Text: you peek through the <color=#f4b860>keyhole</color>. this is just a normal
+    chest now.
+  Key: 
 --- !u!1 &1873899488
 GameObject:
   m_ObjectHideFlags: 0
@@ -4698,6 +4772,7 @@ MonoBehaviour:
   LockedChest: {fileID: 1122957820}
   ColorDefaults: {fileID: 398701028}
   LookAction: {fileID: 876684613}
+  ClearedChest: {fileID: 11400000, guid: 31765a325482ee142a9e45e34fed5a80, type: 2}
 --- !u!61 &2115056124
 BoxCollider2D:
   m_ObjectHideFlags: 0

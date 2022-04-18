@@ -9,6 +9,7 @@ public class Interactive : MonoBehaviour
 {
     public InteractiveGroup Group;
     public Collider2D[] Colliders;
+    public ConditionalTrigger[] Triggers;
 
     public string Text;
     public string Key;
@@ -22,6 +23,12 @@ public class Interactive : MonoBehaviour
 
     private void OnEnable()
     {
+        if (Triggers != null && Triggers.Length > 0 && Triggers.Any(t => t.Trigger.Value == t.Negate))
+        {
+            enabled = false;
+            return;
+        }
+
         Group.AddInteractive(this);
         _eventPublisher = this.RegisterAsEventPublisher<InteractiveEvents, Interactive>();
     }

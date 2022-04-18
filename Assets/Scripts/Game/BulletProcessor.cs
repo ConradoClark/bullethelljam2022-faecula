@@ -1,16 +1,9 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using Licht.Impl.Orchestration;
 using Licht.Unity.Objects;
-using Licht.Unity.Pooling;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Analytics;
-using UnityEngine.SceneManagement;
-using Debug = UnityEngine.Debug;
 
 public class BulletProcessor : MonoBehaviour
 {
@@ -29,7 +22,6 @@ public class BulletProcessor : MonoBehaviour
     {
         yield return TimeYields.WaitOneFrameX;
         _bullets = BulletPoolContainer.GetComponentsInChildren<ScreenBullet>(true);
-        Debug.Log("found bullets: " + _bullets.Length);
 
         var faeMask = LayerMask.NameToLayer("Fae");
         var contactFilter = new ContactFilter2D();

@@ -7,6 +7,7 @@ using Licht.Interfaces.Events;
 using Licht.Unity.Objects;
 using Licht.Unity.Pooling;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TutorialBattle : MonoBehaviour
 {
@@ -25,6 +26,10 @@ public class TutorialBattle : MonoBehaviour
     public PrefabPool SlowHorizontalBulletsPool;
     public HeartCounter HeartCounter;
 
+    public GlobalTrigger ClearedChest;
+
+    private bool _dead = false;
+
     void OnEnable()
     {
         this.ObserveEvent(FaeStats.FaeEvents.OnDeath, OnEvent);
@@ -35,8 +40,14 @@ public class TutorialBattle : MonoBehaviour
         MachineryRef.Machinery.AddBasicMachine(HandleTutorial());
     }
 
+    void OnDisable()
+    {
+        this.StopObservingEvent(FaeStats.FaeEvents.OnDeath, OnEvent);
+    }
+
     private void OnEvent()
     {
+        _dead = true;
         _textUnlockPublisher.PublishEvent(HelpText.HelpTextEvents.TextUnlock, new HelpText.TextEvent
         {
             Source = this
@@ -98,7 +109,7 @@ public class TutorialBattle : MonoBehaviour
         yield return HorizontalBullets1.SimultaneousLineFromRight(HorizontalBulletsPool).AsCoroutine();
         yield return TimeYields.WaitSeconds(TimerRef.Timer, 5);
 
-        _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, "Not bad! Keep going!");
+        if (!_dead) _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, "Not bad! Keep going!");
 
         yield return TimeYields.WaitSeconds(TimerRef.Timer, 3);
 
@@ -127,11 +138,27 @@ public class TutorialBattle : MonoBehaviour
         yield return HorizontalBullets1.SimultaneousLineFromLeft(HorizontalBulletsPool).AsCoroutine();
         yield return TimeYields.WaitSeconds(TimerRef.Timer, 0.25f);
 
-        _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, "Here comes!");
+        if (!_dead) _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, "Here comes!");
 
         yield return TimeYields.WaitSeconds(TimerRef.Timer, 3);
 
         yield return HereComes().AsCoroutine();
+
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 3);
+
+        if (_dead) yield break;
+
+        ClearedChest.Value = true;
+        
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 3);
+
+        _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, $"The sigil deactivates.");
+        _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, $"<color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.FaeColor.Value)}>Fae</color> can finally get out of the chest!");
+
+        MachineryRef.Machinery.FinalizeWith(() =>
+        {
+            SceneManager.LoadScene(Constants.Scenes.ChestRoom, LoadSceneMode.Single);
+        });
     }
 
 

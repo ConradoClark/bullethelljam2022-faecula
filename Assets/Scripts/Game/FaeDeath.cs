@@ -37,15 +37,18 @@ public class FaeDeath : MonoBehaviour
         this.ObserveEvent<InteractiveAction.InteractiveActionEvents, InteractiveAction.InteractiveActionEvent>(InteractiveAction.InteractiveActionEvents.OnClick, OnInteractive);
     }
 
+    void OnDisable()
+    {
+        this.StopObservingEvent<InteractiveAction.InteractiveActionEvents, InteractiveAction.InteractiveActionEvent>(InteractiveAction.InteractiveActionEvents.OnClick, OnInteractive);
+        this.ObserveEvent<FaeStats.FaeEvents, FaeStats.FaeHitPointsEventHandler>(FaeStats.FaeEvents.OnTakeDamage, OnEvent);
+    }
+
     private void OnInteractive(InteractiveAction.InteractiveActionEvent obj)
     {
         if (RetryButton != obj.Source) return;
-
-        MachineryRef.Machinery.FinalizeWith(() =>
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
-        });
+        MachineryRef.Machinery.AddBasicMachine(Restart());
     }
+
 
     private void OnEvent(FaeStats.FaeHitPointsEventHandler obj)
     {
@@ -56,20 +59,30 @@ public class FaeDeath : MonoBehaviour
         MachineryRef.Machinery.AddBasicMachine(Die());
     }
 
+    private IEnumerable<IEnumerable<Action>> Restart()
+    {
+        yield return TimeYields.WaitSeconds(GlobalTimerRef.Timer, 2);
+        MachineryRef.Machinery.FinalizeWith(() =>
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
+        });
+
+    }
+
     private IEnumerable<IEnumerable<Action>> Die()
     {
         _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, "Fae has met their fate...");
         _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, "Click on retry to try again.");
-        
+
+        RetryButton.gameObject.SetActive(true);
+
         yield return DeathAnim().AsCoroutine();
 
-        _textLockPublisher.PublishEvent(HelpText.HelpTextEvents.TextLock, new HelpText.TextChangedEvent
+        _textLockPublisher.PublishEvent(HelpText.HelpTextEvents.TextUnlock, new HelpText.TextChangedEvent
         {
             Source = this,
             Text = ""
         });
-
-        RetryButton.gameObject.SetActive(true);
     }
 
     private IEnumerable<IEnumerable<Action>> Rotate()

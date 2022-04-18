@@ -24,6 +24,11 @@ public class HeartCounter : MonoBehaviour
         MachineryRef.Machinery.AddBasicMachine(ShowHearts());
     }
 
+    private void OnDisable()
+    {
+        this.StopObservingEvent<FaeStats.FaeEvents, FaeStats.FaeHitPointsEventHandler>(FaeStats.FaeEvents.OnTakeDamage, OnEvent);
+    }
+
     private void OnEvent(FaeStats.FaeHitPointsEventHandler obj)
     {
         if (obj.CurrentHitPoints < 0) return; 

@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Licht.Impl.Events;
@@ -22,6 +21,8 @@ public class KnockAction : ActionBase
     public ColorDefaults ColorDefaults;
     public InteractiveAction LookAction;
 
+    public GlobalTrigger ClearedChest;
+
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -31,7 +32,7 @@ public class KnockAction : ActionBase
         MachineryRef.Machinery.AddBasicMachine(HandleKnock());
     }
 
-    private class WeightedText :IWeighted<float>
+    private class WeightedText : IWeighted<float>
     {
         public string Text;
         public float Weight { get; } = 1f;
@@ -58,39 +59,10 @@ public class KnockAction : ActionBase
                 {
                     knockCount++;
                     yield return LockedChest.Knock().AsCoroutine();
-                    switch (knockCount)
-                    {
-                        case 3:
-                            _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, 
-                                $"<color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.FaeculaSpeechColor.Value)}>Ouch!</color>");
-                            break;
-                        case 6:
-                            _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry,
-                                $"<color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.FaeculaSpeechColor.Value)}>Ow! It hurts!</color>");
-                            break;
-                        case 9:
-                            _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry,
-                                "You knock over and over again, but the chest won't budge. Maybe it's a good idea to look around.");
-                            LookAction.gameObject.SetActive(true);
-                            break;
-                    }
 
-                    if (knockCount> 9 && knockCount % 3 == 0)
-                    {
-                        var possibleTexts = new[]
-                        {
-                            $"<color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.FaeculaSpeechColor.Value)}>Ouch, my head!</color>",
-                            $"<color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.FaeculaSpeechColor.Value)}>Ow ow ow ow ow!</color>",
-                            $"<color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.FaeculaSpeechColor.Value)}>Aaaaaaaaaah! The pain!</color>",
-                        };
+                    if (!ClearedChest.Value) HandleKnockingBeforeClearingChest(knockCount);
+                    else HandleKnockingAfterClearingChest(knockCount);
 
-                        var randomDice = new WeightedDice<WeightedText>(
-                            possibleTexts.Select(text => new WeightedText(text)),
-                            new UnityRandomGenerator());
-
-                        var chosenText = randomDice.Generate();
-                        _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, chosenText.Text);
-                    }
                 }
                 yield return TimeYields.WaitOneFrameX;
             }
@@ -99,6 +71,59 @@ public class KnockAction : ActionBase
             {
                 Source = this,
             });
+        }
+    }
+
+    private void HandleKnockingBeforeClearingChest(int knockCount)
+    {
+        switch (knockCount)
+        {
+            case 3:
+                _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry,
+                    $"<color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.FaeculaSpeechColor.Value)}>Ouch!</color>");
+                break;
+            case 6:
+                _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry,
+                    $"<color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.FaeculaSpeechColor.Value)}>Ow! It hurts!</color>");
+                break;
+            case 9:
+                _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry,
+                    "You knock over and over again, but the chest won't budge. Maybe it's a good idea to look around.");
+                LookAction.gameObject.SetActive(true);
+                break;
+        }
+
+        if (knockCount <= 9 || knockCount % 3 != 0) return;
+        var possibleTexts = new[]
+        {
+            $"<color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.FaeculaSpeechColor.Value)}>Ouch, my head!</color>",
+            $"<color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.FaeculaSpeechColor.Value)}>Ow ow ow ow ow!</color>",
+            $"<color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.FaeculaSpeechColor.Value)}>Aaaaaaaaaah! The pain!</color>",
+        };
+
+        var randomDice = new WeightedDice<WeightedText>(
+            possibleTexts.Select(text => new WeightedText(text)),
+            new UnityRandomGenerator());
+
+        var chosenText = randomDice.Generate();
+        _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, chosenText.Text);
+    }
+
+    private void HandleKnockingAfterClearingChest(int knockCount)
+    {
+        switch (knockCount)
+        {
+            case 3:
+                _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry,
+                    "The chest moves slightly.");
+                break;
+            case 6:
+                _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry,
+                    "The chest rattles around.");
+                break;
+            case 9:
+                // make the chest break
+                break;
         }
     }
 }

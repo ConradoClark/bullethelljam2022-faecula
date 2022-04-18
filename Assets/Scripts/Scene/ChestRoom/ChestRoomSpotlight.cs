@@ -19,9 +19,15 @@ public class ChestRoomSpotlight : MonoBehaviour
     private IEventPublisher<TextLog.TextLogEvents, string> _textLogPublisher;
 
     public ColorDefaults ColorDefaults;
+    public GlobalTrigger ClearedChest;
 
     void OnEnable()
     {
+        if (ClearedChest.Value)
+        {
+            SpriteRenderer.enabled = false;
+            return;
+        }
         MachineryRef.Machinery.AddBasicMachine(Storyboard());
         _textLogPublisher = this.RegisterAsEventPublisher<TextLog.TextLogEvents, string>();
     }
@@ -36,7 +42,7 @@ public class ChestRoomSpotlight : MonoBehaviour
         yield return SpriteRenderer.GetAccessor()
             .Color.A
             .SetTarget(reverse ? 1 : 0)
-            .Over(0.2f)
+            .Over(0.1f)
             .UsingTimer(TimerRef.Timer)
             .Easing(EasingYields.EasingFunction.QuadraticEaseOut)
             .Build();
@@ -80,19 +86,10 @@ public class ChestRoomSpotlight : MonoBehaviour
 
         yield return TimeYields.WaitSeconds(TimerRef.Timer, 2);
 
-        yield return Flicker(true).AsCoroutine();
-
-        yield return TimeYields.WaitSeconds(TimerRef.Timer, 2);
-
         _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, $"<color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.FaeculaSpeechColor.Value)}>Is there anyway out?</color> - You think to yourself, pondering about your next step.");
-        yield return Flicker(true).AsCoroutine();
 
         yield return TimeYields.WaitSeconds(TimerRef.Timer, 2);
 
-        yield return Flicker(true).AsCoroutine();
-        yield return Flicker(true).AsCoroutine();
-
-        yield return TimeYields.WaitSeconds(TimerRef.Timer, 2);
 
         _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, $"<color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.FaeculaSpeechColor.Value)}>Hello? Is anybody there? Maybe I should try knocking.</color>");
 

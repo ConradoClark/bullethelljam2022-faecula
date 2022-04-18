@@ -44,7 +44,6 @@ public class DisableActionsAndGoToBulletHell1 : MonoBehaviour
 
     private void OnDisable()
     {
-        if (Ppc!=null) Ppc.enabled = true;
         this.StopObservingEvent(Interactive.InteractiveEvents.OnInteractiveClicked, (Action<Interactive>)OnEvent);
     }
 
@@ -53,7 +52,7 @@ public class DisableActionsAndGoToBulletHell1 : MonoBehaviour
         KeyHoleAnimation.gameObject.SetActive(true);
         yield return ZoomIn().AsCoroutine().Combine(Fade().AsCoroutine());
 
-        MachineryRef.Machinery.FinalizeWith(() => SceneManager.LoadScene("Scenes/Beginning/ChestRoomBulletHell", LoadSceneMode.Single));
+        MachineryRef.Machinery.FinalizeWith(() => SceneManager.LoadScene(Constants.Scenes.ChestRoomBulletHell, LoadSceneMode.Single));
     }
 
     private IEnumerable<IEnumerable<Action>> Fade()
