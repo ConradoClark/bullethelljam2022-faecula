@@ -1,0 +1,17 @@
+TODO List:
+- More battle encounters
+  - At least 3 for now
+- Inventory
+  - Allow picking up items
+- Abilities
+  - Slow time with MP
+  - Graze (to regain MP)
+- Getting out of the first room
+  - Faulty plug
+  - Lighting up the area
+  - Getting to the next room
+  
+TODO List Part 2:
+- Enabling the map
+- Next room puzzles
+- Maybe coming back to the chest for something missed?

@@ -35,4 +35,4 @@ THEME: Confined
 - Systems in place to develop:
    - Text system (portraits? etc)
    - Controls (mouse/keyboard/gamepad)
-   - Allow interaction with objects
+   - Allow interaction with objects	
