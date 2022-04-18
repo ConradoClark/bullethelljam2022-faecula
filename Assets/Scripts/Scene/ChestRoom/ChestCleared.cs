@@ -38,7 +38,6 @@ public class ChestCleared : MonoBehaviour
         Ppc = DefaultCamera.GetComponent<PixelPerfectCamera>();
         Ppc.enabled = false;
         DefaultCamera.orthographicSize = 0;
-        Debug.Log("setting size to 0");
 
         KnockAction.gameObject.SetActive(true);
         LookAction.gameObject.SetActive(true);
