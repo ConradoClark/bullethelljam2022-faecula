@@ -6,6 +6,7 @@ using Licht.Impl.Generation;
 using Licht.Impl.Orchestration;
 using Licht.Interfaces.Events;
 using Licht.Interfaces.Generation;
+using Licht.Unity.Extensions;
 using Licht.Unity.Objects;
 using UnityEngine;
 
@@ -18,8 +19,16 @@ public class KnockChest : MonoBehaviour
     public InteractiveAction LookAction;
 
     public BasicMachineryScriptable MachineryRef;
+    public TimerScriptable TimerRef;
     public GlobalTrigger ClearedChest;
     private int _knockCount;
+    private bool _knocking;
+
+    public Transform Chest;
+    public Transform OpenedChest;
+    public SpriteRenderer ChestFront;
+    public Transform Fae;
+    public SpriteRenderer ScreenFlash;
 
     protected void OnEnable()
     {
@@ -39,6 +48,9 @@ public class KnockChest : MonoBehaviour
 
     private void OnEvent(InteractiveAction.InteractiveActionEvent obj)
     {
+        if (_knocking) return;
+
+        _knocking = true;
         MachineryRef.Machinery.AddBasicMachine(HandleKnock());
     }
 
@@ -54,12 +66,13 @@ public class KnockChest : MonoBehaviour
     {
         _knockCount++;
 
-        if (!ClearedChest.Value) HandleKnockingBeforeClearingChest(_knockCount);
-        else HandleKnockingAfterClearingChest(_knockCount);
-        yield return LockedChest.Knock().AsCoroutine();
+        if (!ClearedChest.Value) yield return HandleKnockingBeforeClearingChest(_knockCount).AsCoroutine();
+        else yield return HandleKnockingAfterClearingChest(_knockCount).AsCoroutine();
+
+        _knocking = false;
     }
 
-    private void HandleKnockingBeforeClearingChest(int knockCount)
+    private IEnumerable<IEnumerable<Action>> HandleKnockingBeforeClearingChest(int knockCount)
     {
         switch (knockCount)
         {
@@ -78,7 +91,9 @@ public class KnockChest : MonoBehaviour
                 break;
         }
 
-        if (knockCount <= 9 || knockCount % 3 != 0) return;
+        yield return LockedChest.Knock().AsCoroutine();
+
+        if (knockCount <= 9 || knockCount % 3 != 0) yield break;
         var possibleTexts = new[]
         {
             $"<color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.FaeculaSpeechColor.Value)}>Ouch, my head!</color>",
@@ -94,11 +109,16 @@ public class KnockChest : MonoBehaviour
         _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, chosenText.Text);
     }
 
-    private void HandleKnockingAfterClearingChest(int knockCount)
+    private IEnumerable<IEnumerable<Action>> HandleKnockingAfterClearingChest(int knockCount)
     {
+        if (knockCount < 9)
+        {
+            yield return LockedChest.Knock().AsCoroutine();
+        }
         switch (knockCount)
         {
             case 3:
+                
                 _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry,
                     $"The <color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.Objects.Value)}>chest</color> moves slightly.");
                 break;
@@ -107,7 +127,46 @@ public class KnockChest : MonoBehaviour
                     $"The <color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.Objects.Value)}>chest</color> rattles around.");
                 break;
             case 9:
-                // make the chest break
+                ScreenFlash.enabled = true;
+                ScreenFlash.color = new Color(1, 1, 1, 0);
+                yield return ScreenFlash.GetAccessor()
+                    .Color.A
+                    .SetTarget(1f)
+                    .Over(0.2f)
+                    .UsingTimer(TimerRef.Timer)
+                    .Easing(EasingYields.EasingFunction.CubicEaseOut)
+                    .Build();
+
+                Chest.gameObject.SetActive(false);
+                OpenedChest.gameObject.SetActive(true);
+                
+                yield return ScreenFlash.GetAccessor()
+                    .Color.A
+                    .SetTarget(0f)
+                    .Over(1.4f)
+                    .UsingTimer(TimerRef.Timer)
+                    .Easing(EasingYields.EasingFunction.ExponentialEaseIn)
+                    .Build();
+
+                _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry,
+                    $"<color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.FaeColor.Value)}>fae</color> is finally free!");
+
+                Fae.gameObject.SetActive(true);
+
+                LookAction.DefaultMessage = "There's nothing here of relevant importance.";
+
+                yield return TimeYields.WaitSeconds(TimerRef.Timer, 3);
+
+                _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry,
+                    $"<color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.FaeculaSpeechColor.Value)}>Holy fountain fairy, where am I?</color>");
+
+                ChestFront.enabled = false;
+
+                yield return TimeYields.WaitSeconds(TimerRef.Timer, 5);
+
+                _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry,
+                    $"<color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.FaeculaSpeechColor.Value)}>I gotta get outta here, my people must be missing me right now... How did I come to this place anyway?</color>");
+
                 break;
         }
     }

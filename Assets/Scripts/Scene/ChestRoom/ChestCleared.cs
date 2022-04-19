@@ -49,6 +49,10 @@ public class ChestCleared : MonoBehaviour
 
     IEnumerable<IEnumerable<Action>> ZoomOut()
     {
+        _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry,
+            $"The <color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.Sigils.Value)}>magic sigil</color> is broken!"
+        );
+
         yield return new LerpBuilder(val => DefaultCamera.orthographicSize = val, () => DefaultCamera.orthographicSize)
             .SetTarget(8.4375f)
             .Over(2f)
@@ -56,9 +60,6 @@ public class ChestCleared : MonoBehaviour
             .UsingTimer(TimerRef.Timer)
             .Build();
 
-        _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry,
-            $"The <color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.Sigils.Value)}>magic sigil</color> is broken."
-            );
         _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry,
             $"You wonder... is the <color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.Objects.Value)}>chest</color> is weak enough now?");
 
