@@ -1204,6 +1204,89 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &294475901
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 294475902}
+  - component: {fileID: 294475904}
+  - component: {fileID: 294475903}
+  m_Layer: 0
+  m_Name: GreenBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &294475902
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294475901}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1151218360}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &294475903
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294475901}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.59722674, y: -0.1648879}
+      - {x: -0.72025955, y: -0.06540632}
+      - {x: -0.927404, y: -0.14629456}
+      - {x: -0.93666035, y: -0.38918436}
+      - {x: -0.724931, y: -0.43648934}
+      - {x: -0.5686195, y: -0.39464623}
+--- !u!114 &294475904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294475901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa3ed6d181d5f843bb921e02300db02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Group: {fileID: 153406521}
+  Colliders:
+  - {fileID: 294475903}
+  Triggers:
+  - Trigger: {fileID: 11400000, guid: 47fb7815b7d67c64fafc57f7fdf33b9a, type: 2}
+    Negate: 0
+  Text: This small box is connected to the power circuit in this place, somehow.
+  Key: 
 --- !u!1 &351991706
 GameObject:
   m_ObjectHideFlags: 0
@@ -1286,6 +1369,74 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &361120248
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 361120249}
+  - component: {fileID: 361120251}
+  - component: {fileID: 361120250}
+  m_Layer: 0
+  m_Name: Rock_Look
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &361120249
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361120248}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 514448941}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &361120250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361120248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa3ed6d181d5f843bb921e02300db02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Group: {fileID: 153406521}
+  Colliders:
+  - {fileID: 361120251}
+  Triggers:
+  - Trigger: {fileID: 11400000, guid: 47fb7815b7d67c64fafc57f7fdf33b9a, type: 2}
+    Negate: 0
+  Text: It looks like a small rock.
+  Key: 
+--- !u!58 &361120251
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361120248}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.02360633, y: -0.1155671}
+  serializedVersion: 2
+  m_Radius: 0.18012314
 --- !u!1001 &378389298
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2242,6 +2393,74 @@ Transform:
   m_Father: {fileID: 1858151542}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &826451969
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 826451970}
+  - component: {fileID: 826451972}
+  - component: {fileID: 826451971}
+  m_Layer: 0
+  m_Name: Rock_Look
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &826451970
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826451969}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 566113504}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &826451971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826451969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa3ed6d181d5f843bb921e02300db02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Group: {fileID: 153406521}
+  Colliders:
+  - {fileID: 826451972}
+  Triggers:
+  - Trigger: {fileID: 11400000, guid: 47fb7815b7d67c64fafc57f7fdf33b9a, type: 2}
+    Negate: 0
+  Text: It looks like a small rock.
+  Key: 
+--- !u!58 &826451972
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826451969}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.02360633, y: -0.1155671}
+  serializedVersion: 2
+  m_Radius: 0.18012314
 --- !u!1 &842919312
 GameObject:
   m_ObjectHideFlags: 0
@@ -2963,6 +3182,74 @@ Transform:
   m_Father: {fileID: 398701026}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &995456355
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 995456356}
+  - component: {fileID: 995456358}
+  - component: {fileID: 995456357}
+  m_Layer: 0
+  m_Name: Rock_Look
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &995456356
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995456355}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1644369095}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &995456357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995456355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa3ed6d181d5f843bb921e02300db02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Group: {fileID: 153406521}
+  Colliders:
+  - {fileID: 995456358}
+  Triggers:
+  - Trigger: {fileID: 11400000, guid: 47fb7815b7d67c64fafc57f7fdf33b9a, type: 2}
+    Negate: 0
+  Text: It looks like a different rock.
+  Key: 
+--- !u!58 &995456358
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995456355}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.045089245, y: -0.12072292}
+  serializedVersion: 2
+  m_Radius: 0.43018427
 --- !u!1 &1035327772
 GameObject:
   m_ObjectHideFlags: 0
@@ -3220,17 +3507,129 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fa9b8674b9b2e046aed9e4ecdee943b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Group: {fileID: 2069957187}
+  Colliders:
+  - {fileID: 980680357}
+  Triggers:
+  - Trigger: {fileID: 11400000, guid: 31765a325482ee142a9e45e34fed5a80, type: 2}
+    Negate: 0
+  Text: 
+  Key: 
   LockedChest: {fileID: 1122957820}
   ColorDefaults: {fileID: 398701028}
   LookAction: {fileID: 876684613}
   MachineryRef: {fileID: 11400000, guid: b183650010cd9684db4dd01612534c04, type: 2}
   TimerRef: {fileID: 11400000, guid: ff895efbce15331489e1f502258d8ffb, type: 2}
-  ClearedChest: {fileID: 11400000, guid: 31765a325482ee142a9e45e34fed5a80, type: 2}
+  ClearedChestTrigger: {fileID: 11400000, guid: 31765a325482ee142a9e45e34fed5a80, type: 2}
+  OpenedChestTrigger: {fileID: 11400000, guid: 47fb7815b7d67c64fafc57f7fdf33b9a, type: 2}
   Chest: {fileID: 1122957819}
   OpenedChest: {fileID: 55593002}
   ChestFront: {fileID: 628438676}
   Fae: {fileID: 863281628}
   ScreenFlash: {fileID: 753941187}
+--- !u!1 &1126751170
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1126751171}
+  - component: {fileID: 1126751174}
+  - component: {fileID: 1126751173}
+  - component: {fileID: 1126751172}
+  m_Layer: 0
+  m_Name: Wires
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1126751171
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126751170}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1151218360}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1126751172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126751170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa3ed6d181d5f843bb921e02300db02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Group: {fileID: 1271826500}
+  Colliders:
+  - {fileID: 1126751173}
+  Triggers:
+  - Trigger: {fileID: 11400000, guid: 47fb7815b7d67c64fafc57f7fdf33b9a, type: 2}
+    Negate: 0
+  - Trigger: {fileID: 11400000, guid: e74d46a5af37a1e48a1e369459cc0e66, type: 2}
+    Negate: 1
+  Text: It's too dangerous to touch the wires in this state, even for a magical fairy.
+  Key: 
+--- !u!61 &1126751173
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126751170}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.4710762, y: 0.04016769}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.7319449, y: 0.2568872}
+  m_EdgeRadius: 0
+--- !u!114 &1126751174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126751170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa3ed6d181d5f843bb921e02300db02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Group: {fileID: 153406521}
+  Colliders:
+  - {fileID: 1126751173}
+  Triggers:
+  - Trigger: {fileID: 11400000, guid: 47fb7815b7d67c64fafc57f7fdf33b9a, type: 2}
+    Negate: 0
+  - Trigger: {fileID: 11400000, guid: e74d46a5af37a1e48a1e369459cc0e66, type: 2}
+    Negate: 1
+  Text: The wire seems to be cut. Sparks fly around.
+  Key: 
 --- !u!1 &1131897191
 GameObject:
   m_ObjectHideFlags: 0
@@ -3513,6 +3912,9 @@ Transform:
   m_Children:
   - {fileID: 1840751604}
   - {fileID: 28413212}
+  - {fileID: 1884897979}
+  - {fileID: 294475902}
+  - {fileID: 1126751171}
   m_Father: {fileID: 1070291383}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4800,6 +5202,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dbf85feab18a19418bc730422337eae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1721825508
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1721825509}
+  - component: {fileID: 1721825511}
+  - component: {fileID: 1721825510}
+  m_Layer: 0
+  m_Name: Rock_Look
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1721825509
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721825508}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1171730721}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1721825510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721825508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa3ed6d181d5f843bb921e02300db02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Group: {fileID: 153406521}
+  Colliders:
+  - {fileID: 1721825511}
+  Triggers:
+  - Trigger: {fileID: 11400000, guid: 47fb7815b7d67c64fafc57f7fdf33b9a, type: 2}
+    Negate: 0
+  Text: It looks like a rock.
+  Key: 
+--- !u!58 &1721825511
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721825508}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.045089245, y: -0.12072292}
+  serializedVersion: 2
+  m_Radius: 0.43018427
 --- !u!1 &1742463111
 GameObject:
   m_ObjectHideFlags: 0
@@ -5619,6 +6089,112 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1884897978
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1884897979}
+  - component: {fileID: 1884897982}
+  - component: {fileID: 1884897981}
+  - component: {fileID: 1884897980}
+  m_Layer: 0
+  m_Name: RedBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1884897979
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884897978}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1151218360}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1884897980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884897978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa3ed6d181d5f843bb921e02300db02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Group: {fileID: 1271826500}
+  Colliders:
+  - {fileID: 1884897981}
+  Triggers:
+  - Trigger: {fileID: 11400000, guid: 47fb7815b7d67c64fafc57f7fdf33b9a, type: 2}
+    Negate: 0
+  - Trigger: {fileID: 11400000, guid: e74d46a5af37a1e48a1e369459cc0e66, type: 2}
+    Negate: 1
+  Text: It seems to be out of power.
+  Key: 
+--- !u!60 &1884897981
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884897978}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.47896397, y: 0.26677108}
+      - {x: 0.036437213, y: -0.028031796}
+      - {x: 0.05674666, y: -0.19996393}
+      - {x: 0.47358382, y: -0.39185596}
+      - {x: 0.9662261, y: -0.20587707}
+      - {x: 0.9628827, y: 0.02518648}
+--- !u!114 &1884897982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884897978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa3ed6d181d5f843bb921e02300db02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Group: {fileID: 153406521}
+  Colliders:
+  - {fileID: 1884897981}
+  Triggers:
+  - Trigger: {fileID: 11400000, guid: 47fb7815b7d67c64fafc57f7fdf33b9a, type: 2}
+    Negate: 0
+  Text: Looks like this box has a switch that controls the light in this room.
+  Key: 
 --- !u!1 &1889403483
 GameObject:
   m_ObjectHideFlags: 0
@@ -6046,7 +6622,7 @@ MonoBehaviour:
   Description: click to knock objects
   InteractiveGroup: {fileID: 2069957187}
   ClickVerticalLimit: -1.1
-  DefaultMessage: 
+  DefaultMessage: Unable to attack this.
   BlockAction: 0
   PublishesMessage: 0
 --- !u!1 &2126496915
@@ -6130,6 +6706,74 @@ CircleCollider2D:
   m_Offset: {x: 0.20933768, y: -0.14470333}
   serializedVersion: 2
   m_Radius: 0.14630958
+--- !u!1 &2139323082
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2139323083}
+  - component: {fileID: 2139323085}
+  - component: {fileID: 2139323084}
+  m_Layer: 0
+  m_Name: Rock_Look
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2139323083
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139323082}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1980066505}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2139323084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139323082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa3ed6d181d5f843bb921e02300db02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Group: {fileID: 153406521}
+  Colliders:
+  - {fileID: 2139323085}
+  Triggers:
+  - Trigger: {fileID: 11400000, guid: 47fb7815b7d67c64fafc57f7fdf33b9a, type: 2}
+    Negate: 0
+  Text: It looks like a small rock.
+  Key: 
+--- !u!58 &2139323085
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139323082}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.02360633, y: -0.1155671}
+  serializedVersion: 2
+  m_Radius: 0.18012314
 --- !u!1001 &158447387829531192
 PrefabInstance:
   m_ObjectHideFlags: 0

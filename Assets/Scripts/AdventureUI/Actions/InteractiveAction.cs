@@ -30,6 +30,7 @@ public class InteractiveAction : ActionBase
     {
         public ActionBase Source { get; set; }
         public InteractiveGroup Group { get; set; }
+        public Interactive Target { get; set; }
     }
 
     protected override void OnEnable()
@@ -70,16 +71,20 @@ public class InteractiveAction : ActionBase
                 if (mousePos.y < ClickVerticalLimit) continue;
                 var result = InteractiveGroup != null ? InteractiveGroup.GetClickedInteractive(mousePos) : null;
 
-                if (PublishesMessage)
+                if (PublishesMessage && result!=null)
                 {
-                    TextLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry,
-                        result == null ? DefaultMessage : result.Text);
+                    TextLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, result.Text);
+                }
+                else if (result == null)
+                {
+                    TextLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, DefaultMessage);
                 }
 
                 InteractiveEventPublisher.PublishEvent(InteractiveActionEvents.OnClick, new InteractiveActionEvent
                 {
                     Source = this,
                     Group = InteractiveGroup,
+                    Target = result,
                 });
             }
 

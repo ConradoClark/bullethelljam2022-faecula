@@ -10,7 +10,7 @@ using Licht.Unity.Extensions;
 using Licht.Unity.Objects;
 using UnityEngine;
 
-public class KnockChest : MonoBehaviour
+public class KnockChest : Interactive
 {
     private IEventPublisher<TextLog.TextLogEvents, string> _textLogPublisher;
 
@@ -20,7 +20,8 @@ public class KnockChest : MonoBehaviour
 
     public BasicMachineryScriptable MachineryRef;
     public TimerScriptable TimerRef;
-    public GlobalTrigger ClearedChest;
+    public GlobalTrigger ClearedChestTrigger;
+    public GlobalTrigger OpenedChestTrigger;
     private int _knockCount;
     private bool _knocking;
 
@@ -30,8 +31,9 @@ public class KnockChest : MonoBehaviour
     public Transform Fae;
     public SpriteRenderer ScreenFlash;
 
-    protected void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         _textLogPublisher = this.RegisterAsEventPublisher<TextLog.TextLogEvents, string>();
 
         this.ObserveEvent<InteractiveAction.InteractiveActionEvents, InteractiveAction.InteractiveActionEvent>(
@@ -40,14 +42,16 @@ public class KnockChest : MonoBehaviour
         MachineryRef.Machinery.AddBasicMachine(HandleKnock());
     }
 
-    protected void OnDisable()
+    protected override void OnDisable()
     {
+        base.OnDisable();
         this.StopObservingEvent<InteractiveAction.InteractiveActionEvents, InteractiveAction.InteractiveActionEvent>(
             InteractiveAction.InteractiveActionEvents.OnClick, OnEvent);
     }
 
     private void OnEvent(InteractiveAction.InteractiveActionEvent obj)
     {
+        if (obj.Group != Group || obj.Target != this) return;
         if (_knocking) return;
 
         _knocking = true;
@@ -66,7 +70,7 @@ public class KnockChest : MonoBehaviour
     {
         _knockCount++;
 
-        if (!ClearedChest.Value) yield return HandleKnockingBeforeClearingChest(_knockCount).AsCoroutine();
+        if (!ClearedChestTrigger.Value) yield return HandleKnockingBeforeClearingChest(_knockCount).AsCoroutine();
         else yield return HandleKnockingAfterClearingChest(_knockCount).AsCoroutine();
 
         _knocking = false;
@@ -152,6 +156,8 @@ public class KnockChest : MonoBehaviour
                     $"<color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.FaeColor.Value)}>fae</color> is finally free!");
 
                 Fae.gameObject.SetActive(true);
+
+                OpenedChestTrigger.Value = true;
 
                 LookAction.DefaultMessage = "There's nothing here of relevant importance.";
 
