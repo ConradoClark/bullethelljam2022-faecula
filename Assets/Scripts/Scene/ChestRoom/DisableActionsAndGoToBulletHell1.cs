@@ -70,7 +70,7 @@ public class DisableActionsAndGoToBulletHell1 : MonoBehaviour
     {
         Ppc.enabled = false;
         yield return new LerpBuilder(val => DefaultCamera.orthographicSize = val, () => DefaultCamera.orthographicSize)
-            .SetTarget(0)
+            .SetTarget(0.01f)
             .Over(4f)
             .Easing(EasingYields.EasingFunction.CubicEaseIn)
             .UsingTimer(TimerRef.Timer)
