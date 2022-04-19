@@ -1,10 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Licht.Impl.Events;
 using Licht.Impl.Orchestration;
 using Licht.Interfaces.Events;
-using UnityEngine;
 
 public class InteractiveAction : ActionBase
 {
@@ -14,13 +12,14 @@ public class InteractiveAction : ActionBase
 
     public string DefaultMessage;
 
-    private IEventPublisher<HelpText.HelpTextEvents, HelpText.TextChangedEvent> _textLockPublisher;
-    private IEventPublisher<HelpText.HelpTextEvents, HelpText.TextEvent> _textUnlockPublisher;
-    private IEventPublisher<TextLog.TextLogEvents, string> _textLogPublisher;
+    protected IEventPublisher<HelpText.HelpTextEvents, HelpText.TextChangedEvent> TextLockPublisher;
+    protected IEventPublisher<HelpText.HelpTextEvents, HelpText.TextEvent> TextUnlockPublisher;
+    protected IEventPublisher<TextLog.TextLogEvents, string> TextLogPublisher;
 
-    private IEventPublisher<InteractiveActionEvents, InteractiveActionEvent> _interactiveEventPublisher;
+    protected IEventPublisher<InteractiveActionEvents, InteractiveActionEvent> InteractiveEventPublisher;
 
     public bool BlockAction;
+    public bool PublishesMessage;
 
     public enum InteractiveActionEvents
     {
@@ -30,16 +29,17 @@ public class InteractiveAction : ActionBase
     public class InteractiveActionEvent
     {
         public ActionBase Source { get; set; }
+        public InteractiveGroup Group { get; set; }
     }
 
     protected override void OnEnable()
     {
         base.OnEnable();
-        _textLockPublisher = this.RegisterAsEventPublisher<HelpText.HelpTextEvents, HelpText.TextChangedEvent>();
-        _textUnlockPublisher = this.RegisterAsEventPublisher<HelpText.HelpTextEvents, HelpText.TextEvent>();
+        TextLockPublisher = this.RegisterAsEventPublisher<HelpText.HelpTextEvents, HelpText.TextChangedEvent>();
+        TextUnlockPublisher = this.RegisterAsEventPublisher<HelpText.HelpTextEvents, HelpText.TextEvent>();
 
-        _textLogPublisher = this.RegisterAsEventPublisher<TextLog.TextLogEvents, string>();
-        _interactiveEventPublisher = this.RegisterAsEventPublisher<InteractiveActionEvents, InteractiveActionEvent>();
+        TextLogPublisher = this.RegisterAsEventPublisher<TextLog.TextLogEvents, string>();
+        InteractiveEventPublisher = this.RegisterAsEventPublisher<InteractiveActionEvents, InteractiveActionEvent>();
 
         MachineryRef.Machinery.AddBasicMachine(HandleLook());
     }
@@ -50,7 +50,7 @@ public class InteractiveAction : ActionBase
         {
             while (!IsActive) yield return TimeYields.WaitOneFrameX;
 
-            _textLockPublisher.PublishEvent(HelpText.HelpTextEvents.TextLock, new HelpText.TextChangedEvent
+            TextLockPublisher.PublishEvent(HelpText.HelpTextEvents.TextLock, new HelpText.TextChangedEvent
             {
                 Source = this,
                 Text = Description
@@ -70,22 +70,26 @@ public class InteractiveAction : ActionBase
                 if (mousePos.y < ClickVerticalLimit) continue;
                 var result = InteractiveGroup != null ? InteractiveGroup.GetClickedInteractive(mousePos) : null;
 
-                _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry,
-                    result == null ? DefaultMessage : result.Text);
-
-                _interactiveEventPublisher.PublishEvent(InteractiveActionEvents.OnClick, new InteractiveActionEvent
+                if (PublishesMessage)
                 {
-                    Source = this
+                    TextLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry,
+                        result == null ? DefaultMessage : result.Text);
+                }
+
+                InteractiveEventPublisher.PublishEvent(InteractiveActionEvents.OnClick, new InteractiveActionEvent
+                {
+                    Source = this,
+                    Group = InteractiveGroup,
                 });
             }
 
-            _textUnlockPublisher.PublishEvent(HelpText.HelpTextEvents.TextUnlock, new HelpText.TextEvent
+            TextUnlockPublisher.PublishEvent(HelpText.HelpTextEvents.TextUnlock, new HelpText.TextEvent
             {
                 Source = this,
             });
         }
 
-        _textUnlockPublisher.PublishEvent(HelpText.HelpTextEvents.TextUnlock, new HelpText.TextEvent
+        TextUnlockPublisher.PublishEvent(HelpText.HelpTextEvents.TextUnlock, new HelpText.TextEvent
         {
             Source = this,
         });

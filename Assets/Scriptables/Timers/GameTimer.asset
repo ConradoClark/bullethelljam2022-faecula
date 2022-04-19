@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 293091256, guid: 36e88bdca46822f40b7ebfb2199ae1ee, type: 3}
   m_Name: GameTimer
   m_EditorClassIdentifier: 
-  Multiplier: 1
+  Multiplier: 5

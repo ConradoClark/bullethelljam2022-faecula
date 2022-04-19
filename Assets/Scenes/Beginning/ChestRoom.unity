@@ -2386,6 +2386,7 @@ MonoBehaviour:
   DefaultMessage: You can't see anything from outside. Maybe there's a spot you can
     still peek while inside the chest?
   BlockAction: 0
+  PublishesMessage: 1
 --- !u!1 &901765243
 GameObject:
   m_ObjectHideFlags: 0
@@ -2924,7 +2925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb0b606210a72e040b0965497d4b92a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  KnockAction: {fileID: 2115056123}
+  KnockAction: {fileID: 2115056127}
   LookAction: {fileID: 876684613}
   InteractAction: {fileID: 1744325710}
   BulletHellInteraction: {fileID: 842919315}
@@ -2943,6 +2944,7 @@ GameObject:
   - component: {fileID: 1122957819}
   - component: {fileID: 1122957818}
   - component: {fileID: 1122957820}
+  - component: {fileID: 1122957821}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Untagged
@@ -3035,6 +3037,23 @@ MonoBehaviour:
   ShadowSprite: {fileID: 956428519}
   TimerRef: {fileID: 11400000, guid: ff895efbce15331489e1f502258d8ffb, type: 2}
   StarEffectPool: {fileID: 537585680}
+--- !u!114 &1122957821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122957817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fa9b8674b9b2e046aed9e4ecdee943b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LockedChest: {fileID: 1122957820}
+  ColorDefaults: {fileID: 398701028}
+  LookAction: {fileID: 876684613}
+  MachineryRef: {fileID: 11400000, guid: b183650010cd9684db4dd01612534c04, type: 2}
+  ClearedChest: {fileID: 11400000, guid: 31765a325482ee142a9e45e34fed5a80, type: 2}
 --- !u!1 &1131897191
 GameObject:
   m_ObjectHideFlags: 0
@@ -3530,6 +3549,7 @@ Transform:
   m_Children:
   - {fileID: 153406522}
   - {fileID: 1271826501}
+  - {fileID: 2069957186}
   m_Father: {fileID: 398701026}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3802,7 +3822,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1549751765
 Transform:
   m_ObjectHideFlags: 0
@@ -3883,7 +3903,7 @@ MonoBehaviour:
   MachineryRef: {fileID: 11400000, guid: b183650010cd9684db4dd01612534c04, type: 2}
   TimerRef: {fileID: 11400000, guid: ff895efbce15331489e1f502258d8ffb, type: 2}
   SpriteRenderer: {fileID: 1549751766}
-  KnockAction: {fileID: 2115056123}
+  KnockAction: {fileID: 2115056127}
   ColorDefaults: {fileID: 398701028}
   ClearedChest: {fileID: 11400000, guid: 31765a325482ee142a9e45e34fed5a80, type: 2}
 --- !u!1 &1551417238
@@ -4851,6 +4871,7 @@ MonoBehaviour:
   ClickVerticalLimit: -1.1
   DefaultMessage: Nothing to interact with or no action can be done.
   BlockAction: 0
+  PublishesMessage: 1
 --- !u!1 &1826511825
 GameObject:
   m_ObjectHideFlags: 0
@@ -5609,6 +5630,49 @@ MonoBehaviour:
   MinAlpha: 0.4
   MaxAlpha: 0.8
   Frequency: 1.5
+--- !u!1 &2069957185
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2069957186}
+  - component: {fileID: 2069957187}
+  m_Layer: 5
+  m_Name: Knockable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2069957186
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069957185}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1385567188}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2069957187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069957185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eec410c7b18bbe94aa1b068977c6dbab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2103752322
 GameObject:
   m_ObjectHideFlags: 0
@@ -5666,7 +5730,7 @@ GameObject:
   - component: {fileID: 2115056126}
   - component: {fileID: 2115056125}
   - component: {fileID: 2115056124}
-  - component: {fileID: 2115056123}
+  - component: {fileID: 2115056127}
   m_Layer: 5
   m_Name: Action_Knock
   m_TagString: Untagged
@@ -5688,33 +5752,6 @@ Transform:
   m_Father: {fileID: 1676213303}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2115056123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2115056121}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fa9b8674b9b2e046aed9e4ecdee943b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DefaultSprite: {fileID: 21300000, guid: 5c653148caa8e404e9f9d5def4ae9b37, type: 3}
-  PressedSprite: {fileID: 21300000, guid: ca4795338d1bb3b4caeb6016e1e848db, type: 3}
-  SpriteRenderer: {fileID: 2115056126}
-  Collider: {fileID: 2115056124}
-  Group: {fileID: 1676213304}
-  EffectPool: {fileID: 544088106}
-  EffectColor: {r: 0.59607846, g: 1, b: 0.56078434, a: 1}
-  TimerRef: {fileID: 11400000, guid: 6a052f4e332ec2043885bf3f98efe50d, type: 2}
-  MachineryRef: {fileID: 11400000, guid: b183650010cd9684db4dd01612534c04, type: 2}
-  Description: click on the chest to knock it from the inside
-  ChestCollider: {fileID: 980680357}
-  LockedChest: {fileID: 1122957820}
-  ColorDefaults: {fileID: 398701028}
-  LookAction: {fileID: 876684613}
-  ClearedChest: {fileID: 11400000, guid: 31765a325482ee142a9e45e34fed5a80, type: 2}
 --- !u!61 &2115056124
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5756,7 +5793,7 @@ MonoBehaviour:
   CameraType: 1
   Collider: {fileID: 2115056124}
   MachineryRef: {fileID: 11400000, guid: b183650010cd9684db4dd01612534c04, type: 2}
-  Text: knock (A) - try knocking on the chest from inside
+  Text: knock (A) - beat the hell out of something
 --- !u!212 &2115056126
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5808,6 +5845,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2115056127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115056121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a345c257da27a35439c86fa3ed34ab6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefaultSprite: {fileID: 21300000, guid: 5c653148caa8e404e9f9d5def4ae9b37, type: 3}
+  PressedSprite: {fileID: 21300000, guid: ca4795338d1bb3b4caeb6016e1e848db, type: 3}
+  SpriteRenderer: {fileID: 2115056126}
+  Collider: {fileID: 2115056124}
+  Group: {fileID: 1676213304}
+  EffectPool: {fileID: 544088106}
+  EffectColor: {r: 0.59607846, g: 1, b: 0.56078434, a: 1}
+  TimerRef: {fileID: 11400000, guid: 6a052f4e332ec2043885bf3f98efe50d, type: 2}
+  MachineryRef: {fileID: 11400000, guid: b183650010cd9684db4dd01612534c04, type: 2}
+  Description: click to knock objects
+  InteractiveGroup: {fileID: 2069957187}
+  ClickVerticalLimit: -1.1
+  DefaultMessage: 
+  BlockAction: 0
+  PublishesMessage: 0
 --- !u!1 &2126496915
 GameObject:
   m_ObjectHideFlags: 0

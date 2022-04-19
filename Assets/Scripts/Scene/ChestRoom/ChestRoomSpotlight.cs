@@ -14,7 +14,8 @@ public class ChestRoomSpotlight : MonoBehaviour
     public TimerScriptable TimerRef;
     public SpriteRenderer SpriteRenderer;
 
-    public KnockAction KnockAction;
+    public InteractiveAction KnockAction;
+    private HelpContext _knockActionHelpContext;
 
     private IEventPublisher<TextLog.TextLogEvents, string> _textLogPublisher;
 
@@ -30,6 +31,7 @@ public class ChestRoomSpotlight : MonoBehaviour
         }
         MachineryRef.Machinery.AddBasicMachine(Storyboard());
         _textLogPublisher = this.RegisterAsEventPublisher<TextLog.TextLogEvents, string>();
+        _knockActionHelpContext = KnockAction.GetComponent<HelpContext>();
     }
 
     void OnDisable()
@@ -94,5 +96,7 @@ public class ChestRoomSpotlight : MonoBehaviour
         _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, $"<color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.FaeculaSpeechColor.Value)}>Hello? Is anybody there? Maybe I should try knocking.</color>");
 
         KnockAction.gameObject.SetActive(true);
+        KnockAction.Description = "click on the chest to knock it from the inside";
+        _knockActionHelpContext.Text = "knock (A) - try knocking on the chest from inside";
     }
 }

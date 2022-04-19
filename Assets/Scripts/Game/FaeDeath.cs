@@ -40,7 +40,7 @@ public class FaeDeath : MonoBehaviour
     void OnDisable()
     {
         this.StopObservingEvent<InteractiveAction.InteractiveActionEvents, InteractiveAction.InteractiveActionEvent>(InteractiveAction.InteractiveActionEvents.OnClick, OnInteractive);
-        this.ObserveEvent<FaeStats.FaeEvents, FaeStats.FaeHitPointsEventHandler>(FaeStats.FaeEvents.OnTakeDamage, OnEvent);
+        this.StopObservingEvent<FaeStats.FaeEvents, FaeStats.FaeHitPointsEventHandler>(FaeStats.FaeEvents.OnTakeDamage, OnEvent);
     }
 
     private void OnInteractive(InteractiveAction.InteractiveActionEvent obj)

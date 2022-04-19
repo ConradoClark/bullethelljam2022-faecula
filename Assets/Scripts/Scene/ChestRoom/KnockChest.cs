@@ -6,35 +6,45 @@ using Licht.Impl.Generation;
 using Licht.Impl.Orchestration;
 using Licht.Interfaces.Events;
 using Licht.Interfaces.Generation;
+using Licht.Unity.Objects;
 using UnityEngine;
 
-public class KnockAction : ActionBase
+public class KnockChest : MonoBehaviour
 {
-    public string Description;
-
-    private IEventPublisher<HelpText.HelpTextEvents, HelpText.TextChangedEvent> _textLockPublisher;
-    private IEventPublisher<HelpText.HelpTextEvents, HelpText.TextEvent> _textUnlockPublisher;
     private IEventPublisher<TextLog.TextLogEvents, string> _textLogPublisher;
 
-    public Collider2D ChestCollider;
     public LockedChest LockedChest;
     public ColorDefaults ColorDefaults;
     public InteractiveAction LookAction;
 
+    public BasicMachineryScriptable MachineryRef;
     public GlobalTrigger ClearedChest;
+    private int _knockCount;
 
-    protected override void OnEnable()
+    protected void OnEnable()
     {
-        base.OnEnable();
-        _textLockPublisher = this.RegisterAsEventPublisher<HelpText.HelpTextEvents, HelpText.TextChangedEvent>();
-        _textUnlockPublisher = this.RegisterAsEventPublisher<HelpText.HelpTextEvents, HelpText.TextEvent>();
         _textLogPublisher = this.RegisterAsEventPublisher<TextLog.TextLogEvents, string>();
+
+        this.ObserveEvent<InteractiveAction.InteractiveActionEvents, InteractiveAction.InteractiveActionEvent>(
+            InteractiveAction.InteractiveActionEvents.OnClick, OnEvent);
+
+        MachineryRef.Machinery.AddBasicMachine(HandleKnock());
+    }
+
+    protected void OnDisable()
+    {
+        this.StopObservingEvent<InteractiveAction.InteractiveActionEvents, InteractiveAction.InteractiveActionEvent>(
+            InteractiveAction.InteractiveActionEvents.OnClick, OnEvent);
+    }
+
+    private void OnEvent(InteractiveAction.InteractiveActionEvent obj)
+    {
         MachineryRef.Machinery.AddBasicMachine(HandleKnock());
     }
 
     private class WeightedText : IWeighted<float>
     {
-        public string Text;
+        public readonly string Text;
         public float Weight { get; } = 1f;
 
         public WeightedText(string text) => Text = text;
@@ -42,35 +52,11 @@ public class KnockAction : ActionBase
 
     private IEnumerable<IEnumerable<Action>> HandleKnock()
     {
-        while (isActiveAndEnabled)
-        {
-            while (!IsActive) yield return TimeYields.WaitOneFrameX;
+        _knockCount++;
 
-            _textLockPublisher.PublishEvent(HelpText.HelpTextEvents.TextLock, new HelpText.TextChangedEvent
-            {
-                Source = this,
-                Text = Description
-            });
-
-            var knockCount = 0;
-            while (IsActive)
-            {
-                if (IsClickingOn(ChestCollider))
-                {
-                    knockCount++;
-
-                    if (!ClearedChest.Value) HandleKnockingBeforeClearingChest(knockCount);
-                    else HandleKnockingAfterClearingChest(knockCount);
-                    yield return LockedChest.Knock().AsCoroutine();
-                }
-                yield return TimeYields.WaitOneFrameX;
-            }
-
-            _textUnlockPublisher.PublishEvent(HelpText.HelpTextEvents.TextUnlock, new HelpText.TextEvent
-            {
-                Source = this,
-            });
-        }
+        if (!ClearedChest.Value) HandleKnockingBeforeClearingChest(_knockCount);
+        else HandleKnockingAfterClearingChest(_knockCount);
+        yield return LockedChest.Knock().AsCoroutine();
     }
 
     private void HandleKnockingBeforeClearingChest(int knockCount)
@@ -114,11 +100,11 @@ public class KnockAction : ActionBase
         {
             case 3:
                 _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry,
-                    "The chest moves slightly.");
+                    $"The <color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.Objects.Value)}>chest</color> moves slightly.");
                 break;
             case 6:
                 _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry,
-                    "The chest rattles around.");
+                    $"The <color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.Objects.Value)}>chest</color> rattles around.");
                 break;
             case 9:
                 // make the chest break
