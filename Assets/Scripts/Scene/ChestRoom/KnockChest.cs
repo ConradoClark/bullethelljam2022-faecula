@@ -38,8 +38,6 @@ public class KnockChest : Interactive
 
         this.ObserveEvent<InteractiveAction.InteractiveActionEvents, InteractiveAction.InteractiveActionEvent>(
             InteractiveAction.InteractiveActionEvents.OnClick, OnEvent);
-
-        MachineryRef.Machinery.AddBasicMachine(HandleKnock());
     }
 
     protected override void OnDisable()
