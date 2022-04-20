@@ -582,6 +582,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FaeculaSpeechColor: {fileID: 11400000, guid: 866538a50ee50184f9ecab055b0cdfa9, type: 2}
   FaeColor: {fileID: 11400000, guid: 755cfd5496b7a2b418d25c58d7c8eb3e, type: 2}
+  Objects: {fileID: 0}
+  Sigils: {fileID: 0}
 --- !u!1 &733753857
 GameObject:
   m_ObjectHideFlags: 0
@@ -787,6 +789,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3463085373473575520, guid: 9e6248f79d837c34fb7388c28de827d0, type: 3}
+      propertyPath: TimerRef
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a052f4e332ec2043885bf3f98efe50d, type: 2}
+    - target: {fileID: 3463085373473575520, guid: 9e6248f79d837c34fb7388c28de827d0, type: 3}
+      propertyPath: TextSound
+      value: 
+      objectReference: {fileID: 904699981}
+    - target: {fileID: 3463085373473575520, guid: 9e6248f79d837c34fb7388c28de827d0, type: 3}
+      propertyPath: MachineryRef
+      value: 
+      objectReference: {fileID: 11400000, guid: b183650010cd9684db4dd01612534c04, type: 2}
     - target: {fileID: 3463085373473575521, guid: 9e6248f79d837c34fb7388c28de827d0, type: 3}
       propertyPath: m_SortingOrder
       value: 5
@@ -881,6 +895,107 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e6248f79d837c34fb7388c28de827d0, type: 3}
+--- !u!1 &904699980 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3463085373473575524, guid: 9e6248f79d837c34fb7388c28de827d0, type: 3}
+  m_PrefabInstance: {fileID: 904699979}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &904699981
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904699980}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -4828816250836267392, guid: 6ad95119e671a2245ad236753cb4ad40, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 942aa51bae70d9740a73231535105781, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &937702630
 GameObject:
   m_ObjectHideFlags: 0
@@ -1357,6 +1472,7 @@ MonoBehaviour:
   ClickVerticalLimit: -1.1
   DefaultMessage: You're being transported to a different timeline...
   BlockAction: 0
+  PublishesMessage: 0
 --- !u!61 &1989296190
 BoxCollider2D:
   m_ObjectHideFlags: 0

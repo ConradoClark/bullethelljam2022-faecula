@@ -6,7 +6,7 @@ TODO List:
 - Abilities
   - Slow time with MP
   - Graze (to regain MP)
-- Getting out of the first room
+- Getting out of the first room (WIP)
   - Faulty plug
   - Lighting up the area
   - Getting to the next room
