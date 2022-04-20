@@ -51,12 +51,6 @@ public class TextLog : MonoBehaviour
         _logs.Current = $"<color=#{ColorUtility.ToHtmlStringRGBA(CurrentTimeColor)}>.{now:HH:mm}.</color> {text}";
 
         var messages = _logs.GetTail(tail).Reverse().ToArray();
-        //while (TextComponent.GetTextInfo(string.Join("\n", messages)).lineCount > MaxLines)
-        //{
-        //    tail--;
-        //    messages = _logs.GetTail(tail).Reverse().ToArray();
-        //    if (tail == 0) break;
-        //}
 
         MachineryRef.Machinery.AddBasicMachine(AnimateText(messages));
         MachineryRef.Machinery.AddBasicMachine(PlayTextLogSound(_logs.Current.Length));
