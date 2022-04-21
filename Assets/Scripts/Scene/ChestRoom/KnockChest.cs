@@ -31,6 +31,8 @@ public class KnockChest : Interactive
     public Transform Fae;
     public SpriteRenderer ScreenFlash;
 
+    public AudioSource ActionSound;
+
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -52,6 +54,7 @@ public class KnockChest : Interactive
         if (obj.Group != Group || obj.Target != this) return;
         if (_knocking) return;
 
+        ActionSound?.Play();
         _knocking = true;
         MachineryRef.Machinery.AddBasicMachine(HandleKnock());
     }

@@ -24,6 +24,9 @@ public class PressableButton : MonoBehaviour, IActivable, IDeactivable
     protected PlayerInput Input;
     protected Camera Camera;
 
+    public AudioSource ActivationSound;
+    public AudioSource DeactivationSound;
+
     protected virtual void OnEnable()
     {
         Input = Input != null ? Input : PlayerInput.GetPlayerByIndex(0);
@@ -51,10 +54,13 @@ public class PressableButton : MonoBehaviour, IActivable, IDeactivable
                 if (IsActive)
                 {
                     Deactivate();
+                    DeactivationSound?.Play();
                 }
                 else
                 {
                     Group?.DeactivateAllExcept(this);
+
+                    ActivationSound?.Play();
                     Activate();
                     MachineryRef.Machinery.AddBasicMachine(Blink());
                     if (EffectPool.TryGetFromPool(out var obj) && obj is PressedEffectPoolable effect)

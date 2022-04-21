@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Licht.Impl.Events;
 using Licht.Impl.Orchestration;
 using Licht.Interfaces.Events;
+using UnityEngine;
 
 public class InteractiveAction : ActionBase
 {
@@ -71,11 +72,14 @@ public class InteractiveAction : ActionBase
                 if (mousePos.y < ClickVerticalLimit) continue;
                 var result = InteractiveGroup != null ? InteractiveGroup.GetClickedInteractive(mousePos) : null;
 
-                if (PublishesMessage && result!=null)
+                if (result!=null)
                 {
-                    TextLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, result.Text);
+                    if (PublishesMessage)
+                    {
+                        TextLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, result.Text);
+                    }
                 }
-                else if (result == null)
+                else
                 {
                     TextLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, DefaultMessage);
                 }

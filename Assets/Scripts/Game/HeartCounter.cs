@@ -17,6 +17,7 @@ public class HeartCounter : MonoBehaviour
     public float Offset;
 
     private Heart[] _hearts = new Heart[5];
+    public AudioSource HealthUpSound;
 
     private void OnEnable()
     {
@@ -45,6 +46,7 @@ public class HeartCounter : MonoBehaviour
             var position = transform.position + new Vector3(i * Offset, 0, 0);
             if (HeartEffectPool.TryGetFromPool(out var ef) && ef is EffectPoolable heartEffect)
             {
+                HealthUpSound?.Play();
                 heartEffect.transform.position = position;
             }
 

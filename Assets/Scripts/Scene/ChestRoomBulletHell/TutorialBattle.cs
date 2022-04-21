@@ -65,9 +65,11 @@ public class TutorialBattle : MonoBehaviour
         yield return TimeYields.WaitSeconds(TimerRef.Timer, 3);
 
         _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, "Spirits of past fairies reach out to you...");
+
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 1);
         HeartCounter.gameObject.SetActive(true);
 
-        yield return TimeYields.WaitSeconds(TimerRef.Timer, 5);
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 4);
 
         _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, "The sigil detects your presence, initiating its defenses...");
 
