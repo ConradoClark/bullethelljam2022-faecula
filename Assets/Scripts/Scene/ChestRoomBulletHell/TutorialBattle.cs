@@ -27,6 +27,10 @@ public class TutorialBattle : MonoBehaviour
     public HeartCounter HeartCounter;
 
     public GlobalTrigger ClearedChest;
+    public AudioSource TutorialMusic;
+
+    public AudioSource BulletSpawnSound;
+    public AudioSource SlowBulletSpawnSound;
 
     private bool _dead = false;
 
@@ -73,7 +77,10 @@ public class TutorialBattle : MonoBehaviour
 
         _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, "The sigil detects your presence, initiating its defenses...");
 
-        yield return TimeYields.WaitSeconds(TimerRef.Timer, 4);
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 2);
+        TutorialMusic?.Play();
+
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 2);
 
         _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry,
                 $"<color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.FaeculaSpeechColor.Value)}>Freedom calls me! Focus, fae!</color>");
@@ -84,9 +91,9 @@ public class TutorialBattle : MonoBehaviour
             Text = "Evade all attacks from the magic sigil"
         });
 
-        yield return HorizontalBullets1.SimultaneousLineFromLeft(HorizontalBulletsPool).AsCoroutine();
+        yield return HorizontalBullets1.SimultaneousLineFromLeft(HorizontalBulletsPool, spawnSound: BulletSpawnSound).AsCoroutine();
         yield return TimeYields.WaitSeconds(TimerRef.Timer, 4);
-        yield return HorizontalBullets1.SimultaneousLineFromRight(HorizontalBulletsPool).AsCoroutine();
+        yield return HorizontalBullets1.SimultaneousLineFromRight(HorizontalBulletsPool, spawnSound: BulletSpawnSound).AsCoroutine();
         yield return TimeYields.WaitSeconds(TimerRef.Timer, 4);
 
 
