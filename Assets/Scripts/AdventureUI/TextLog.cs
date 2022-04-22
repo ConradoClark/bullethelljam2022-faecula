@@ -88,7 +88,6 @@ public class TextLog : MonoBehaviour
             }
 
             TextComponent.text = string.Join("\n", msgs.Skip(rem).Take(msgs.Length));
-            Debug.Log(TextComponent.text);
 
             yield return TimeYields.WaitMilliseconds(TimerRef.Timer, 10);
         }
