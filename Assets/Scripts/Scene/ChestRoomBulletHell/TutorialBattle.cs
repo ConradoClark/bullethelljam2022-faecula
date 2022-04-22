@@ -30,9 +30,11 @@ public class TutorialBattle : MonoBehaviour
     public BulletEmitter BulletEmitter;
     public EmissionReference HorizontalBulletEmission;
     public EmissionReference HorizontalSlowBulletEmission;
+    public EmissionReference ShowerBulletEmission;
 
     public EmissionParametersScriptable LeftToRightEmission;
     public EmissionParametersScriptable RightToLeftEmission;
+    public EmissionParametersScriptable ShowerEmission;
 
     private bool _dead = false;
 
@@ -94,7 +96,11 @@ public class TutorialBattle : MonoBehaviour
         });
 
 
-        BulletEmitter.EmitBullets(HorizontalBulletEmission, LeftToRightEmission.Params, true);
+        //BulletEmitter.EmitBullets(HorizontalBulletEmission, LeftToRightEmission.Params, true);
+
+        BulletEmitter.EmitBullets(ShowerBulletEmission, ShowerEmission.Params,true);
+        BulletEmitter.EmitBullets(ShowerBulletEmission, ShowerEmission.Params.WithIndicatorPosition(
+            IndicatorPositions.NorthWest, new Vector2(1,-1)).WithDirection(new Vector2(1,-1)), true);
 
         yield return TimeYields.WaitSeconds(TimerRef.Timer, 4);
 

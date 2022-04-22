@@ -16,6 +16,7 @@ public class ScreenBullet : EffectPoolable
 
     public override void OnActivation()
     {
+        transform.rotation = Quaternion.identity;
         BasicMachineryObject.Machinery.AddBasicMachine(CheckOutOfBounds());
     }
 

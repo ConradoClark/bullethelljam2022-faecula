@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
-using UnityEngine;
+using Vector2 = UnityEngine.Vector2;
 
 [Serializable]
 public class EmissionParameters
@@ -12,6 +13,9 @@ public class EmissionParameters
     public Vector2 IndicatorPositionDirection;
     public Vector2 Offset;
     public Vector2 Direction;
+    public float Intensity;
+    public float Delay;
+    public float Range;
 
     private EmissionParameters Clone()
     {
@@ -20,7 +24,10 @@ public class EmissionParameters
             IndicatorPosition = IndicatorPosition,
             IndicatorPositionDirection = IndicatorPositionDirection,
             Offset = Offset,
-            Direction = Direction
+            Direction = Direction,
+            Intensity = Intensity,
+            Delay = Delay,
+            Range = Range,
         };
     }
 
@@ -43,6 +50,27 @@ public class EmissionParameters
     {
         var clone = Clone();
         clone.Direction = direction;
+        return clone;
+    }
+
+    public EmissionParameters WithIntensity(float intensity)
+    {
+        var clone = Clone();
+        clone.Intensity = intensity;
+        return clone;
+    }
+
+    public EmissionParameters WithDelay(float delay)
+    {
+        var clone = Clone();
+        clone.Delay = delay;
+        return clone;
+    }
+
+    public EmissionParameters WithRange(float range)
+    {
+        var clone = Clone();
+        clone.Range = range;
         return clone;
     }
 }

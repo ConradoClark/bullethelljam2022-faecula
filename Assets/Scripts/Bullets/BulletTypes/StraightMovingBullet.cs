@@ -16,7 +16,7 @@ public class StraightMovingBullet : ScreenBullet
     {
         while (isActiveAndEnabled && !IsEffectOver)
         {
-            transform.Translate((float)TimerRef.Timer.Multiplier * Speed * Direction);
+            transform.Translate((float)TimerRef.Timer.Multiplier * Speed * Direction, Space.World);
             yield return TimeYields.WaitOneFrameX;
         }
     }
