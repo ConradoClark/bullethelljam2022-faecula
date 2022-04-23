@@ -10,7 +10,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
 
-public class LockedChest : MonoBehaviour
+public class KnockEffect : MonoBehaviour
 {
     public SpriteRenderer FlashSprite;
     public SpriteRenderer ShadowSprite;
@@ -19,6 +19,10 @@ public class LockedChest : MonoBehaviour
 
     private PlayerInput _input;
     private Camera _camera;
+
+    public bool Jumps;
+    public bool Rotates;
+
 
     void OnEnable()
     {
@@ -36,10 +40,10 @@ public class LockedChest : MonoBehaviour
         }
 
         yield return Flash().AsCoroutine()
-            .Combine(Jump().AsCoroutine())
+            .Combine(Jumps ? Jump().AsCoroutine() : Enumerable.Empty<Action>())
             .Combine(Scale().AsCoroutine())
-            .Combine(ScaleShadow().AsCoroutine())
-            .Combine(RandomRotate().AsCoroutine());
+            .Combine(Jumps ? ScaleShadow().AsCoroutine() : Enumerable.Empty<Action>())
+            .Combine(Rotates ? RandomRotate().AsCoroutine() : Enumerable.Empty<Action>());
     }
 
     private IEnumerable<IEnumerable<Action>> Flash()

@@ -12,9 +12,9 @@ using UnityEngine.U2D;
 
 public class ChestCleared : MonoBehaviour
 {
-    public PressableButton KnockAction;
-    public PressableButton LookAction;
-    public PressableButton InteractAction;
+    public InteractiveAction KnockAction;
+    public InteractiveAction LookAction;
+    public InteractiveAction InteractAction;
     public DisableActionsAndGoToBulletHell1 BulletHellInteraction;
 
     public GlobalTrigger ClearedChest;
@@ -33,6 +33,10 @@ public class ChestCleared : MonoBehaviour
 
     private void OnEnable()
     {
+        if (OpenedChest)
+        {
+            LookAction.DefaultMessage = "There's nothing here of relevant importance.";
+        }
         if (!ClearedChest.Value) return;
 
         _textLogPublisher = this.RegisterAsEventPublisher<TextLog.TextLogEvents, string>();

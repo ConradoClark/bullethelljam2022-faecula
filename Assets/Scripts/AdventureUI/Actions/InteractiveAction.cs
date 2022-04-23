@@ -74,7 +74,7 @@ public class InteractiveAction : ActionBase
 
                 if (result!=null)
                 {
-                    if (PublishesMessage)
+                    if (PublishesMessage && !string.IsNullOrWhiteSpace(result.Text))
                     {
                         TextLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, result.Text);
                     }

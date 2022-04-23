@@ -402,6 +402,74 @@ Transform:
   m_Father: {fileID: 1070291383}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &60884971
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 60884972}
+  - component: {fileID: 60884974}
+  - component: {fileID: 60884973}
+  m_Layer: 0
+  m_Name: Rock_Smash
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &60884972
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60884971}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 566113504}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &60884973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60884971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa3ed6d181d5f843bb921e02300db02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Group: {fileID: 2069957187}
+  Colliders:
+  - {fileID: 60884974}
+  Triggers:
+  - Trigger: {fileID: 11400000, guid: 47fb7815b7d67c64fafc57f7fdf33b9a, type: 2}
+    Negate: 0
+  Text: This rock is too cute to be smashed to pieces.
+  Key: 
+--- !u!58 &60884974
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60884971}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.02360633, y: -0.1155671}
+  serializedVersion: 2
+  m_Radius: 0.18012314
 --- !u!1 &71595313
 GameObject:
   m_ObjectHideFlags: 0
@@ -2128,6 +2196,88 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &712461857
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 712461859}
+  - component: {fileID: 712461858}
+  m_Layer: 0
+  m_Name: Rock_Broken
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &712461858
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712461857}
+  m_Enabled: 0
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 5
+  m_Sprite: {fileID: 21300000, guid: ed86097e26e9c9246af8e4825a589186, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.32, y: 0.32}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &712461859
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712461857}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1171730721}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &753941186
 GameObject:
   m_ObjectHideFlags: 0
@@ -3889,6 +4039,8 @@ MonoBehaviour:
   ShadowSprite: {fileID: 956428519}
   TimerRef: {fileID: 11400000, guid: ff895efbce15331489e1f502258d8ffb, type: 2}
   StarEffectPool: {fileID: 537585680}
+  Jumps: 1
+  Rotates: 1
 --- !u!114 &1122957821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5806,6 +5958,7 @@ GameObject:
   - component: {fileID: 1721825509}
   - component: {fileID: 1721825511}
   - component: {fileID: 1721825510}
+  - component: {fileID: 1721825512}
   m_Layer: 0
   m_Name: Rock_Look
   m_TagString: Untagged
@@ -5845,6 +5998,8 @@ MonoBehaviour:
   Triggers:
   - Trigger: {fileID: 11400000, guid: 47fb7815b7d67c64fafc57f7fdf33b9a, type: 2}
     Negate: 0
+  - Trigger: {fileID: 11400000, guid: 63c3bef1aea3bd3439dac46b6beeaf65, type: 2}
+    Negate: 1
   Text: It looks like a rock.
   Key: 
 --- !u!58 &1721825511
@@ -5863,6 +6018,28 @@ CircleCollider2D:
   m_Offset: {x: 0.045089245, y: -0.12072292}
   serializedVersion: 2
   m_Radius: 0.43018427
+--- !u!114 &1721825512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721825508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa3ed6d181d5f843bb921e02300db02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Group: {fileID: 153406521}
+  Colliders:
+  - {fileID: 1721825511}
+  Triggers:
+  - Trigger: {fileID: 11400000, guid: 47fb7815b7d67c64fafc57f7fdf33b9a, type: 2}
+    Negate: 0
+  - Trigger: {fileID: 11400000, guid: 63c3bef1aea3bd3439dac46b6beeaf65, type: 2}
+    Negate: 0
+  Text: It doesn't like a rock anymore.
+  Key: 
 --- !u!1 &1742463111
 GameObject:
   m_ObjectHideFlags: 0
@@ -6258,6 +6435,100 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1774266671
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1774266672}
+  - component: {fileID: 1774266675}
+  - component: {fileID: 1774266674}
+  - component: {fileID: 1774266673}
+  m_Layer: 0
+  m_Name: Rock_Smash
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1774266672
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774266671}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1171730721}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1774266673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774266671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 873ce98f76d99f442b73ed7d28ebb7d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlashSprite: {fileID: 2108492170}
+  ShadowSprite: {fileID: 5449243983690622219}
+  TimerRef: {fileID: 11400000, guid: ff895efbce15331489e1f502258d8ffb, type: 2}
+  StarEffectPool: {fileID: 537585680}
+  Jumps: 0
+  Rotates: 0
+--- !u!114 &1774266674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774266671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5b1302e9d4bbf740968e302e557e5fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Group: {fileID: 2069957187}
+  Colliders:
+  - {fileID: 1774266675}
+  Triggers:
+  - Trigger: {fileID: 11400000, guid: 47fb7815b7d67c64fafc57f7fdf33b9a, type: 2}
+    Negate: 0
+  - Trigger: {fileID: 11400000, guid: 63c3bef1aea3bd3439dac46b6beeaf65, type: 2}
+    Negate: 1
+  Text: Hiyaaaa!
+  Key: 
+  KnockEffect: {fileID: 1774266673}
+  MachineryRef: {fileID: 11400000, guid: b183650010cd9684db4dd01612534c04, type: 2}
+  Rock: {fileID: 5449243983690622220}
+  BrokenRock: {fileID: 712461858}
+  BrokenRockTrigger: {fileID: 11400000, guid: 63c3bef1aea3bd3439dac46b6beeaf65, type: 2}
+--- !u!58 &1774266675
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774266671}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.062572, y: -0.10671121}
+  serializedVersion: 2
+  m_Radius: 0.41214585
 --- !u!1 &1826511825
 GameObject:
   m_ObjectHideFlags: 0
@@ -7122,6 +7393,142 @@ MonoBehaviour:
   MinAlpha: 0.4
   MaxAlpha: 0.8
   Frequency: 1.5
+--- !u!1 &2055163725
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2055163726}
+  - component: {fileID: 2055163728}
+  - component: {fileID: 2055163727}
+  m_Layer: 0
+  m_Name: Rock_Smash
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2055163726
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055163725}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1980066505}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2055163727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055163725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa3ed6d181d5f843bb921e02300db02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Group: {fileID: 2069957187}
+  Colliders:
+  - {fileID: 2055163728}
+  Triggers:
+  - Trigger: {fileID: 11400000, guid: 47fb7815b7d67c64fafc57f7fdf33b9a, type: 2}
+    Negate: 0
+  Text: This rock is too cute to be smashed to pieces.
+  Key: 
+--- !u!58 &2055163728
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055163725}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.02360633, y: -0.1155671}
+  serializedVersion: 2
+  m_Radius: 0.18012314
+--- !u!1 &2060732410
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2060732411}
+  - component: {fileID: 2060732413}
+  - component: {fileID: 2060732412}
+  m_Layer: 0
+  m_Name: Rock_Smash
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2060732411
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060732410}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 514448941}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2060732412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060732410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa3ed6d181d5f843bb921e02300db02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Group: {fileID: 2069957187}
+  Colliders:
+  - {fileID: 2060732413}
+  Triggers:
+  - Trigger: {fileID: 11400000, guid: 47fb7815b7d67c64fafc57f7fdf33b9a, type: 2}
+    Negate: 0
+  Text: This rock is too cute to be smashed to pieces.
+  Key: 
+--- !u!58 &2060732413
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060732410}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.02360633, y: -0.1155671}
+  serializedVersion: 2
+  m_Radius: 0.18012314
 --- !u!1 &2069957185
 GameObject:
   m_ObjectHideFlags: 0
@@ -7210,6 +7617,88 @@ Transform:
   m_Father: {fileID: 216349024}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2108492168
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2108492169}
+  - component: {fileID: 2108492170}
+  m_Layer: 0
+  m_Name: Rock_Flash
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2108492169
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108492168}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1171730721}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &2108492170
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108492168}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 8
+  m_Sprite: {fileID: 21300000, guid: dd638fad4db1deb42b0145f6093e3b84, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &2115056121
 GameObject:
   m_ObjectHideFlags: 0
@@ -7365,7 +7854,7 @@ MonoBehaviour:
   ClickVerticalLimit: -1.1
   DefaultMessage: Unable to attack this.
   BlockAction: 0
-  PublishesMessage: 0
+  PublishesMessage: 1
 --- !u!1 &2126496915
 GameObject:
   m_ObjectHideFlags: 0
@@ -7640,6 +8129,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1874206815}
     m_Modifications:
+    - target: {fileID: 2684052226449707204, guid: ac58a96bdea77154abea5dc5539c4833, type: 3}
+      propertyPath: m_Color.b
+      value: 0.73985404
+      objectReference: {fileID: 0}
+    - target: {fileID: 2684052226449707204, guid: ac58a96bdea77154abea5dc5539c4833, type: 3}
+      propertyPath: m_Color.g
+      value: 0.79549766
+      objectReference: {fileID: 0}
+    - target: {fileID: 2684052226449707204, guid: ac58a96bdea77154abea5dc5539c4833, type: 3}
+      propertyPath: m_Color.r
+      value: 0.9622642
+      objectReference: {fileID: 0}
     - target: {fileID: 3066272507155028060, guid: ac58a96bdea77154abea5dc5539c4833, type: 3}
       propertyPath: m_Name
       value: Rock_3
@@ -7741,9 +8242,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6235010797978770831, guid: 68b701442237e7641959f998441f9f4a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8597206479378109522, guid: 68b701442237e7641959f998441f9f4a, type: 3}
       propertyPath: m_Name
       value: Rock_1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68b701442237e7641959f998441f9f4a, type: 3}
+--- !u!212 &5449243983690622219 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6347589371242231141, guid: 68b701442237e7641959f998441f9f4a, type: 3}
+  m_PrefabInstance: {fileID: 5449243983690622218}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &5449243983690622220 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6235010797978770831, guid: 68b701442237e7641959f998441f9f4a, type: 3}
+  m_PrefabInstance: {fileID: 5449243983690622218}
+  m_PrefabAsset: {fileID: 0}

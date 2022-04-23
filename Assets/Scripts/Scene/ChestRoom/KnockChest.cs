@@ -14,7 +14,7 @@ public class KnockChest : Interactive
 {
     private IEventPublisher<TextLog.TextLogEvents, string> _textLogPublisher;
 
-    public LockedChest LockedChest;
+    public KnockEffect LockedChest;
     public ColorDefaults ColorDefaults;
     public InteractiveAction LookAction;
 
