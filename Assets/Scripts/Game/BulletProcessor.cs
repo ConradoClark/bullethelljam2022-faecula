@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class BulletProcessor : MonoBehaviour
 {
-    private ScreenBullet[] _bullets;
+    private BaseBullet[] _bullets;
     public Transform BulletPoolContainer;
     public FaeHit FaeHit;
 
@@ -21,7 +21,7 @@ public class BulletProcessor : MonoBehaviour
     IEnumerable<IEnumerable<Action>> Process()
     {
         yield return TimeYields.WaitOneFrameX;
-        _bullets = BulletPoolContainer.GetComponentsInChildren<ScreenBullet>(true);
+        _bullets = BulletPoolContainer.GetComponentsInChildren<BaseBullet>(true);
 
         var faeMask = LayerMask.NameToLayer("Fae");
         var contactFilter = new ContactFilter2D();

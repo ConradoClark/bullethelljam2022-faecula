@@ -157,14 +157,11 @@ public class TutorialBattle : MonoBehaviour
             .WithDirection(Vector2.left), true);
         yield return HereComes().AsCoroutine();
 
-        yield return TimeYields.WaitSeconds(TimerRef.Timer, 3);
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 10);
 
         if (_dead) yield break;
 
         ClearedChest.Value = true;
-        
-        yield return TimeYields.WaitSeconds(TimerRef.Timer, 3);
-
         _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, $"The sigil deactivates.");
         _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, $"<color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.FaeColor.Value)}>Fae</color> can finally get out of the chest!");
 

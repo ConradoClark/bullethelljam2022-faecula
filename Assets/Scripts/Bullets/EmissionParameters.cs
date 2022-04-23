@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 using Vector2 = UnityEngine.Vector2;
 
 [Serializable]
@@ -16,6 +11,7 @@ public class EmissionParameters
     public float Intensity;
     public float Delay;
     public float Range;
+    public float SpeedOverride;
 
     private EmissionParameters Clone()
     {
@@ -28,6 +24,7 @@ public class EmissionParameters
             Intensity = Intensity,
             Delay = Delay,
             Range = Range,
+            SpeedOverride = SpeedOverride
         };
     }
 
@@ -71,6 +68,13 @@ public class EmissionParameters
     {
         var clone = Clone();
         clone.Range = range;
+        return clone;
+    }
+
+    public EmissionParameters WithSpeedOverride(float speed)
+    {
+        var clone = Clone();
+        clone.SpeedOverride = speed;
         return clone;
     }
 }

@@ -35,6 +35,14 @@ public class KnockChest : Interactive
 
     protected override void OnEnable()
     {
+        if (OpenedChestTrigger.Value)
+        {
+            Chest.gameObject.SetActive(false);
+            OpenedChest.gameObject.SetActive(true);
+            ChestFront.enabled = false;
+            return;
+        }
+
         base.OnEnable();
         _textLogPublisher = this.RegisterAsEventPublisher<TextLog.TextLogEvents, string>();
 

@@ -18,10 +18,13 @@ public class ChestCleared : MonoBehaviour
     public DisableActionsAndGoToBulletHell1 BulletHellInteraction;
 
     public GlobalTrigger ClearedChest;
+    public GlobalTrigger OpenedChest;
 
     public BasicMachineryScriptable MachineryRef;
     public TimerScriptable TimerRef;
     public ColorDefaults ColorDefaults;
+
+    public Transform Fae;
 
     protected Camera DefaultCamera;
     protected PixelPerfectCamera Ppc;
@@ -37,21 +40,37 @@ public class ChestCleared : MonoBehaviour
             cam => cam.gameObject.layer == LayerMask.NameToLayer("Default"));
 
         Ppc = DefaultCamera.GetComponent<PixelPerfectCamera>();
-        Ppc.enabled = false;
-        DefaultCamera.orthographicSize = 0.01f;
-
         KnockAction.gameObject.SetActive(true);
         LookAction.gameObject.SetActive(true);
         InteractAction.gameObject.SetActive(true);
         BulletHellInteraction.enabled = false;
-        MachineryRef.Machinery.AddBasicMachine(ZoomOut());
+
+        if (OpenedChest.Value)
+        {
+            Fae.gameObject.SetActive(true);
+            MachineryRef.Machinery.AddBasicMachine(ZoomOut());
+            return;
+        }
+
+        MachineryRef.Machinery.AddBasicMachine(MagicSigilBroken());
     }
 
-    IEnumerable<IEnumerable<Action>> ZoomOut()
+    IEnumerable<IEnumerable<Action>> MagicSigilBroken()
     {
         _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry,
             $"The <color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.Sigils.Value)}>magic sigil</color> is broken!"
         );
+
+        yield return ZoomOut().AsCoroutine();
+
+        _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry,
+            $"You wonder... is the <color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.Objects.Value)}>chest</color> is weak enough now?");
+    }
+
+    IEnumerable<IEnumerable<Action>> ZoomOut()
+    {
+        Ppc.enabled = false;
+        DefaultCamera.orthographicSize = 0.01f;
 
         yield return new LerpBuilder(val => DefaultCamera.orthographicSize = val, () => DefaultCamera.orthographicSize)
             .SetTarget(8.4375f)
@@ -59,9 +78,6 @@ public class ChestCleared : MonoBehaviour
             .Easing(EasingYields.EasingFunction.CubicEaseInOut)
             .UsingTimer(TimerRef.Timer)
             .Build();
-
-        _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry,
-            $"You wonder... is the <color=#{ColorUtility.ToHtmlStringRGBA(ColorDefaults.Objects.Value)}>chest</color> is weak enough now?");
 
         Ppc.enabled = true;
     }

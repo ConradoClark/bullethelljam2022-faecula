@@ -6,21 +6,22 @@ using Licht.Unity.Objects;
 using Licht.Unity.Pooling;
 using UnityEngine;
 
-public class ScreenBullet : EffectPoolable
+public class ScreenBullet : BaseBullet
 {
     public Vector2 Direction;
     public float Speed;
-    public TimerScriptable TimerRef;
     public BoundsValue Bounds;
-    public Collider2D Collider;
+
+    private float? _originalSpeed;
 
     public override void OnActivation()
     {
+        base.OnActivation();
+        _originalSpeed ??= Speed;
+        Speed = _originalSpeed ?? Speed;
         transform.rotation = Quaternion.identity;
         BasicMachineryObject.Machinery.AddBasicMachine(CheckOutOfBounds());
     }
-
-    public override bool IsEffectOver { get; protected set; }
 
     private IEnumerable<IEnumerable<Action>> CheckOutOfBounds()
     {

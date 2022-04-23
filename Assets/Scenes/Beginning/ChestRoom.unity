@@ -3652,9 +3652,11 @@ MonoBehaviour:
   InteractAction: {fileID: 1744325710}
   BulletHellInteraction: {fileID: 842919315}
   ClearedChest: {fileID: 11400000, guid: 31765a325482ee142a9e45e34fed5a80, type: 2}
+  OpenedChest: {fileID: 11400000, guid: 47fb7815b7d67c64fafc57f7fdf33b9a, type: 2}
   MachineryRef: {fileID: 11400000, guid: b183650010cd9684db4dd01612534c04, type: 2}
   TimerRef: {fileID: 11400000, guid: 6a052f4e332ec2043885bf3f98efe50d, type: 2}
   ColorDefaults: {fileID: 398701028}
+  Fae: {fileID: 863281628}
 --- !u!1 &1084580971
 GameObject:
   m_ObjectHideFlags: 0
@@ -6157,7 +6159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Triggers:
-  - Trigger: {fileID: 11400000, guid: 31765a325482ee142a9e45e34fed5a80, type: 2}
+  - Trigger: {fileID: 11400000, guid: 47fb7815b7d67c64fafc57f7fdf33b9a, type: 2}
     Negate: 1
   Audio: {fileID: 1752600337}
 --- !u!82 &1752600337
