@@ -1,20 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Licht.Impl.Events;
 using Licht.Impl.Orchestration;
 using Licht.Interfaces.Events;
+using Licht.Unity.Builders;
 using Licht.Unity.Objects;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.U2D;
 
 public class BreakableRock : Interactive
 {
     public KnockEffect KnockEffect;
     public BasicMachineryScriptable MachineryRef;
+    public TimerScriptable TimerRef;
 
     public SpriteRenderer Rock;
     public SpriteRenderer BrokenRock;
 
     public GlobalTrigger BrokenRockTrigger;
+
+    public string Message;
+    public string TeleportToScene;
+
+    public AudioSource SmashAudio;
+
+    protected Camera DefaultCamera;
+    protected PixelPerfectCamera Ppc;
 
     private IEventPublisher<TextLog.TextLogEvents, string> _textLogPublisher;
     private bool _knocking;
@@ -32,6 +45,11 @@ public class BreakableRock : Interactive
 
         this.ObserveEvent<InteractiveAction.InteractiveActionEvents, InteractiveAction.InteractiveActionEvent>(
             InteractiveAction.InteractiveActionEvents.OnClick, OnEvent);
+
+        DefaultCamera = Camera.allCameras.FirstOrDefault(
+            cam => cam.gameObject.layer == LayerMask.NameToLayer("Default"));
+
+        Ppc = DefaultCamera?.GetComponent<PixelPerfectCamera>();
     }
 
     protected override void OnDisable()
@@ -56,8 +74,32 @@ public class BreakableRock : Interactive
         yield return TimeYields.WaitOneFrameX;
         Rock.enabled = false;
         BrokenRock.enabled = true;
-        _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, "The poor rock crumbled...");
+        SmashAudio?.Play();
+        _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, Message);
         _knocking = false;
         BrokenRockTrigger.Value = true;
+
+        if (!string.IsNullOrWhiteSpace(TeleportToScene))
+        {
+            yield return LoadScene(TeleportToScene).AsCoroutine();
+        }
+    }
+
+    private IEnumerable<IEnumerable<Action>> LoadScene(string teleportToScene)
+    {
+        yield return ZoomIn().AsCoroutine();
+
+        MachineryRef.Machinery.FinalizeWith(() => SceneManager.LoadScene(teleportToScene, LoadSceneMode.Single));
+    }
+
+    private IEnumerable<IEnumerable<Action>> ZoomIn()
+    {
+        Ppc.enabled = false;
+        yield return new LerpBuilder(val => DefaultCamera.orthographicSize = val, () => DefaultCamera.orthographicSize)
+            .SetTarget(0.01f)
+            .Over(4f)
+            .Easing(EasingYields.EasingFunction.CubicEaseIn)
+            .UsingTimer(TimerRef.Timer)
+            .Build();
     }
 }

@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Beginning/ChestRoomBulletHell.unity
     guid: 41249f03c6bd53d4083f45ff332ece1c
+  - enabled: 1
+    path: Assets/Scenes/Beginning/RandomRockBulletHell.unity
+    guid: acb02e48d63803e4087e8ab6bc35202d
   m_configObjects: {}
