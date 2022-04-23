@@ -12,7 +12,20 @@ public class ShowerBulletEmission : EmissionFunction
     {
         if (!emissionRef.BulletPool.TryGetManyFromPool(Mathf.CeilToInt(6 * emissionParams.Intensity), out var objects)) yield break;
 
+        var fx = emissionRef.SpecialEffects.FirstOrDefault(fx => fx.Key == "Bubbles");
+
         var delay = 0;
+
+        foreach (var bullet in objects.OfType<StraightMovingBullet>())
+        {
+            bullet.transform.SetPositionAndRotation(
+                new Vector3(-16f * emissionParams.Direction.x, 4 - 6 * emissionParams.Direction.y)
+                + (Vector3)(emissionParams.Offset - emissionParams.Direction * (delay % 6) + Random.insideUnitCircle * emissionParams.Range),
+                Quaternion.FromToRotation(Vector2.right, emissionParams.Direction)
+            );
+            bullet.Direction = Vector2.zero;
+        }
+
         foreach (var bullet in objects.OfType<StraightMovingBullet>())
         {
             bullet.transform.SetPositionAndRotation(
@@ -22,6 +35,12 @@ public class ShowerBulletEmission : EmissionFunction
             );
 
             bullet.Direction = emissionParams.Direction;
+
+            if (fx.EffectPool!=null && fx.EffectPool.TryGetFromPool(out var effect))
+            {
+                effect.Component.transform.position =
+                    bullet.transform.position + (Vector3) emissionParams.Direction * (delay % 6) * 3;
+            }
 
             yield return Enumerable.Repeat<Func<StepResult>>(() => new StepResult
             {

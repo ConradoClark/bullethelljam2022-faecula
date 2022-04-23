@@ -31,10 +31,12 @@ public class TutorialBattle : MonoBehaviour
     public EmissionReference HorizontalBulletEmission;
     public EmissionReference HorizontalSlowBulletEmission;
     public EmissionReference ShowerBulletEmission;
+    public EmissionReference RadialBulletEmission;
 
     public EmissionParametersScriptable LeftToRightEmission;
     public EmissionParametersScriptable RightToLeftEmission;
     public EmissionParametersScriptable ShowerEmission;
+    public EmissionParametersScriptable RadialEmission;
 
     private bool _dead = false;
 
@@ -95,9 +97,6 @@ public class TutorialBattle : MonoBehaviour
             Text = "Evade all attacks from the magic sigil"
         });
 
-
-        //BulletEmitter.EmitBullets(HorizontalBulletEmission, LeftToRightEmission.Params, true);
-
         BulletEmitter.EmitBullets(ShowerBulletEmission, ShowerEmission.Params,true);
         BulletEmitter.EmitBullets(ShowerBulletEmission, ShowerEmission.Params.WithIndicatorPosition(
             IndicatorPositions.NorthWest, new Vector2(1,-1)).WithDirection(new Vector2(1,-1)), true);
@@ -114,6 +113,12 @@ public class TutorialBattle : MonoBehaviour
         yield return TimeYields.WaitSeconds(TimerRef.Timer, 1);
         BulletEmitter.EmitBullets(HorizontalBulletEmission, LeftToRightEmission.Params.WithOffset(offset));
         yield return TimeYields.WaitSeconds(TimerRef.Timer, 2);
+
+        BulletEmitter.EmitBullets(ShowerBulletEmission, ShowerEmission.Params.WithIndicatorPosition(
+                IndicatorPositions.South, new Vector2(0, 1))
+            .WithDirection(new Vector2(0, 1))
+            .WithIntensity(5), true);
+
         BulletEmitter.EmitBullets(HorizontalBulletEmission, LeftToRightEmission.Params);
         yield return TimeYields.WaitSeconds(TimerRef.Timer, 1);
         BulletEmitter.EmitBullets(HorizontalBulletEmission, LeftToRightEmission.Params);
@@ -125,6 +130,19 @@ public class TutorialBattle : MonoBehaviour
         yield return TimeYields.WaitSeconds(TimerRef.Timer, 1);
         BulletEmitter.EmitBullets(HorizontalBulletEmission, RightToLeftEmission.Params.WithOffset(offset));
         yield return TimeYields.WaitSeconds(TimerRef.Timer, 2);
+
+        BulletEmitter.EmitBullets(ShowerBulletEmission, ShowerEmission.Params.WithIndicatorPosition(
+                IndicatorPositions.NorthWest, new Vector2(0, -1))
+            .WithOffset(new Vector2(-10, 0))
+            .WithDirection(new Vector2(0, -1))
+            .WithIntensity(5), true);
+
+        BulletEmitter.EmitBullets(ShowerBulletEmission, ShowerEmission.Params.WithIndicatorPosition(
+                IndicatorPositions.NorthEast, new Vector2(0, -1))
+            .WithOffset(new Vector2(10, 0))
+            .WithDirection(new Vector2(0, -1))
+            .WithIntensity(5), true);
+
         BulletEmitter.EmitBullets(HorizontalBulletEmission, RightToLeftEmission.Params);
         yield return TimeYields.WaitSeconds(TimerRef.Timer, 1);
         BulletEmitter.EmitBullets(HorizontalBulletEmission, RightToLeftEmission.Params);
@@ -134,6 +152,9 @@ public class TutorialBattle : MonoBehaviour
 
         yield return TimeYields.WaitSeconds(TimerRef.Timer, 3);
 
+        BulletEmitter.EmitBullets(RadialBulletEmission, RadialEmission.Params
+            .WithIndicatorPosition(IndicatorPositions.East, Vector2.left)
+            .WithDirection(Vector2.left), true);
         yield return HereComes().AsCoroutine();
 
         yield return TimeYields.WaitSeconds(TimerRef.Timer, 3);
@@ -160,6 +181,17 @@ public class TutorialBattle : MonoBehaviour
         var first = true;
         for (var i = 0; i < 30; i++)
         {
+            switch (i)
+            {
+                case 22:
+                    BulletEmitter.EmitBullets(RadialBulletEmission, RadialEmission.Params, true);
+                    break;
+                case 15:
+                    BulletEmitter.EmitBullets(ShowerBulletEmission, ShowerEmission.Params.WithIndicatorPosition(
+                        IndicatorPositions.NorthWest, new Vector2(1, -1)).WithDirection(new Vector2(1, -1)), true);
+                    break;
+            }
+
             if (i % 5 == 0) BulletEmitter.EmitBullets(HorizontalBulletEmission, LeftToRightEmission.Params.WithOffset(new Vector2(0, -0.4f + 0.6f * i % 1.4f)),true);
             else BulletEmitter.EmitBullets(HorizontalSlowBulletEmission, RightToLeftEmission.Params.WithOffset(new Vector2(0, -0.8f + 0.4f * i % 1.2f)), first);
 

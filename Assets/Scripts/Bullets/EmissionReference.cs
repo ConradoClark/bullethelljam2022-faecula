@@ -9,9 +9,17 @@ using UnityEngine;
 
 public class EmissionReference : MonoBehaviour
 {
+    [Serializable]
+    public struct EmissionSpecialEffect
+    {
+        public string Key;
+        public PrefabPool EffectPool;
+    }
+
     public TimerScriptable TimerRef;
     public EmissionFunction EmissionFunction;
     public PrefabPool BulletPool;
+    public EmissionSpecialEffect[] SpecialEffects;
     public AudioSource SpawnSound;
     public BulletEmitter.EmitterAudioTriggers EmitterAudioTrigger;
 }

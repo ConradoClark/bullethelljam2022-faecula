@@ -26,7 +26,7 @@ public class ScreenBullet : EffectPoolable
     {
         yield return TimeYields.WaitSeconds(TimerRef.Timer, 2);
 
-        while (!IsEffectOver)
+        while (!IsEffectOver && isActiveAndEnabled)
         {
             if (!Bounds.Value.Contains(transform.position))
             {
@@ -35,7 +35,15 @@ public class ScreenBullet : EffectPoolable
 
             // no need to check every frame
             for (var i = 0; i < 10; i++)
+            {
+                if (IsEffectOver || !isActiveAndEnabled)
+                {
+                    IsEffectOver = true;
+                    yield break;
+                }
                 yield return TimeYields.WaitOneFrameX;
+            }
         }
+        IsEffectOver = true;
     }
 }

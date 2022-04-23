@@ -7,8 +7,10 @@ using UnityEngine;
 
 public class StraightMovingBullet : ScreenBullet
 {
-    private void OnEnable()
+    public override void OnActivation()
     {
+        base.OnActivation();
+        transform.rotation = Quaternion.identity;
         BasicMachineryObject.Machinery.AddBasicMachine(Move());
     }
 
