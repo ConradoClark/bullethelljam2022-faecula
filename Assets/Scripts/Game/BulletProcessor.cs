@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Licht.Impl.Orchestration;
 using Licht.Unity.Objects;
+using Licht.Unity.Pooling;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class BulletProcessor : MonoBehaviour
 {
@@ -11,10 +13,20 @@ public class BulletProcessor : MonoBehaviour
     public Transform BulletPoolContainer;
     public FaeHit FaeHit;
 
+    public GlobalTrigger GrazeEnabled;
     public BasicMachineryScriptable MachineryRef;
+    public TimerScriptable TimerRef;
+    public float GrazeDelay;
+
+    public AudioSource GrazeSound;
+    public PrefabPool GrazeEffect;
+    public FaeStats FaeStats;
+
+    private List<Collider2D> _grazingBullets = new List<Collider2D>();
 
     void OnEnable()
     {
+        _grazingBullets = new List<Collider2D>();
         MachineryRef.Machinery.AddBasicMachine(Process());
     }
 
@@ -42,8 +54,18 @@ public class BulletProcessor : MonoBehaviour
                 if (Vector2.Distance(bullet.transform.position, FaeHit.transform.position) > 2f) continue;
 
                 var results = new Collider2D[1];
-                
-                if (bullet.Collider.OverlapCollider(contactFilter, results) == 0) continue;
+
+                if (bullet.Collider.OverlapCollider(contactFilter, results) == 0)
+                {
+                    if (GrazeEnabled.Value &&
+                        !_grazingBullets.Contains(bullet.Collider) &&
+                        Vector2.Distance(bullet.transform.position, FaeHit.transform.position) < 1f)
+                    {
+                        _grazingBullets.Add(bullet.Collider);
+                        MachineryRef.Machinery.AddBasicMachine(Graze(bullet));
+                    }
+                    continue;
+                }
 
                 FaeHit.Hit();
                 break;
@@ -51,5 +73,26 @@ public class BulletProcessor : MonoBehaviour
 
             yield return TimeYields.WaitOneFrameX;
         }
+    }
+
+    IEnumerable<IEnumerable<Action>> Graze(BaseBullet bullet)
+    {
+        while(Vector2.Distance(bullet.transform.position, FaeHit.transform.position) < 1f)
+        {
+            if (GrazeEffect.TryGetFromPool(out var effect))
+            {
+                effect.Component.transform.position =
+                    bullet.transform.position + (FaeHit.transform.position - bullet.transform.position) / 2
+                                              + (Vector3) (Random.insideUnitCircle * 0.4f);
+
+            }
+
+            GrazeSound.pitch = 1f + Random.value * 0.4f;
+            GrazeSound.Play();
+            FaeStats.Graze();
+            yield return TimeYields.WaitSeconds(TimerRef.Timer, GrazeDelay);
+        }
+
+        _grazingBullets.Remove(bullet.Collider);
     }
 }

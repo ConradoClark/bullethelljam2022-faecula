@@ -14,5 +14,6 @@ public class Constants
     {
         public const string ChestRoom = "Scenes/Beginning/ChestRoom";
         public const string ChestRoomBulletHell = "Scenes/Beginning/ChestRoomBulletHell";
+        public const string MagicBallBulletHell = "Scenes/Beginning/MagicBallBulletHell";
     }
 }

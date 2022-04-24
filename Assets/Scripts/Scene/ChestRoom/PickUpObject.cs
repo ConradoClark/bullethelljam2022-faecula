@@ -19,7 +19,7 @@ public class PickUpObject : Interactive
     public GlobalTrigger PickupTrigger;
     public string ObjectName;
 
-    private IEventPublisher<TextLog.TextLogEvents, string> _textLogPublisher;
+    protected IEventPublisher<TextLog.TextLogEvents, string> TextLogPublisher;
 
     public SpriteRenderer ObjectSpriteRenderer;
     public AudioSource PickupSound;
@@ -33,7 +33,7 @@ public class PickUpObject : Interactive
         }
 
         base.OnEnable();
-        _textLogPublisher = this.RegisterAsEventPublisher<TextLog.TextLogEvents, string>();
+        TextLogPublisher = this.RegisterAsEventPublisher<TextLog.TextLogEvents, string>();
 
         this.ObserveEvent<InteractiveAction.InteractiveActionEvents, InteractiveAction.InteractiveActionEvent>(
             InteractiveAction.InteractiveActionEvents.OnClick, OnEvent);
@@ -46,12 +46,12 @@ public class PickUpObject : Interactive
         MachineryRef.Machinery.AddBasicMachine(Pickup());
     }
 
-    protected IEnumerable<IEnumerable<Action>> Pickup()
+    protected virtual IEnumerable<IEnumerable<Action>> Pickup()
     {
         if (PickupTrigger.Value) yield break;
 
         PickupSound.Play();
-        _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, $"You picked up {AOrAn()} <color=#{ColorUtility.ToHtmlStringRGB(ColorDefaults.Objects.Value)}>{ObjectName}</color>!");
+        TextLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, $"You picked up {AOrAn()} <color=#{ColorUtility.ToHtmlStringRGB(ColorDefaults.Objects.Value)}>{ObjectName}</color>!");
         PickupTrigger.Value = true;
 
         yield return Fade().AsCoroutine();
