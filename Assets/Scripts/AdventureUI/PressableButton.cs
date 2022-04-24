@@ -59,15 +59,8 @@ public class PressableButton : MonoBehaviour, IActivable, IDeactivable
                 else
                 {
                     Group?.DeactivateAllExcept(this);
-
-                    ActivationSound?.Play();
                     Activate();
-                    MachineryRef.Machinery.AddBasicMachine(Blink());
-                    if (EffectPool.TryGetFromPool(out var obj) && obj is PressedEffectPoolable effect)
-                    {
-                        effect.Button = this;
-                        effect.transform.position = transform.position;
-                    }
+                    ActivationSound?.Play();
                 }
                 
             }
@@ -113,6 +106,12 @@ public class PressableButton : MonoBehaviour, IActivable, IDeactivable
     public bool IsActive { get; private set; }
     public bool Activate()
     {
+        MachineryRef.Machinery.AddBasicMachine(Blink());
+        if (EffectPool.TryGetFromPool(out var obj) && obj is PressedEffectPoolable effect)
+        {
+            effect.Button = this;
+            effect.transform.position = transform.position;
+        }
         IsActive = true;
         SpriteRenderer.sprite = PressedSprite;
 

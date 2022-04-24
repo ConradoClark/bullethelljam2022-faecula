@@ -46,11 +46,22 @@ public class InteractiveAction : ActionBase
         MachineryRef.Machinery.AddBasicMachine(HandleLook());
     }
 
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        this.UnregisterAsEventPublisher<HelpText.HelpTextEvents, HelpText.TextChangedEvent>();
+        this.UnregisterAsEventPublisher<HelpText.HelpTextEvents, HelpText.TextEvent>();
+
+        this.UnregisterAsEventPublisher<TextLog.TextLogEvents, string>();
+        this.UnregisterAsEventPublisher<InteractiveActionEvents, InteractiveActionEvent>();
+    }
+
     private IEnumerable<IEnumerable<Action>> HandleLook()
     {
         while (isActiveAndEnabled)
         {
-            while (!IsActive) yield return TimeYields.WaitOneFrameX;
+            while (!IsActive && isActiveAndEnabled)
+                yield return TimeYields.WaitOneFrameX;
 
             TextLockPublisher.PublishEvent(HelpText.HelpTextEvents.TextLock, new HelpText.TextChangedEvent
             {
@@ -90,7 +101,10 @@ public class InteractiveAction : ActionBase
                     Group = InteractiveGroup,
                     Target = result,
                 });
+                Debug.Log(" published event");
             }
+
+            Debug.Log(" not active anymore, " + gameObject.name);
 
             TextUnlockPublisher.PublishEvent(HelpText.HelpTextEvents.TextUnlock, new HelpText.TextEvent
             {

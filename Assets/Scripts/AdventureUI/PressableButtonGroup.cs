@@ -14,13 +14,24 @@ public class PressableButtonGroup : MonoBehaviour
         }
     }
 
-    public void DisableAll()
+    public void Enable(IEnumerable<PressableButton> buttons)
     {
-        foreach (var btn in _pressableButtons.ToArray())
+        foreach (var btn in buttons)
+        {
+            btn.gameObject.SetActive(true);
+        }
+    }
+
+    public PressableButton[] DisableAll()
+    {
+        var buttons = _pressableButtons.ToArray();
+        foreach (var btn in buttons)
         {
             btn.Deactivate();
             btn.gameObject.SetActive(false);
         }
+        
+        return buttons;
     }
 
     public void AddToGroup(PressableButton button)
