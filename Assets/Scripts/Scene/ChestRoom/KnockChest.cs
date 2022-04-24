@@ -33,6 +33,9 @@ public class KnockChest : Interactive
 
     public AudioSource ActionSound;
 
+    public AudioSource DarkChestMusic;
+    public AudioSource ChestRoomMusic;
+
     protected override void OnEnable()
     {
         if (OpenedChestTrigger.Value)
@@ -152,7 +155,9 @@ public class KnockChest : Interactive
 
                 Chest.gameObject.SetActive(false);
                 OpenedChest.gameObject.SetActive(true);
-                
+
+                DarkChestMusic?.Stop();
+
                 yield return ScreenFlash.GetAccessor()
                     .Color.A
                     .SetTarget(0f)
@@ -169,6 +174,8 @@ public class KnockChest : Interactive
                 OpenedChestTrigger.Value = true;
 
                 LookAction.DefaultMessage = "There's nothing here of relevant importance.";
+
+                ChestRoomMusic?.Play();
 
                 yield return TimeYields.WaitSeconds(TimerRef.Timer, 3);
 
