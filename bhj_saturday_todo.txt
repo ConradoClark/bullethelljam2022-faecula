@@ -1,8 +1,8 @@
 What's missing?
-- SFX for light flickering at the beginning.
-- SFX for interacting with the keyhole.
-- Zoom in should pan the camera towards the keyhole.
-- SFX for getting hit during a bullet hell stage.
+- SFX for light flickering at the beginning. DONE
+- SFX for interacting with the keyhole. DONE
+- Zoom in should pan the camera towards the keyhole. DONE
+- SFX for getting hit during a bullet hell stage. DONE
 - Music after getting back to the chest scene, after bullet hell.
 - Interactives when the room is still dimly lit that tell you that's it's too dark to see.
 - Death SFX
@@ -11,14 +11,15 @@ Bugfixes
 - Radial bullet speed is not being resetted. Maybe bullet speed should be a param?. DONE
 
 What would be cool?
-- Shower bullets should fade in instead of instantly appearing?
+- Shower bullets should fade in instead of instantly appearing? DONE
 - A fanfare/fireworks effect when you finish a bullet hell stage.
 - A visual effect when retrying a stage.
 
 Story: Next Steps
-- Allow crushing rocks for an optional bullet hell sequence. WIP
-- Draw a cabinet that you can interact with to get the "Pick Up" action and enable inventory.
-- Allow using inventory items (that are usable)
+- Allow crushing rocks for an optional bullet hell sequence. DONE
+- Draw a cabinet that you can interact with to get the "Pick Up" action and enable inventory. (maybe ditch this)
+- Allow using inventory items (that are usable) (maybe ditch this)
+- The cabinet will be guarded by another magic sigil.
 - Inside the cabinet there should be two items:
    + A cord so you can replace the one on the faulty plug object
    + A magic sphere that allows you to use magic (graze + slowdown)

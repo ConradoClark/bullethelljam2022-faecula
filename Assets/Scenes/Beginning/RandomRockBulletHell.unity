@@ -155,11 +155,6 @@ Transform:
   m_Father: {fileID: 450629642}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &24915748 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 8999069285802812254, guid: 80dfe5ece0a45544ea175e24bc41dd1c, type: 3}
-  m_PrefabInstance: {fileID: 8999069286540620107}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &105840683
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,7 +692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletPoolContainer: {fileID: 718354399}
-  FaeHit: {fileID: 1044037861}
+  FaeHit: {fileID: 636651775}
   MachineryRef: {fileID: 11400000, guid: b183650010cd9684db4dd01612534c04, type: 2}
 --- !u!1 &450629641
 GameObject:
@@ -959,6 +954,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94356ff3d367996438be9fa336f6a495, type: 3}
+--- !u!114 &636651775 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1044037861, guid: 80dfe5ece0a45544ea175e24bc41dd1c, type: 3}
+  m_PrefabInstance: {fileID: 8999069286540620107}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 181d0a4811306584aabfea2a16974286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &718354398
 GameObject:
   m_ObjectHideFlags: 0
@@ -1684,7 +1690,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HeartsPool: {fileID: 1793694327}
   HeartEffectPool: {fileID: 127858514}
-  Stats: {fileID: 1044037862}
+  Stats: {fileID: 1167837548}
   MachineryRef: {fileID: 11400000, guid: b183650010cd9684db4dd01612534c04, type: 2}
   TimerRef: {fileID: 11400000, guid: ff895efbce15331489e1f502258d8ffb, type: 2}
   Offset: 0.775
@@ -1830,72 +1836,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prefab: {fileID: 5329254429663197767, guid: c2d6d24fe9ec2374ab534dcdfe1d107e, type: 3}
   Size: 300
---- !u!1 &1044037860 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8999069287446180271, guid: 80dfe5ece0a45544ea175e24bc41dd1c, type: 3}
-  m_PrefabInstance: {fileID: 8999069286540620107}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1044037861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1044037860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 181d0a4811306584aabfea2a16974286, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Collider: {fileID: 1186345757}
-  MachineryRef: {fileID: 11400000, guid: b183650010cd9684db4dd01612534c04, type: 2}
-  TimerRef: {fileID: 11400000, guid: ff895efbce15331489e1f502258d8ffb, type: 2}
-  FaeWings: {fileID: 24915748}
-  FaeBody: {fileID: 1186345759}
-  FaeStats: {fileID: 1044037862}
-  DamagedColor: {r: 0.95686275, g: 0.72156864, b: 0.3764706, a: 1}
-  DangerColor: {r: 0.78431374, g: 0.24313726, b: 0.3019608, a: 1}
---- !u!114 &1044037862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1044037860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a347c5f367411af42920b0aa67ee8bca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxHitPoints: 3
---- !u!114 &1044037863 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8999069287446180270, guid: 80dfe5ece0a45544ea175e24bc41dd1c, type: 3}
-  m_PrefabInstance: {fileID: 8999069286540620107}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1044037860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0d299110af9ad2498e759612ce9cc40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1044037865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1044037860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4beecec3082236547885a85223ac0983, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MachineryRef: {fileID: 11400000, guid: b183650010cd9684db4dd01612534c04, type: 2}
-  TimerRef: {fileID: 11400000, guid: ff895efbce15331489e1f502258d8ffb, type: 2}
-  GlobalTimerRef: {fileID: 11400000, guid: 6a052f4e332ec2043885bf3f98efe50d, type: 2}
-  FollowMouse: {fileID: 1044037863}
-  RetryButton: {fileID: 1989296189}
 --- !u!1 &1084264955
 GameObject:
   m_ObjectHideFlags: 0
@@ -1971,6 +1911,17 @@ MonoBehaviour:
   m_Script: {fileID: 1791234417, guid: 36e88bdca46822f40b7ebfb2199ae1ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1167837548 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1044037862, guid: 80dfe5ece0a45544ea175e24bc41dd1c, type: 3}
+  m_PrefabInstance: {fileID: 8999069286540620107}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a347c5f367411af42920b0aa67ee8bca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1186345756 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8999069285441045079, guid: 80dfe5ece0a45544ea175e24bc41dd1c, type: 3}
@@ -1992,11 +1943,6 @@ CircleCollider2D:
   m_Offset: {x: -0.0059256554, y: -0.007189393}
   serializedVersion: 2
   m_Radius: 0.22731653
---- !u!212 &1186345759 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 8999069285441045078, guid: 80dfe5ece0a45544ea175e24bc41dd1c, type: 3}
-  m_PrefabInstance: {fileID: 8999069286540620107}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1272219449
 GameObject:
   m_ObjectHideFlags: 0
@@ -3574,6 +3520,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1044037865, guid: 80dfe5ece0a45544ea175e24bc41dd1c, type: 3}
+      propertyPath: RetryButton
+      value: 
+      objectReference: {fileID: 1989296189}
     - target: {fileID: 8999069285441045079, guid: 80dfe5ece0a45544ea175e24bc41dd1c, type: 3}
       propertyPath: m_Layer
       value: 3

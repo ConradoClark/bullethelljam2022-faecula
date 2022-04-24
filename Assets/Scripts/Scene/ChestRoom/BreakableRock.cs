@@ -5,6 +5,7 @@ using Licht.Impl.Events;
 using Licht.Impl.Orchestration;
 using Licht.Interfaces.Events;
 using Licht.Unity.Builders;
+using Licht.Unity.Extensions;
 using Licht.Unity.Objects;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -25,6 +26,7 @@ public class BreakableRock : Interactive
     public string TeleportToScene;
 
     public AudioSource SmashAudio;
+    public PressableButtonGroup Buttons;
 
     protected Camera DefaultCamera;
     protected PixelPerfectCamera Ppc;
@@ -87,6 +89,7 @@ public class BreakableRock : Interactive
 
     private IEnumerable<IEnumerable<Action>> LoadScene(string teleportToScene)
     {
+        Buttons.DisableAll();
         yield return ZoomIn().AsCoroutine();
 
         MachineryRef.Machinery.FinalizeWith(() => SceneManager.LoadScene(teleportToScene, LoadSceneMode.Single));
@@ -95,11 +98,21 @@ public class BreakableRock : Interactive
     private IEnumerable<IEnumerable<Action>> ZoomIn()
     {
         Ppc.enabled = false;
-        yield return new LerpBuilder(val => DefaultCamera.orthographicSize = val, () => DefaultCamera.orthographicSize)
+        var cameraZoom = new LerpBuilder(val => DefaultCamera.orthographicSize = val, () => DefaultCamera.orthographicSize)
             .SetTarget(0.01f)
             .Over(4f)
             .Easing(EasingYields.EasingFunction.CubicEaseIn)
             .UsingTimer(TimerRef.Timer)
             .Build();
+
+        var cameraMovement = DefaultCamera.transform.GetAccessor()
+            .Towards(Rock.transform.position)
+            .SetTarget(1f)
+            .Over(4f)
+            .Easing(EasingYields.EasingFunction.CubicEaseIn)
+            .UsingTimer(TimerRef.Timer)
+            .Build();
+
+        yield return cameraZoom.Combine(cameraMovement);
     }
 }

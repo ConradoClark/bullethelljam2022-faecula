@@ -20,6 +20,8 @@ public class DisableActionsAndGoToBulletHell1 : MonoBehaviour
     public SpriteRenderer ChestDarkLight;
     public Transform KeyHoleAnimation;
 
+    public AudioSource KeyHoleSound;
+
     protected Camera DefaultCamera;
     protected PixelPerfectCamera Ppc;
 
@@ -49,10 +51,15 @@ public class DisableActionsAndGoToBulletHell1 : MonoBehaviour
 
     private IEnumerable<IEnumerable<Action>> LoadNextScene()
     {
+        KeyHoleSound?.Play();
         KeyHoleAnimation.gameObject.SetActive(true);
         yield return ZoomIn().AsCoroutine().Combine(Fade().AsCoroutine());
 
-        MachineryRef.Machinery.FinalizeWith(() => SceneManager.LoadScene(Constants.Scenes.ChestRoomBulletHell, LoadSceneMode.Single));
+        MachineryRef.Machinery.FinalizeWith(() =>
+        {
+            KeyHoleSound?.Stop();
+            SceneManager.LoadScene(Constants.Scenes.ChestRoomBulletHell, LoadSceneMode.Single);
+        });
     }
 
     private IEnumerable<IEnumerable<Action>> Fade()
@@ -69,11 +76,21 @@ public class DisableActionsAndGoToBulletHell1 : MonoBehaviour
     private IEnumerable<IEnumerable<Action>> ZoomIn()
     {
         Ppc.enabled = false;
-        yield return new LerpBuilder(val => DefaultCamera.orthographicSize = val, () => DefaultCamera.orthographicSize)
+        var cameraZoom = new LerpBuilder(val => DefaultCamera.orthographicSize = val, () => DefaultCamera.orthographicSize)
             .SetTarget(0.01f)
             .Over(4f)
             .Easing(EasingYields.EasingFunction.CubicEaseIn)
             .UsingTimer(TimerRef.Timer)
             .Build();
+
+        var cameraMovement = DefaultCamera.transform.GetAccessor()
+            .Towards(KeyHole.transform.position)
+            .SetTarget(1f)
+            .Over(4f)
+            .Easing(EasingYields.EasingFunction.CubicEaseIn)
+            .UsingTimer(TimerRef.Timer)
+            .Build();
+
+        yield return cameraZoom.Combine(cameraMovement);
     }
 }

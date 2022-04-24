@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 8999069285441045077}
   - component: {fileID: 8999069285441045078}
   - component: {fileID: 8999069285441045076}
-  m_Layer: 0
+  - component: {fileID: 1186345757}
+  m_Layer: 3
   m_Name: Fae_Hitbox_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,6 +103,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!58 &1186345757
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8999069285441045079}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0059256554, y: -0.007189393}
+  serializedVersion: 2
+  m_Radius: 0.22731653
 --- !u!1 &8999069285802812249
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,7 +130,7 @@ GameObject:
   - component: {fileID: 8999069285802812248}
   - component: {fileID: 8999069285802812254}
   - component: {fileID: 8999069285802812255}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +231,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8999069287446180269}
   - component: {fileID: 8999069287446180270}
-  m_Layer: 0
+  - component: {fileID: 1044037861}
+  - component: {fileID: 1044037862}
+  - component: {fileID: 1044037865}
+  - component: {fileID: 5262810618566430064}
+  m_Layer: 3
   m_Name: Fae
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -253,3 +274,150 @@ MonoBehaviour:
   TimerRef: {fileID: 11400000, guid: ff895efbce15331489e1f502258d8ffb, type: 2}
   MaxMoveSpeed: 7
   SmoothTime: 0.3
+--- !u!114 &1044037861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8999069287446180271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 181d0a4811306584aabfea2a16974286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Collider: {fileID: 1186345757}
+  MachineryRef: {fileID: 11400000, guid: b183650010cd9684db4dd01612534c04, type: 2}
+  TimerRef: {fileID: 11400000, guid: ff895efbce15331489e1f502258d8ffb, type: 2}
+  FaeWings: {fileID: 8999069285802812254}
+  FaeBody: {fileID: 8999069285441045078}
+  FaeStats: {fileID: 1044037862}
+  DamagedColor: {r: 0.95686275, g: 0.72156864, b: 0.3764706, a: 1}
+  DangerColor: {r: 0.78431374, g: 0.24313726, b: 0.3019608, a: 1}
+  DamageSound: {fileID: 5262810618566430064}
+--- !u!114 &1044037862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8999069287446180271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a347c5f367411af42920b0aa67ee8bca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHitPoints: 3
+--- !u!114 &1044037865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8999069287446180271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4beecec3082236547885a85223ac0983, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MachineryRef: {fileID: 11400000, guid: b183650010cd9684db4dd01612534c04, type: 2}
+  TimerRef: {fileID: 11400000, guid: ff895efbce15331489e1f502258d8ffb, type: 2}
+  GlobalTimerRef: {fileID: 11400000, guid: 6a052f4e332ec2043885bf3f98efe50d, type: 2}
+  FollowMouse: {fileID: 8999069287446180270}
+  RetryButton: {fileID: 0}
+--- !u!82 &5262810618566430064
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8999069287446180271}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -4828816250836267392, guid: 6ad95119e671a2245ad236753cb4ad40, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 8302577450a98ea4794d9e1cea74e691, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

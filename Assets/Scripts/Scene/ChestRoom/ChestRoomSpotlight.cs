@@ -7,6 +7,7 @@ using Licht.Interfaces.Events;
 using Licht.Unity.Extensions;
 using Licht.Unity.Objects;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ChestRoomSpotlight : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class ChestRoomSpotlight : MonoBehaviour
 
     public ColorDefaults ColorDefaults;
     public GlobalTrigger ClearedChest;
+
+    public AudioSource LightFlickerSound;
 
     void OnEnable()
     {
@@ -41,6 +44,8 @@ public class ChestRoomSpotlight : MonoBehaviour
 
     IEnumerable<IEnumerable<Action>> Flicker(bool reverse=false)
     {
+        LightFlickerSound.pitch = 1.3f + Random.value * 0.4f;
+        LightFlickerSound?.Play();
         yield return SpriteRenderer.GetAccessor()
             .Color.A
             .SetTarget(reverse ? 1 : 0)

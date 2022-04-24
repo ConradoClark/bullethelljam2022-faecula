@@ -17,6 +17,8 @@ public class FaeHit : MonoBehaviour
     public Color DamagedColor;
     public Color DangerColor;
 
+    public AudioSource DamageSound;
+
     public bool CanBeHit { get; private set; }
 
     private void OnEnable()
@@ -32,6 +34,7 @@ public class FaeHit : MonoBehaviour
 
     private IEnumerable<IEnumerable<Action>> TakeHit()
     {
+        DamageSound?.Play();
         FaeStats.TakeDamage();
         ChangeColorOnDamage();
 

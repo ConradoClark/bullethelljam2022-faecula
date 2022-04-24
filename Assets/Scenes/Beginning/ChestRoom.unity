@@ -1702,7 +1702,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 23
+    m_Bits: 31
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2796,7 +2796,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 815050812}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.562, y: -0.019, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1858151542}
@@ -2882,6 +2882,7 @@ GameObject:
   - component: {fileID: 842919314}
   - component: {fileID: 842919315}
   - component: {fileID: 842919316}
+  - component: {fileID: 842919317}
   m_Layer: 0
   m_Name: ActionInteractive
   m_TagString: Untagged
@@ -2943,6 +2944,7 @@ MonoBehaviour:
   TimerRef: {fileID: 11400000, guid: ff895efbce15331489e1f502258d8ffb, type: 2}
   ChestDarkLight: {fileID: 1549751766}
   KeyHoleAnimation: {fileID: 815050815}
+  KeyHoleSound: {fileID: 842919317}
 --- !u!114 &842919316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2964,6 +2966,102 @@ MonoBehaviour:
   Text: The <color=#f4b860>lock</color> seems fragile. Maybe you could break it if
     you slammed your body against the chest.
   Key: 
+--- !u!82 &842919317
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842919312}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -4828816250836267392, guid: 6ad95119e671a2245ad236753cb4ad40, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 353db825adf9ae845a95c602f1ad8169, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.942
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &846339926
 GameObject:
   m_ObjectHideFlags: 0
@@ -5069,6 +5167,7 @@ MonoBehaviour:
   Message: The poor rock crumbled... And splinters are going straight in your direction!!!
   TeleportToScene: Scenes/Beginning/RandomRockBulletHell
   SmashAudio: {fileID: 775347057}
+  Buttons: {fileID: 1676213304}
 --- !u!58 &1365716050
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5381,6 +5480,7 @@ GameObject:
   - component: {fileID: 1549751765}
   - component: {fileID: 1549751766}
   - component: {fileID: 1549751767}
+  - component: {fileID: 1549751768}
   m_Layer: 0
   m_Name: ChestDarkLight
   m_TagString: Untagged
@@ -5471,6 +5571,103 @@ MonoBehaviour:
   KnockAction: {fileID: 2115056127}
   ColorDefaults: {fileID: 398701028}
   ClearedChest: {fileID: 11400000, guid: 31765a325482ee142a9e45e34fed5a80, type: 2}
+  LightFlickerSound: {fileID: 1549751768}
+--- !u!82 &1549751768
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549751764}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -4828816250836267392, guid: 6ad95119e671a2245ad236753cb4ad40, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 72a027def9bc4584c98373a11655d099, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1.72
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1551417238
 GameObject:
   m_ObjectHideFlags: 0
@@ -6859,6 +7056,7 @@ MonoBehaviour:
   Message: The poor rock crumbled...
   TeleportToScene: 
   SmashAudio: {fileID: 775347057}
+  Buttons: {fileID: 0}
 --- !u!58 &1774266675
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7067,7 +7265,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1858151541}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.562, y: -0.019, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 815050815}
@@ -7110,7 +7308,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.6085369, y: -0.0061159134}
+  m_Offset: {x: -0.04796666, y: -0.0061159134}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -7121,7 +7319,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.37005723, y: 0.52295613}
+  m_Size: {x: 0.42127693, y: 0.52295613}
   m_EdgeRadius: 0
 --- !u!114 &1858151545
 MonoBehaviour:
