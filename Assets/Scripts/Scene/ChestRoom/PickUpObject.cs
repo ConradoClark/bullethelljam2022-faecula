@@ -39,6 +39,13 @@ public class PickUpObject : Interactive
             InteractiveAction.InteractiveActionEvents.OnClick, OnEvent);
     }
 
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        this.StopObservingEvent<InteractiveAction.InteractiveActionEvents, InteractiveAction.InteractiveActionEvent>(
+            InteractiveAction.InteractiveActionEvents.OnClick, OnEvent);
+    }
+
     private void OnEvent(InteractiveAction.InteractiveActionEvent obj)
     {
         if (obj.Group != Group || obj.Target != this) return;

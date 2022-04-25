@@ -33,6 +33,11 @@ public class ExitDoor : Interactive
         this.ObserveEvent<InteractiveAction.InteractiveActionEvents, InteractiveAction.InteractiveActionEvent>(
             InteractiveAction.InteractiveActionEvents.OnClick, OnEvent);
     }
+    protected override void OnDisable()
+    {
+        this.StopObservingEvent<InteractiveAction.InteractiveActionEvents, InteractiveAction.InteractiveActionEvent>(
+            InteractiveAction.InteractiveActionEvents.OnClick, OnEvent);
+    }
 
     private void OnEvent(InteractiveAction.InteractiveActionEvent obj)
     {
