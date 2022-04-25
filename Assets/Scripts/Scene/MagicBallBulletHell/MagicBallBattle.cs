@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using Licht.Impl.Events;
 using Licht.Impl.Orchestration;
 using Licht.Interfaces.Events;
@@ -8,6 +9,7 @@ using Licht.Unity.Objects;
 using Licht.Unity.Pooling;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Vector2 = UnityEngine.Vector2;
 
 public class MagicBallBattle : MonoBehaviour
 {
@@ -93,65 +95,117 @@ public class MagicBallBattle : MonoBehaviour
         _textLockPublisher.PublishEvent(HelpText.HelpTextEvents.TextLock, new HelpText.TextChangedEvent
         {
             Source = this,
-            Text = "Fill up your magic gauge and slowdown time by holding the left mouse button!"
+            Text = "Fill up your magic and slowdown time by holding the left mouse button!"
         });
 
-        for (var i = 1; i < 8; i++)
-        {
-            BulletEmitter.EmitBullets(RadialBulletEmission, RadialEmission.Params
-                .WithOffset(new Vector2(0, i * 0.5f))
-                .WithSpeedOverride(0.025f), i == 0);
-            yield return TimeYields.WaitSeconds(TimerRef.Timer, 0.3f);
-        }
+        BulletEmitter.EmitBullets(RadialBulletEmission, RadialEmission.Params
+            .WithDelay(0.1f)
+            .WithIntensity(150)
+            .WithSpeedOverride(0.01f), true);
 
-        yield return TimeYields.WaitSeconds(TimerRef.Timer, 10f);
+        BulletEmitter.EmitBullets(RadialBulletEmission, RadialEmission.Params
+            .WithSpeedOverride(0.01f)
+            .WithDelay(0.1f)
+            .WithIntensity(150)
+            .WithIndicatorPosition(IndicatorPositions.East, Vector2.left)
+            .WithDirection(Vector2.left), true);
 
-        for (var i = 1; i < 8; i++)
-        {
-            BulletEmitter.EmitBullets(RadialBulletEmission, RadialEmission.Params
-                .WithIndicatorPosition(IndicatorPositions.East, Vector2.left)
-                .WithDirection(Vector2.left)
-                .WithOffset(new Vector2(0, 1f + i * -0.5f))
-                .WithSpeedOverride(0.025f), i == 0);
-            yield return TimeYields.WaitSeconds(TimerRef.Timer, 0.3f);
-        }
+        BulletEmitter.EmitBullets(CandyBulletEmission, DefaultEmission.Params
+            .WithIndicatorPosition(IndicatorPositions.NorthWest, new Vector2(1,-1))
+            .WithDelay(0.15f)
+            .WithDirection(new Vector2(1,-1))
+            .WithIntensity(40), true);
 
-        yield return TimeYields.WaitSeconds(TimerRef.Timer, 10f);
+        BulletEmitter.EmitBullets(CandyBulletEmission, DefaultEmission.Params
+            .WithIndicatorPosition(IndicatorPositions.NorthEast, new Vector2(-1, -1))
+            .WithDelay(0.15f)
+            .WithDirection(new Vector2(-1, 1))
+            .WithIntensity(40), true);
+
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 4f);
+
+        BulletEmitter.EmitBullets(CandyBulletEmission, DefaultEmission.Params
+            .WithIndicatorPosition(IndicatorPositions.West, Vector2.right)
+            .WithDelay(0.15f)
+            .WithDirection(Vector2.right)
+            .WithIntensity(40), true);
+
+        BulletEmitter.EmitBullets(CandyBulletEmission, DefaultEmission.Params
+            .WithIndicatorPosition(IndicatorPositions.East, Vector2.left)
+            .WithDelay(0.15f)
+            .WithDirection(Vector2.left)
+            .WithIntensity(40), true);
+
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 15f);
 
         BulletEmitter.EmitBullets(ShowerBulletEmission, ShowerEmission.Params
+            .WithSpeedOverride(0.1f)
             .WithIndicatorPosition(IndicatorPositions.SouthWest, new Vector2(1, 1))
             .WithDirection(new Vector2(1, 1)), true);
 
         BulletEmitter.EmitBullets(ShowerBulletEmission, ShowerEmission.Params
+            .WithSpeedOverride(0.1f)
             .WithIndicatorPosition(IndicatorPositions.NorthWest, new Vector2(1, -1))
             .WithDirection(new Vector2(1, -1)), true);
 
-        yield return TimeYields.WaitSeconds(TimerRef.Timer, 5f);
+        BulletEmitter.EmitBullets(ShowerBulletEmission, ShowerEmission.Params
+            .WithSpeedOverride(0.1f)
+            .WithIndicatorPosition(IndicatorPositions.SouthEast, new Vector2(-1, 1))
+            .WithDirection(new Vector2(-1, 1)), true);
+
+        BulletEmitter.EmitBullets(ShowerBulletEmission, ShowerEmission.Params
+            .WithSpeedOverride(0.1f)
+            .WithIndicatorPosition(IndicatorPositions.NorthEast, new Vector2(-1, -1))
+            .WithDirection(new Vector2(-1, -1)), true);
+
+        BulletEmitter.EmitBullets(ShowerBulletEmission, ShowerEmission.Params
+            .WithSpeedOverride(0.1f)
+            .WithIndicatorPosition(IndicatorPositions.West, Vector2.right)
+            .WithDirection(Vector2.right), true);
+
+        BulletEmitter.EmitBullets(ShowerBulletEmission, ShowerEmission.Params
+            .WithSpeedOverride(0.1f)
+            .WithIndicatorPosition(IndicatorPositions.East, Vector2.left)
+            .WithDirection(Vector2.left), true);
+
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 15f);
+
+        _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, "Phew! What was that!?");
+
 
         BulletEmitter.EmitBullets(CandyBulletEmission, DefaultEmission.Params
+            .WithSpeedOverride(0.3f)
+            .WithIndicatorPosition(IndicatorPositions.West, Vector2.right)
             .WithDelay(0.15f)
-            .WithIntensity(70));
-        BulletEmitter.EmitBullets(CandyBulletEmission, DefaultEmission.Params
-            .WithDelay(0.15f)
-            .WithOffset(new Vector2(0, -3))
-            .WithIntensity(70));
-        BulletEmitter.EmitBullets(CandyBulletEmission, DefaultEmission.Params
-            .WithDelay(0.15f)
-            .WithOffset(new Vector2(0, 3))
-            .WithIntensity(70));
+            .WithDirection(Vector2.right)
+            .WithIntensity(40), true);
 
-        for (var i = 1; i < 10; i++)
-        {
-            BulletEmitter.EmitBullets(HorizontalBulletEmission, RightToLeftEmission.Params
-                .WithOffset(new Vector2(0, 2f - (i < 5 ? i : 10 - i) * 0.75f)));
-            yield return TimeYields.WaitSeconds(TimerRef.Timer, 0.45f);
-        }
+        BulletEmitter.EmitBullets(CandyBulletEmission, DefaultEmission.Params
+            .WithSpeedOverride(0.3f)
+            .WithIndicatorPosition(IndicatorPositions.East, Vector2.left)
+            .WithDelay(0.15f)
+            .WithDirection(Vector2.left)
+            .WithIntensity(40), true);
 
-        yield return TimeYields.WaitSeconds(TimerRef.Timer, 5);
+        BulletEmitter.EmitBullets(CandyBulletEmission, DefaultEmission.Params
+            .WithSpeedOverride(0.3f)
+            .WithIndicatorPosition(IndicatorPositions.NorthWest, new Vector2(1,-1))
+            .WithDelay(0.15f)
+            .WithDirection(new Vector2(1, -1))
+            .WithIntensity(40), true);
+
+        BulletEmitter.EmitBullets(CandyBulletEmission, DefaultEmission.Params
+            .WithSpeedOverride(0.3f)
+            .WithIndicatorPosition(IndicatorPositions.NorthEast, new Vector2(-1,-1))
+            .WithDelay(0.15f)
+            .WithDirection(new Vector2(-1, -1))
+            .WithIntensity(40), true);
+
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 10);
 
         if (_dead) yield break;
 
-        _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, "Goodbye, rock.");
+        _textLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, "The sigil is finally broken!");
 
         yield return TimeYields.WaitSeconds(TimerRef.Timer, 3);
         MachineryRef.Machinery.FinalizeWith(() =>

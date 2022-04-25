@@ -12,12 +12,14 @@ using UnityEngine.U2D;
 
 public class PickupMagicBall : PickUpObject
 {
+    public PressableButtonGroup ButtonGroup;
+
     public AudioSource MagicSigilSound;
 
     protected Camera DefaultCamera;
     protected PixelPerfectCamera Ppc;
 
-    protected void OnEnable()
+    protected override void OnEnable()
     {
         base.OnEnable();
         DefaultCamera = Camera.allCameras.FirstOrDefault(
@@ -28,9 +30,10 @@ public class PickupMagicBall : PickUpObject
 
     protected override IEnumerable<IEnumerable<Action>> Pickup()
     {
+        ButtonGroup.DisableAll();
         yield return base.Pickup().AsCoroutine();
         MagicSigilSound?.Play();
-        TextLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, $"The <color=#{ColorUtility.ToHtmlStringRGB(ColorDefaults.Sigils.Value)}>magic sigil<color> is activated!");
+        TextLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, $"The <color=#{ColorUtility.ToHtmlStringRGB(ColorDefaults.Sigils.Value)}>magic sigil</color> is activated!");
 
         yield return ZoomIn().AsCoroutine();
         MachineryRef.Machinery.FinalizeWith(() =>

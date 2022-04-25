@@ -308,6 +308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHitPoints: 3
+  MaxMagic: 100
 --- !u!114 &1044037865
 MonoBehaviour:
   m_ObjectHideFlags: 0

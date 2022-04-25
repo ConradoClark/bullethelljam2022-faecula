@@ -33,7 +33,7 @@ public class ChestCleared : MonoBehaviour
 
     private void OnEnable()
     {
-        if (OpenedChest)
+        if (OpenedChest.Value)
         {
             LookAction.DefaultMessage = "There's nothing here of relevant importance.";
         }

@@ -608,7 +608,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletPoolContainer: {fileID: 718354399}
   FaeHit: {fileID: 1044037861}
+  GrazeEnabled: {fileID: 11400000, guid: 9df4b1c7b0e35d742936c894ec4cbe24, type: 2}
   MachineryRef: {fileID: 11400000, guid: b183650010cd9684db4dd01612534c04, type: 2}
+  TimerRef: {fileID: 11400000, guid: ff895efbce15331489e1f502258d8ffb, type: 2}
+  GrazeDelay: 0
+  GrazeSound: {fileID: 0}
+  GrazeEffect: {fileID: 0}
+  FaeStats: {fileID: 1044037862}
 --- !u!1 &450629641
 GameObject:
   m_ObjectHideFlags: 0

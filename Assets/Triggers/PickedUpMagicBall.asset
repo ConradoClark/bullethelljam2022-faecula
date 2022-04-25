@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f0cc03ed7834ae4db6170990aecc3b7, type: 3}
   m_Name: PickedUpMagicBall
   m_EditorClassIdentifier: 
-  Value: 1
+  Value: 0

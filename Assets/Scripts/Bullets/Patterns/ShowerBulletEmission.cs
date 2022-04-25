@@ -34,6 +34,7 @@ public class ShowerBulletEmission : EmissionFunction
             );
 
             bullet.Direction = emissionParams.Direction;
+            bullet.Speed = emissionParams.SpeedOverride > 0 ? emissionParams.SpeedOverride : bullet.Speed;
 
             if (fx.EffectPool!=null && fx.EffectPool.TryGetFromPool(out var effect))
             {
