@@ -108,7 +108,6 @@ public class CabinetInteractive : Interactive
         // wait for animation to finish
         while (CabinetAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1 || CabinetAnimator.IsInTransition(0))
         {
-            Debug.Log("waiting anim");
             yield return TimeYields.WaitOneFrameX;
         }
 
@@ -118,7 +117,6 @@ public class CabinetInteractive : Interactive
         }
 
         Colliders = new[] { OpenedCollider2D };
-        Debug.Log("finished opening");
     }
 
     private IEnumerable<IEnumerable<Action>> Close()
@@ -142,6 +140,5 @@ public class CabinetInteractive : Interactive
         }
 
         Colliders = new[] { ClosedCollider2D };
-        Debug.Log("finished closing");
     }
 }

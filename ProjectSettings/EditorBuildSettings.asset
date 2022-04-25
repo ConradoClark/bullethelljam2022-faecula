@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Beginning/MagicBallBulletHell.unity
     guid: 19cd7a27fe8014944bf0f5c3b9d6f256
+  - enabled: 1
+    path: Assets/Scenes/Beginning/Credits.unity
+    guid: 5f8e65bcbe539664091ca8249c842e2c
   m_configObjects: {}

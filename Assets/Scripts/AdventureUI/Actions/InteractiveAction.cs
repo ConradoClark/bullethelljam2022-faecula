@@ -101,10 +101,7 @@ public class InteractiveAction : ActionBase
                     Group = InteractiveGroup,
                     Target = result,
                 });
-                Debug.Log(" published event");
             }
-
-            Debug.Log(" not active anymore, " + gameObject.name);
 
             TextUnlockPublisher.PublishEvent(HelpText.HelpTextEvents.TextUnlock, new HelpText.TextEvent
             {

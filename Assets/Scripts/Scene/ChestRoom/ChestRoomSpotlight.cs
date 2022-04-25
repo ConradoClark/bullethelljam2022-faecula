@@ -65,7 +65,6 @@ public class ChestRoomSpotlight : MonoBehaviour
 
     IEnumerable<IEnumerable<Action>> Storyboard()
     {
-        Debug.Log("Current Multiplier: " + TimerRef.Timer.Multiplier);
         yield return TimeYields.WaitSeconds(TimerRef.Timer, 2);
 
         yield return Flicker().AsCoroutine();
