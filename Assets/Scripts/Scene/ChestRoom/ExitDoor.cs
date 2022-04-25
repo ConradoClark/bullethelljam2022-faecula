@@ -68,7 +68,7 @@ public class ExitDoor : Interactive
             .Easing(EasingYields.EasingFunction.QuadraticEaseIn)
             .Build();
 
-        yield return TimeYields.WaitSeconds(TimerRef.Timer, 5);
+        yield return TimeYields.WaitSeconds(TimerRef.Timer, 3);
         TextLogPublisher.PublishEvent(TextLog.TextLogEvents.OnLogEntry, $"Thanks for saving Fae!");
 
         yield return TimeYields.WaitSeconds(TimerRef.Timer, 3);

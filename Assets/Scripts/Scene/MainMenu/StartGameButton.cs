@@ -63,6 +63,8 @@ public class StartGameButton : MonoBehaviour
                 .Easing(EasingYields.EasingFunction.CubicEaseOut)
                 .Build();
 
+            yield return TimeYields.WaitSeconds(TimerRef.Timer, 1);
+
             MachineryRef.Machinery.FinalizeWith(() =>
             {
                 SceneManager.LoadScene(Constants.Scenes.ChestRoom, LoadSceneMode.Single);

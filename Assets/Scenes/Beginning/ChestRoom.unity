@@ -2297,7 +2297,7 @@ MonoBehaviour:
   - Trigger: {fileID: 11400000, guid: 63acfeb1f4efee44d9ddc6bc37ffe556, type: 2}
     Negate: 0
   - Trigger: {fileID: 11400000, guid: 2da24efe92ff2ce4aaa8fecbf80150ba, type: 2}
-    Negate: 0
+    Negate: 1
   Text: You see a replacement <color=#F4B860>electrical cord</color>. It could be
     used to help light up the place.
   Key: 
